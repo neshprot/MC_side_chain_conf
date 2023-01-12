@@ -2,7 +2,24 @@
 <h2 align="center">
 
 ## Description
+  
 **Monte Carlo simulation for protein's rotamers**
-  Алгоритм находит оптимальную конформацию ротамеров, используя симуляцию монте карло. На каждом шаге рандомно выбирается боковая связь вокруг которой будет происходить вращение. Если после изменения геометрии белка общая энергия меньше лучшей, то переменная лучшей энергии перезаписывается.
-Алгоритм продолжит работу пока не пройдет определенной количество шагов или предпримет все доступные попытки изменения, не преводящие к лучшей конформации.
-Выходные данные включают в себя лог файл и файл с номерами связей и углами поворота в градусах, а также лучшую энергию.
+  
+  The algorithm finds the optimal conformation of rotamers using Monte Carlo simulation. At each step, a side-bond around which the rotation will occur is randomly chosen. If, after changing the protein geometry, the total energy is less than the best energy, the best energy variable is overwritten.
+  
+  The cycle continues until a certain number of steps are passed or all available change attempts are made that do not result in a better conformation.
+The output includes a log file and a file with bond numbers and rotation angles in degrees, as well as the best energy.
+  
+  Initial data are presented as a config file and a protein in pdb format. 
+
+## How to run
+  - **Protein choice** 
+  
+    Place the protein's pdb file in the pdb_files directory
+  - **Parametres choice**
+    
+    Enter the parameters in the config file
+  - **Running code**
+  
+    Run run_MC.py
+  
