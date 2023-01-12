@@ -40,3 +40,4 @@ numpy
 - Add energy function
 - Add aminoacids: PRO, GLN, HIS
 - Add function to analyze pdb file and refill missing atoms
+- Add constraints
