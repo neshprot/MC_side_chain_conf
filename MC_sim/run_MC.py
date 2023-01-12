@@ -13,6 +13,7 @@ config.read('config.ini')
 pdb_file = config['PDB']['File']
 value1 = float(config['PDB']['ENERGY'])
 attempts = float(config['PARAMS']['attempts'])
+stop_step = float(config['PARAMS']['stop_step'])
 
 # config files
 result_file_name = config['COMPUTING']['ResultFileName']
@@ -25,4 +26,6 @@ if __name__ == '__main__':
 
     start_energy = 100
 
-    print(MonteCarlo(mol, graph, rot_bonds, start_energy, attempts))
+    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, start_energy, attempts, stop_step)
+
+    write_result(result_file_name, rotations, best_energy)

@@ -329,6 +329,9 @@ def rotation(origin_point1, origin_point2, point, angle):
     new_point = np.dot(change_point, final_matrix)
     return np.delete(new_point, 3)
 
+def write_result(fname, rotations, best_energy):
+    with open(fname, "w") as f:
+        for i in rotations:
+            f.write(f"Rotation around an axis: {i[0]}, {i[1]} by an angle: {i[2]}\n")
 
-def Energy(mol):
-    return random.uniform(0, 100)
+        f.write(f"The best energy: {best_energy}")
