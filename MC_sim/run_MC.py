@@ -1,6 +1,21 @@
+import configparser
+
 from utils import *
 from graph import Graph
 from MC_code import MonteCarlo
+
+
+# PARSING CONFIG
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+# config constants
+pdb_file = config['PDB']['File']
+value1 = float(config['PDB']['ENERGY'])
+attempts = float(config['PARAMS']['attempts'])
+
+# config files
+result_file_name = config['COMPUTING']['ResultFileName']
 
 if __name__ == '__main__':
     mol = read_pdb('6GUX_t.pdb')
@@ -10,4 +25,4 @@ if __name__ == '__main__':
 
     start_energy = 100
 
-    print(MonteCarlo(mol, graph, rot_bonds, start_energy, attempts=100))
+    print(MonteCarlo(mol, graph, rot_bonds, start_energy, attempts))
