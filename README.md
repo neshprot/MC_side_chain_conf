@@ -22,4 +22,21 @@ The output includes a log file and a file with bond numbers and rotation angles 
   - **Running code**
   
     Run run_MC.py
-  
+
+## Project puckages
+
+```
+abc
+random
+configparser
+pathlib
+collections
+math
+numpy
+```
+
+## Future scope
+
+- Add energy function
+- Add aminoacids: PRO, GLN, HIS
+- Add function to analyze pdb file and refill missing atoms
