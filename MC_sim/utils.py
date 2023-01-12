@@ -100,6 +100,7 @@ def write_pdb(molecule, fname):
             
 
 def amino_acid(mol):
+    """graph representation of side bonds"""
     bonds = dict()
     rot_bonds = []
 
@@ -292,6 +293,15 @@ def amino_acid(mol):
 
 
 def rotation(origin_point1, origin_point2, point, angle):
+    """
+    rotation around an arbitrary axis
+
+    :param origin_point1: the first point of the vector around which the rotation occurs
+    :param origin_point2: the second point of the vector around which the rotation occurs
+    :param point: the point that rotates around the vector
+    :param angle: angle of rotation of the point around the vector
+    :return : new point coordinates
+    """
     vector = origin_point2 - origin_point1
     d_vec = math.sqrt(sum(x**2 for x in vector))
     norm_vector = vector/d_vec
@@ -328,6 +338,7 @@ def rotation(origin_point1, origin_point2, point, angle):
     final_matrix = np.dot(np.dot(matrix, rot_a_matrix), inv_matrix)
     new_point = np.dot(change_point, final_matrix)
     return np.delete(new_point, 3)
+
 
 def write_result(fname, rotations, best_energy):
     with open(fname, "w") as f:

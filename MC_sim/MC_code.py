@@ -6,6 +6,16 @@ def Energy(mol):
 
 
 def rotate(mol, coords_for_rot, bond_num1, bond_num2, angle):
+    """
+    rotation of all points of the side chain connected to the rotation axis
+
+    :param mol: protein
+    :param coords_for_rot: coordinates of the points that will be rotated
+    :param bond_num1: the number of the first atom in the vector around which the rotation occurs
+    :param bond_num2: the number of the second atom in the vector around which the rotation occurs
+    :param angle: point rotation angle
+    :return: updates the coordinates of atoms in a protein
+    """
     for i in coords_for_rot:
         new_coord = rotation(mol[bond_num1].Coordin, mol[bond_num2].Coordin, mol[i].Coordin, angle)
         mol[i].Coordin = new_coord
