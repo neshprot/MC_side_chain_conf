@@ -1,5 +1,6 @@
 from utils import *
 from logger import FileLogger
+import random
 
 def Energy(mol):
     return random.randint(50, 200)
@@ -52,7 +53,7 @@ def MonteCarlo(mol, graph, rot_bonds, start_energy, attempts, stop_step):
             logger(f"Good current rotation:\n"
                    f"Firt num: {bond[0]}, seecond num: {bond[1]}, angle: {angle}\n")
 
-
+        write_pdb(mol, 'out.pdb')
         logger(f"The best energy: {best_energy}\n"
                f"Step/Stop {step}/{stop_step}\n")
         logger("\n")

@@ -1,5 +1,4 @@
 import numpy as np
-import random
 import math
 from pathlib import Path
 
@@ -99,7 +98,7 @@ def write_pdb(molecule, fname):
             f.write(line)
             
 
-def amino_acid(mol):
+def amino_acid(mol, rotating_resid):
     """graph representation of side bonds"""
     bonds = dict()
     rot_bonds = []
@@ -286,7 +285,7 @@ def amino_acid(mol):
                 'ARG': lambda: ARG(num)}.get(ResName, lambda: [])()
 
     for i, a in enumerate(mol.values()):
-        if a.Name == 'CA':
+        if a.Name == 'CA' and a.ResSeq in rotating_resid:
             nrot_bonds = side_chains(a.ResName, i+1)
             rot_bonds += nrot_bonds
     return bonds, rot_bonds
