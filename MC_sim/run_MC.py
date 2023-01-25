@@ -31,4 +31,3 @@ if __name__ == '__main__':
     rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, start_energy, attempts, stop_step)
 
     write_result(result_file_name, rotations, best_energy)
-    print(rotating_resid)
