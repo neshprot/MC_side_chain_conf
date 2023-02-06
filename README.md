@@ -15,7 +15,7 @@ The output includes a log file and a file with bond numbers and rotation angles 
 ## How to run
   - **Protein choice** 
   
-    Place the protein's pdb file in the pdb_files directory
+    Place the protein's pdb and psf file in the input_files directory
   - **Parametres choice**
     
     Enter the parameters in the config file
