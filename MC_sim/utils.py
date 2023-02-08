@@ -54,12 +54,38 @@ class Atom:
         self.TempFac = 0.0  # Temperature factor
         self.Element = 'Xx'  # Element symbol
         self.Charge = 0.0  # Atom charge
+        self.PartialCharge = 0.0 # Atom partial charge
+        self.Bonded = []    # atoms that is bonded to the current one
+        self.Epsilon = 0.0  # epsilon LJ
+        self.Rmin = 0.0     # Rmin/2 LJ
 
 
-def read_pdb(fname):
+def read_inp(fname):
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    with open(f"{res}\pdb_files\{fname}", "r") as file:
+    name = ''
+    const_dict = dict()
+    with open(f"{res}\input_files\{fname}", "r") as file:
+        for line in file.readlines():
+            newname = line[0:9].strip()
+            if newname == 'NONBONDED':
+                name = newname
+            if name == 'NONBONDED' and line[7:15] == '0.000000':
+                split_line = line.split()
+                Name = split_line[0]
+                Epsilon = float(split_line[2])
+                Rmin = float(split_line[3])
+                const_dict.update({Name: (Epsilon, Rmin)})
+    return const_dict
+
+
+def read_pdb(fname, const_dict):
+    '''
+    not only read pdb, but also initialize constants from inp file
+    '''
+    myself = Path(__file__).resolve()
+    res = myself.parents[1]
+    with open(f"{res}\input_files\{fname}", "r") as file:
         molecule = dict()
         for line in file.readlines():
             data_type = line[0:6].strip()
@@ -78,10 +104,48 @@ def read_pdb(fname):
             atom.Occup = 0.0  # float(line[54:60])
             atom.Tempfac = 0.0  # float(line[60:66])
             atom.Element = atom.Name[0]  # line[76:78].strip()
+            atom.Epsilon = const_dict.get(atom.Name, (0.0, 0.0))[0]
+            atom.Rmin = const_dict.get(atom.Name, (0.0, 0.0))[1]
 
             molecule[num] = atom
 
     return molecule
+
+
+def read_psf(fname, mol):
+    myself = Path(__file__).resolve()
+    res = myself.parents[1]
+    name = ''
+    with open(f"{res}\input_files\{fname}", "r") as file:
+        def NATOM():
+            unused_zero = line[69:70].strip()
+            if unused_zero == '0':
+                num = int(line[0:8])
+                mol[num].PartialCharge = float(line[35:44])
+
+        def NBOND():
+            a = line.split()
+            a1 = a[0::2]
+            a2 = a[1::2]
+            for i, j in zip(a1, a2):
+                mol[float(i)].Bonded.append(float(j))
+                mol[float(j)].Bonded.append(float(i))
+
+        def NTHETA():
+            pass
+
+        def section_name(name):
+            return {'!NATOM': lambda: NATOM(),
+                    '!NBOND': lambda: NBOND(),
+                    '!NTHETA': lambda: NTHETA(),
+                    }.get(name, lambda: 0)()
+
+        for line in file.readlines():
+            newname = line[9:15].strip()
+            if newname in ['!NATOM', '!NBOND', '!NTHET']:
+                name = newname
+                continue
+            section_name(name)
 
 
 def write_pdb(molecule, fname):
@@ -113,7 +177,7 @@ def amino_acid(mol, rotating_resid):
         return nrot_bonds
 
     def SER(x):
-        # CA, CB, HB1, HB2, OG1, HG1
+        # CA, CB, HB1, HB2, OG, HG1
         bonds.update({x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4], x + 5: [x + 6],
                       x + 6: [x + 6]})
         nrot_bonds = [(x, x + 2), (x + 2, x + 5)]
@@ -345,3 +409,4 @@ def write_result(fname, rotations, best_energy):
             f.write(f"Rotation around an axis: {i[0]}, {i[1]} by an angle: {i[2]}\n")
 
         f.write(f"The best energy: {best_energy}")
+
