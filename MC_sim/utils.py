@@ -410,9 +410,3 @@ def write_result(fname, rotations, best_energy):
             f.write(f"Rotation around an axis: {i[0]}, {i[1]} by an angle: {i[2]}\n")
 
         f.write(f"The best energy: {best_energy}")
-
-
-def all_pairs(lst):
-    for p in itertools.permutations(lst):
-        i = iter(p)
-        yield zip(i, i)
