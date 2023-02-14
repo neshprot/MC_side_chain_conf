@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import itertools
 from pathlib import Path
 
 vdwr = {
@@ -410,3 +411,8 @@ def write_result(fname, rotations, best_energy):
 
         f.write(f"The best energy: {best_energy}")
 
+
+def all_pairs(lst):
+    for p in itertools.permutations(lst):
+        i = iter(p)
+        yield zip(i, i)

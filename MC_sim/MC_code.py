@@ -3,7 +3,7 @@ from logger import FileLogger
 import random
 
 
-def Energy(mol, rotating_resid):
+def Energy(mol, coords_for_rot):
     energy = 0
 
     def Coulomb(mol1, mol2, distance):
@@ -18,12 +18,11 @@ def Energy(mol, rotating_resid):
         result = epsilon12*((rmin12/distance)**12 - 2*(rmin12/distance)**6)
         return result
 
-    for mol1 in mol:
-        for mol2 in rotating_resid:
-            if mol1 != mol2:
-
-                if mol1 not in mol[mol2].Bonded:
-                    distance = sum((x - y) ** 2 for x, y in zip(mol[mol1].Coordin, mol[mol2].Coordin))
+    for mol1 in coords_for_rot:
+        for mol2 in mol:
+            if mol1 not in mol[mol2].Bonded:
+                distance = sum((x - y) ** 2 for x, y in zip(mol[mol1].Coordin, mol[mol2].Coordin))
+                if distance != 0 and distance <= 10:
                     energy += Coulomb(mol1, mol2, distance) + LJ(mol1, mol2, distance)
     return energy
 
@@ -44,13 +43,26 @@ def rotate(mol, coords_for_rot, bond_num1, bond_num2, angle):
         mol[i].Coordin = new_coord
 
 
-def MonteCarlo(mol, graph, rot_bonds, start_energy, attempts, stop_step, rotating_resid):
+def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
     logger = FileLogger("logout")
     rotations = []
     iterations = 0
     step = 0
-    best_energy = start_energy
+    energy_dict = dict()
+    best_energy = 'None'
+
+    def start_energy():
+        ini_rot_bonds = rot_bonds
+        for atom in mol:
+            if mol[atom].ResSeq not in rotating_resid:
+                continue
+            if any(atom in i for i in ini_rot_bonds):
+                atom_lst = graph.bfs(atom)
+                res_energy = Energy(mol, atom_lst)
+                energy_dict.update({mol[atom].ResSeq: res_energy})
+
+    start_energy()
 
     while iterations <= attempts and step < stop_step:
         bond = random.choice(rot_bonds)
@@ -58,22 +70,22 @@ def MonteCarlo(mol, graph, rot_bonds, start_energy, attempts, stop_step, rotatin
         coords_for_rot = graph.bfs(bond[1])
         initial_coords = [mol[i].Coordin for i in coords_for_rot]
         rotate(mol, coords_for_rot, bond[0], bond[1], angle)
-        energy = Energy(mol, rotating_resid)
+        energy = Energy(mol, coords_for_rot)
         step += 1
-        if energy >= best_energy:
+        if energy >= energy_dict[mol[coords_for_rot[0]].ResSeq]:
             iterations += 1
             for i, num in enumerate(coords_for_rot):
                 mol[num].Coordin = initial_coords[i]
 
             logger(f"Bad current rotation:\n"
-                   f"Firt num: {bond[0]}, seecond num: {bond[1]}, angle: {angle}, energy: {energy}\n\n")
+                   f"First num: {bond[0]}, second num: {bond[1]}, angle: {angle}, energy: {energy}\n\n")
         else:
             rotations += [(bond[0], bond[1], angle)]
             iterations = 0
-            best_energy = energy
+            energy_dict[mol[coords_for_rot[0]].ResSeq] = energy
 
             logger(f"Good current rotation:\n"
-                   f"Firt num: {bond[0]}, seecond num: {bond[1]}, angle: {angle}, energy: {energy}\n\n")
+                   f"First num: {bond[0]}, second num: {bond[1]}, angle: {angle}, energy: {energy}\n\n")
 
     write_pdb(mol, 'out.pdb')
     logger(f"The best energy: {best_energy}\n"

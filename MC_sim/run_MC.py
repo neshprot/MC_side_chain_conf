@@ -3,8 +3,7 @@ import json
 
 from utils import *
 from graph import Graph
-from MC_code import MonteCarlo
-
+from MC_code import MonteCarlo, Energy
 
 # PARSING CONFIG
 config = configparser.ConfigParser()
@@ -30,8 +29,6 @@ if __name__ == '__main__':
 
     graph = Graph(bonds)
 
-    start_energy = 100
-
-    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, start_energy, attempts, stop_step, rotating_resid)
+    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid)
 
     write_result(result_file_name, rotations, best_energy)
