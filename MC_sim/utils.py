@@ -167,6 +167,7 @@ def amino_acid(mol, rotating_resid):
     """graph representation of side bonds"""
     bonds = dict()
     rot_bonds = []
+    rot_bonds_CA = []
 
     def GLY(x):
         return []
@@ -253,6 +254,7 @@ def amino_acid(mol, rotating_resid):
         return nrot_bonds
 
     def TYR(x):
+        # problem
         # CA, CB, HB1, HB2, CG, CD1, HD1, CE1, HE1, CZ, OH, HH, CD2, HD2, CE2, HE2
         bonds.update(
             {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
@@ -353,7 +355,9 @@ def amino_acid(mol, rotating_resid):
         if a.Name == 'CA' and a.ResSeq in rotating_resid:
             nrot_bonds = side_chains(a.ResName, i+1)
             rot_bonds += nrot_bonds
-    return bonds, rot_bonds
+            if nrot_bonds:
+                rot_bonds_CA += [nrot_bonds[0]]
+    return bonds, rot_bonds, rot_bonds_CA
 
 
 def rotation(origin_point1, origin_point2, point, angle):

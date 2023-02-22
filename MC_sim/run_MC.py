@@ -3,7 +3,7 @@ import json
 
 from utils import *
 from graph import Graph
-from MC_code import MonteCarlo, Energy
+from MC_code import MonteCarlo
 
 # PARSING CONFIG
 config = configparser.ConfigParser()
@@ -24,11 +24,11 @@ result_file_name = config['COMPUTING']['ResultFileName']
 if __name__ == '__main__':
     const_dict = read_inp(inp_file)
     mol = read_pdb(pdb_file, const_dict)
-    bonds, rot_bonds = amino_acid(mol, rotating_resid)
+    bonds, rot_bonds, rot_bonds_CA = amino_acid(mol, rotating_resid)
     read_psf(psf_file, mol)
 
     graph = Graph(bonds)
 
-    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid)
+    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_bonds_CA)
 
     write_result(result_file_name, rotations, best_energy)
