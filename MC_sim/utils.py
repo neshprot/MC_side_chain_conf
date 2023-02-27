@@ -1,7 +1,7 @@
 import numpy as np
 import math
-import itertools
 from pathlib import Path
+import os.path
 
 vdwr = {
     "H": 1.10,
@@ -254,14 +254,13 @@ def amino_acid(mol, rotating_resid):
         return nrot_bonds
 
     def TYR(x):
-        # problem
         # CA, CB, HB1, HB2, CG, CD1, HD1, CE1, HE1, CZ, OH, HH, CD2, HD2, CE2, HE2
         bonds.update(
             {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
              x + 5: [x + 6, x + 8], x + 6: [x + 7, x + 13], x + 7: [x + 7], x + 8: [x + 9, x+15],
              x + 9: [x + 10], x + 10: [x + 11], x + 11: [x + 12],
              x+12: [x+12], x+13: [x+10, x+14], x+14: [x+14], x+15: [x + 10, x + 16], x+16: [x+16]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 2, x + 6), (x + 10, x + 11)]
+        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 10, x + 11)]
         return nrot_bonds
 
     def TRP(x):
@@ -408,9 +407,37 @@ def rotation(origin_point1, origin_point2, point, angle):
     return np.delete(new_point, 3)
 
 
+def rotate(mol, coords_for_rot, bond_num1, bond_num2, angle):
+    """
+    rotation of all points of the side chain connected to the rotation axis
+
+    :param mol: protein
+    :param coords_for_rot: coordinates of the points that will be rotated
+    :param bond_num1: the number of the first atom in the vector around which the rotation occurs
+    :param bond_num2: the number of the second atom in the vector around which the rotation occurs
+    :param angle: point rotation angle
+    :return: updates the coordinates of atoms in a protein
+    """
+    for i in coords_for_rot:
+        new_coord = rotation(mol[bond_num1].Coordin, mol[bond_num2].Coordin, mol[i].Coordin, angle)
+        mol[i].Coordin = new_coord
+
+
 def write_result(fname, rotations, best_energy):
+    '''
+    :param fname: name of the file
+    :param rotations: list of all rotations with nums of atoms and angle
+    :param best_energy: energy of the fragment of side chain
+    :return: create file with good rotations
+    '''
     with open(fname, "w") as f:
         for i in rotations:
-            f.write(f"Rotation around an axis: {i[0]}, {i[1]} by an angle: {i[2]}\n")
+            f.write(f"Rotation around an axis: {i[0]} {i[1]} by an angle: {i[2]}\n")
 
-        f.write(f"The best energy: {best_energy}")
+
+def read_results(fname, mol, graph):
+    if os.path.isfile(fname):
+        with open(fname, "r") as file:
+            for line in file.readlines():
+                lst = line.split()
+                rotate(mol, graph.bfs(float(lst[4])), float(lst[4]), float(lst[5]), float(lst[9]))

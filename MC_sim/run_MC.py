@@ -1,5 +1,6 @@
 import configparser
 import json
+import time
 
 from utils import *
 from graph import Graph
@@ -22,6 +23,8 @@ rotating_resid = json.loads(config.get('ROTATING RESID', 'numbers'))
 result_file_name = config['COMPUTING']['ResultFileName']
 
 if __name__ == '__main__':
+    start_time = time.time()
+
     const_dict = read_inp(inp_file)
     mol = read_pdb(pdb_file, const_dict)
     bonds, rot_bonds, rot_bonds_CA = amino_acid(mol, rotating_resid)
@@ -29,6 +32,12 @@ if __name__ == '__main__':
 
     graph = Graph(bonds)
 
+    read_results('result1', mol, graph)
+
     rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_bonds_CA)
 
     write_result(result_file_name, rotations, best_energy)
+
+    end_time = time.time()
+    total_time = (end_time - start_time)/60
+    print(f'{total_time} min')

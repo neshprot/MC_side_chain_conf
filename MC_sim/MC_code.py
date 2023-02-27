@@ -4,6 +4,13 @@ import random
 
 
 def Energy(mol, coords_for_rot):
+    '''
+    Energy function, based on CHARMM
+
+    :param mol: protein
+    :param coords_for_rot: list of coords that were rotated
+    :return: energy of the side chain that were rotated
+    '''
     energy = 0
 
     def Coulomb(mol1, mol2, distance):
@@ -22,28 +29,28 @@ def Energy(mol, coords_for_rot):
         for mol2 in mol:
             if mol1 not in mol[mol2].Bonded:
                 distance = sum((x - y) ** 2 for x, y in zip(mol[mol1].Coordin, mol[mol2].Coordin))
-                if distance != 0 and distance <= 100:
+                if mol1 == mol2:
+                    continue
+                elif 0 <= distance <= 1:
+                    return 1000
+                elif 0 < distance <= 100:
                     energy += Coulomb(mol1, mol2, math.sqrt(distance)) + LJ(mol1, mol2, math.sqrt(distance))
     return energy
 
 
-def rotate(mol, coords_for_rot, bond_num1, bond_num2, angle):
-    """
-    rotation of all points of the side chain connected to the rotation axis
+def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_bonds_CA):
+    '''
+    main block or MC algorythm
 
     :param mol: protein
-    :param coords_for_rot: coordinates of the points that will be rotated
-    :param bond_num1: the number of the first atom in the vector around which the rotation occurs
-    :param bond_num2: the number of the second atom in the vector around which the rotation occurs
-    :param angle: point rotation angle
-    :return: updates the coordinates of atoms in a protein
-    """
-    for i in coords_for_rot:
-        new_coord = rotation(mol[bond_num1].Coordin, mol[bond_num2].Coordin, mol[i].Coordin, angle)
-        mol[i].Coordin = new_coord
-
-
-def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_bonds_CA):
+    :param graph: class that describes bonds
+    :param rot_bonds: bonds for rotation
+    :param attempts: amount of attempts to find good rotation
+    :param stop_step: amount of maximum rotations
+    :param rotating_resid: id of residue for rotation
+    :param rot_bonds_CA: bonds with CA atom
+    :return: list of good rotations and best energy
+    '''
 
     logger = FileLogger("logout")
     rotations = []
@@ -67,11 +74,14 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_b
     start_energy()
 
     while iterations <= attempts and step < stop_step:
-        if step <= stop_step/3:
+        '''        
+        if step <= stop_step/6:
             bond = random.choice(rot_bonds_CA)
         else:
             bond = random.choice(rot_bonds)
-        angle = random.uniform(-10, 10)
+        '''
+        bond = random.choice(rot_bonds)
+        angle = random.uniform(-180, 180)
         coords_for_rot = graph.bfs(bond[1])
         initial_coords = [mol[i].Coordin for i in coords_for_rot]
         rotate(mol, coords_for_rot, bond[0], bond[1], angle)
