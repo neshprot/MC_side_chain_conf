@@ -16,7 +16,7 @@ def Energy(mol, coords_for_rot):
     def Coulomb(mol1, mol2, distance):
         first_charge = mol[mol1].PartialCharge
         second_charge = mol[mol2].PartialCharge
-        result = first_charge*second_charge/(4*math.pi*distance)
+        result = first_charge*second_charge/distance*332
         return result
 
     def LJ(mol1, mol2, distance):
@@ -28,17 +28,19 @@ def Energy(mol, coords_for_rot):
     for mol1 in coords_for_rot:
         for mol2 in mol:
             if mol1 not in mol[mol2].Bonded:
+                # distance between two atoms
                 distance = sum((x - y) ** 2 for x, y in zip(mol[mol1].Coordin, mol[mol2].Coordin))
+
+                # min radius for two nonbonded atoms
+                min_radius = atoma_radius[mol[mol1].Element] + atoma_radius[mol[mol2].Element]
                 if mol1 == mol2:
                     continue
-                elif 0 <= distance <= 1:
-                    return 1000
-                elif 0 < distance <= 100:
+                elif distance <= 100:
                     energy += Coulomb(mol1, mol2, math.sqrt(distance)) + LJ(mol1, mol2, math.sqrt(distance))
     return energy
 
 
-def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_bonds_CA):
+def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, tst_rot_bonds):
     '''
     main block or MC algorythm
 
@@ -58,7 +60,13 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_b
     step = 0
     energy_dict = dict()
     res_dict = dict()
+    k = 1.987204259e-3
+    T1 = 1000
+    T2 = 2000
+    T = T1
     best_energy = 'None'
+    T_count = 0
+    T_step = 0
 
     def start_energy():
         ini_rot_bonds = rot_bonds
@@ -74,35 +82,57 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_b
     start_energy()
 
     while iterations <= attempts and step < stop_step:
-        '''        
-        if step <= stop_step/6:
-            bond = random.choice(rot_bonds_CA)
-        else:
-            bond = random.choice(rot_bonds)
-        '''
+
         bond = random.choice(rot_bonds)
-        angle = random.uniform(-180, 180)
+        angle_sign = random.choice([-1, 1])
+        angle1 = random.uniform(0, 10)  # variety = 70, after some results = 30
+        angle2 = random.uniform(90, 180)  # variety = 30, after some results = 70
+        angle = random.choices([angle1, angle2], weights=[60, 40])[0] * angle_sign
+
         coords_for_rot = graph.bfs(bond[1])
         initial_coords = [mol[i].Coordin for i in coords_for_rot]
         rotate(mol, coords_for_rot, bond[0], bond[1], angle)
-        energy = Energy(mol, res_dict[mol[coords_for_rot[0]].ResSeq])
+        new_energy = Energy(mol, res_dict[mol[coords_for_rot[0]].ResSeq])
+        old_energy = energy_dict[mol[coords_for_rot[0]].ResSeq]
         step += 1
-        if energy >= energy_dict[mol[coords_for_rot[0]].ResSeq]:
+        T_step += 1
+        if T_step == 10:
+            T_step = 0
+            if T_count == 0:
+                T_count = 1
+                T = T1
+            else:
+                T_count = 0
+                T = T2
+
+        def transition_probability(new_energy, old_energy):
+            if new_energy <= old_energy:
+                return True
+            else:
+                prob_up = math.exp(-(new_energy - old_energy)/(k*T))
+                if random.uniform(0.0, 1.0) <= prob_up:
+                    return True
+                else:
+                    return False
+
+        choice = transition_probability(new_energy, old_energy)
+        if choice:
+            rotations += [(bond[0], bond[1], angle)]
+            iterations = 0
+            energy_dict[mol[coords_for_rot[0]].ResSeq] = new_energy
+
+            logger(f"Step: {step}. Good current rotation:\n"
+                   f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq},"
+                   f" angle: {angle}, energy: {new_energy}\n\n")
+        else:
             iterations += 1
             for i, num in enumerate(coords_for_rot):
                 mol[num].Coordin = initial_coords[i]
 
-            logger(f"Bad current rotation:\n"
-                   f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq}, angle: {angle}, energy: {energy}\n\n")
-        else:
-            rotations += [(bond[0], bond[1], angle)]
-            iterations = 0
-            energy_dict[mol[coords_for_rot[0]].ResSeq] = energy
-
-            logger(f"Good current rotation:\n"
-                   f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq}, angle: {angle}, energy: {energy}\n\n")
-
-    write_pdb(mol, 'out.pdb')
+            logger(f"Step: {step}. Bad current rotation:\n"
+                   f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq},"
+                   f" angle: {angle}, energy: {new_energy}\n\n")
+            write_pdb(mol, 'out.pdb')
     logger(f"The best energy: {best_energy}\n"
            f"Step/Stop {step}/{stop_step}\n")
     logger("\n")

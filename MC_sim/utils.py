@@ -40,6 +40,14 @@ resname_3to1 = {
     "GLH": "E",
 }
 
+atoma_radius = {
+    "H": 0.53,
+    "N": 0.75,
+    "O": 0.48,
+    "C": 0.7,
+    "S": 1.27
+}
+
 
 class Atom:
     def __init__(self):
@@ -105,8 +113,8 @@ def read_pdb(fname, const_dict):
             atom.Occup = 0.0  # float(line[54:60])
             atom.Tempfac = 0.0  # float(line[60:66])
             atom.Element = atom.Name[0]  # line[76:78].strip()
-            atom.Epsilon = const_dict.get(atom.Name, (0.0, 0.0))[0]
-            atom.Rmin = const_dict.get(atom.Name, (0.0, 0.0))[1]
+            atom.Epsilon = const_dict.get(atom.Name[0], (0.0, 0.0))[0]
+            atom.Rmin = const_dict.get(atom.Name[0], (0.0, 0.0))[1]
 
             molecule[num] = atom
 
@@ -350,13 +358,13 @@ def amino_acid(mol, rotating_resid):
                 'LYS': lambda: LYS(num),
                 'ARG': lambda: ARG(num)}.get(ResName, lambda: [])()
 
+    tst_rot_bonds = []
     for i, a in enumerate(mol.values()):
         if a.Name == 'CA' and a.ResSeq in rotating_resid:
             nrot_bonds = side_chains(a.ResName, i+1)
             rot_bonds += nrot_bonds
-            if nrot_bonds:
-                rot_bonds_CA += [nrot_bonds[0]]
-    return bonds, rot_bonds, rot_bonds_CA
+            tst_rot_bonds += [nrot_bonds]
+    return bonds, rot_bonds, tst_rot_bonds
 
 
 def rotation(origin_point1, origin_point2, point, angle):
@@ -436,8 +444,16 @@ def write_result(fname, rotations, best_energy):
 
 
 def read_results(fname, mol, graph):
+    """
+    function read previous results and rotate protein
+
+    :param fname: dile with previous results
+    :param mol: protein
+    :param graph: graph class
+    :return: rotate protein
+    """
     if os.path.isfile(fname):
         with open(fname, "r") as file:
             for line in file.readlines():
                 lst = line.split()
-                rotate(mol, graph.bfs(float(lst[4])), float(lst[4]), float(lst[5]), float(lst[9]))
+                rotate(mol, graph.bfs(float(lst[5])), float(lst[4]), float(lst[5]), float(lst[9]))

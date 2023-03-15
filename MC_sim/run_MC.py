@@ -27,14 +27,14 @@ if __name__ == '__main__':
 
     const_dict = read_inp(inp_file)
     mol = read_pdb(pdb_file, const_dict)
-    bonds, rot_bonds, rot_bonds_CA = amino_acid(mol, rotating_resid)
+    bonds, rot_bonds, tst_rot_bonds = amino_acid(mol, rotating_resid)
     read_psf(psf_file, mol)
 
     graph = Graph(bonds)
 
     read_results('result1', mol, graph)
 
-    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, rot_bonds_CA)
+    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, tst_rot_bonds)
 
     write_result(result_file_name, rotations, best_energy)
 
