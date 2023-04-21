@@ -358,13 +358,11 @@ def amino_acid(mol, rotating_resid):
                 'LYS': lambda: LYS(num),
                 'ARG': lambda: ARG(num)}.get(ResName, lambda: [])()
 
-    tst_rot_bonds = []
     for i, a in enumerate(mol.values()):
         if a.Name == 'CA' and a.ResSeq in rotating_resid:
             nrot_bonds = side_chains(a.ResName, i+1)
             rot_bonds += nrot_bonds
-            tst_rot_bonds += [nrot_bonds]
-    return bonds, rot_bonds, tst_rot_bonds
+    return bonds, rot_bonds
 
 
 def rotation(origin_point1, origin_point2, point, angle):
@@ -457,3 +455,18 @@ def read_results(fname, mol, graph):
             for line in file.readlines():
                 lst = line.split()
                 rotate(mol, graph.bfs(float(lst[5])), float(lst[4]), float(lst[5]), float(lst[9]))
+
+def post_proc(ini_mol, start_mol, end_mol, rotating_resid):
+    value = 0
+    counter = 0
+    for atom in start_mol:
+        if start_mol[atom].ResSeq not in rotating_resid:
+            continue
+        else:
+            ini_dist = sum(ini_mol[atom].Coordin[i]**2 - start_mol[atom].Coordin[i]**2 for i in range(3))
+            fin_dist = sum(end_mol[atom].Coordin[i] ** 2 - start_mol[atom].Coordin[i] ** 2 for i in range(3))
+            value += 1/(1+math.exp(-abs(ini_dist-fin_dist)))-1/2
+            counter += 1
+    result = 1 - value/counter
+    return result
+
