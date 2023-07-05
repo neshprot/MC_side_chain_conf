@@ -185,11 +185,14 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
         # whether the system has moved to a higher energy step
         def transition_probability(new_energy, old_energy):
-            prob_up = math.exp(-(new_energy - old_energy)/(k*T))
-            if random.uniform(0.0, 1.0) <= prob_up:
+            if new_energy <= old_energy:
                 return True
             else:
-                return False
+                prob_up = math.exp(-(new_energy - old_energy)/(k*T))
+                if random.uniform(0.0, 1.0) <= prob_up:
+                    return True
+                else:
+                    return False
 
         choice = transition_probability(new_energy, old_energy)
 
