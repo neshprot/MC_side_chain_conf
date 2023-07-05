@@ -2,8 +2,6 @@ from utils import *
 from logger import FileLogger
 import random
 
-import time
-
 
 def Energy(mol, coords_for_rot, eps_amen):
     '''
@@ -13,7 +11,7 @@ def Energy(mol, coords_for_rot, eps_amen):
     :param coords_for_rot: list of coords that were rotated
     :return: energy of the side chain that were rotated
     '''
-    energy = 0
+
     energy_C = 0
     energy_LJ = 0
 
@@ -26,21 +24,22 @@ def Energy(mol, coords_for_rot, eps_amen):
     def LJ(mol1, mol2, distance):
         epsilon12 = math.sqrt(mol[mol1].Epsilon*mol[mol2].Epsilon)
         rmin12 = mol[mol1].Rmin + mol[mol2].Rmin
-        #result = eps_amen*epsilon12*((rmin12/distance)**12 - 2*(rmin12/distance)**6)
         result = epsilon12*((rmin12/distance)**12 - 2*(rmin12/distance)**6)
         return result
 
     for mol1 in coords_for_rot:
         for mol2 in mol:
             if mol1 not in mol[mol2].Bonded:
+
                 # distance between two atoms
                 distance = sum((x - y) ** 2 for x, y in zip(mol[mol1].Coordin, mol[mol2].Coordin))
 
                 if mol1 == mol2:
                     continue
                 elif distance <= 100:
-                    energy_C += Coulomb(mol1, mol2, math.sqrt(distance))
-                    energy_LJ += LJ(mol1, mol2, math.sqrt(distance))
+                    sqrt_distance = math.sqrt(distance)
+                    energy_C += Coulomb(mol1, mol2, sqrt_distance)
+                    energy_LJ += LJ(mol1, mol2, sqrt_distance)
                     #energy += LJ(mol1, mol2, math.sqrt(distance), eps_amen) + Coulomb(mol1, mol2, math.sqrt(distance))
     return energy_C, eps_amen*energy_LJ
 
@@ -67,7 +66,7 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     res_dict = dict()
     k = 1.987204259e-3  # Boltzmann constant
     T1 = 200  # first temperature
-    T2 = 2000   # second temperature
+    T2 = 1000   # second temperature
     T = T1
     eps_amen = 0.01   # amendment of epsilon
     eps = 1     # standard amendment of epsilon
@@ -75,9 +74,26 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     T_count = 0
     T_step = 0
     eps_step = 0
+    TRP_prob = 0.5
+
+    best_ind = [100000, 100000, 1000000]
+
+    def TRP_rot(bond, mol):
+        angle1 = random.choice([15, 45, 90])*random.choice([1, -1])
+        angle2 = random.choice([15, 45, 90])*random.choice([1, -1])
+        ex_angle1 = random.uniform(-10.0, 10.0)
+        ex_angle2 = random.uniform(-10.0, 10.0)
+
+        coords_for_rot1 = graph.bfs(bond[1])
+        initial_coords = [mol[i].Coordin for i in coords_for_rot1]
+        rotate(mol, coords_for_rot1, bond[0], bond[1], angle1 + ex_angle1)
+        coords_for_rot2 = graph.bfs((bond[1] + 3))
+        rotate(mol, coords_for_rot2, bond[1], bond[1]+3, angle2 + ex_angle2)
+        return angle1, coords_for_rot1, initial_coords
 
     # evaluate start energy
     def start_energy():
+        summ = 0
         ini_rot_bonds = rot_bonds
         for atom in mol:
             if mol[atom].ResSeq not in rotating_resid:
@@ -89,8 +105,13 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
                 res_energy = energy_C + energy_LJ
                 energy_dict.update({mol[atom].ResSeq: res_energy})
                 res_dict.update({mol[atom].ResSeq: atom_lst})
+                print(f'{mol[atom].ResSeq} {res_energy} {energy_C} {energy_LJ}')
+                summ += res_energy
+        print(summ)
 
     start_energy()
+    '6GUX_t 3566101.084086791'
+    'd95n_0 15305.085158359083'
 
     rot_bonds11 = (2184, 2187)
     rot_bonds12 = (2182, 2184)
@@ -101,16 +122,15 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     rot_bonds21 = (3007, 3010)
     rot_bonds22 = (3005, 3007)
 
-    variety = [40, 35, 20, 5]
+    variety = [50, 25, 20, 5]
     counter = 0
 
     # main block with consecutive rotations
     while iterations <= attempts and step < stop_step:
 
-        f_time = time.time()
+        bond = random.choice(rot_bonds)
 
-        #bond = random.choice(rot_bonds)
-
+        '''
         bond4 = random.choice(rot_bonds)
         pos = random.choice([0, 1])
         if counter == 1000:
@@ -119,13 +139,14 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         counter += 1
         bond = random.choices([(rot_bonds11, rot_bonds12), (rot_bonds21, rot_bonds22), (rot_bonds31, rot_bonds32), (bond4, bond4)],
                              weights=variety)[0][pos]
+        '''
 
         angle_sign = random.choice([-1, 1])
 
         # firstly we want to find place in space where amino acid have lowest energy, after that we clarify postion
-        if step < stop_step*0.5:
-            first_prob = 30
-            second_prob = 70
+        if step < stop_step*0.2:
+            first_prob = 20
+            second_prob = 80
         else:
             first_prob = 80
             second_prob = 20
@@ -133,7 +154,6 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         angle1 = random.uniform(0, 10)
         angle2 = random.uniform(90, 180)
         angle = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
-
         step += 1
         T_step += 1
         eps_step += 1
@@ -153,9 +173,13 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             eps_step = 0
             eps = eps_amen
 
-        coords_for_rot = graph.bfs(bond[1])
-        initial_coords = [mol[i].Coordin for i in coords_for_rot]
-        rotate(mol, coords_for_rot, bond[0], bond[1], angle)
+        if random.uniform(0.0, 1.0) <= TRP_prob and mol[bond[0]].Name == 'CA' and mol[bond[0]].ResName == 'TRP':
+            angle, coords_for_rot, initial_coords = TRP_rot(bond, mol)
+        else:
+            coords_for_rot = graph.bfs(bond[1])
+            initial_coords = [mol[i].Coordin for i in coords_for_rot]
+            rotate(mol, coords_for_rot, bond[0], bond[1], angle)
+
         #new_energy = Energy(mol, res_dict[mol[coords_for_rot[0]].ResSeq], eps)
         energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].ResSeq], eps)
         new_energy = energy_C + energy_LJ
@@ -164,15 +188,20 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         # whether the system has moved to a higher energy step
         def transition_probability(new_energy, old_energy):
             if new_energy <= old_energy:
+                best_ind[0] = [mol[i].Coordin for i in coords_for_rot]
+                best_ind[1] = new_energy
+                best_ind[2] = coords_for_rot
                 return True
             else:
                 prob_up = math.exp(-(new_energy - old_energy)/(k*T))
+                prob_up = 0
                 if random.uniform(0.0, 1.0) <= prob_up:
                     return True
                 else:
                     return False
 
         choice = transition_probability(new_energy, old_energy)
+
         if choice:
             rotations += [(bond[0], bond[1], angle)]
             iterations = 0
@@ -189,12 +218,12 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             logger(f"Step: {step}. Bad current rotation:\n"
                    f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq},"
                    f" angle: {angle}, energy: {new_energy}\n\n")
-            write_pdb(mol, 'out.pdb')
 
         eps = 1
+        #rotate(mol, graph.bfs(2184), 2182, 2184, -45)
+        #rotate(mol, graph.bfs(2187), 2184, 2187, 180)
 
-        print(time.time() - f_time)
-
+    write_pdb(mol, 'out.pdb')
     logger(f"The best energy: {best_energy}\n"
            f"Step/Stop {step}/{stop_step}\n")
     logger("\n")
