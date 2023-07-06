@@ -1,6 +1,7 @@
 from utils import *
 from logger import FileLogger
 import random
+from collections import deque
 
 
 def Energy(mol, coords_for_rot, eps_amen):
@@ -91,21 +92,30 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     T_lim = 100   # every T_count steps temperature changes
     eps_step = 0
     eps_lim = 100   # every eps_lim steps epsilon changes
-    TRP_prob = 0.5
+
+    TRP_prob = 0.7
+    TRP_queue_update = 100
+    TRP_queue_step = 0
+    angle_TRP = 0
+    TRP_lst = []
 
     # special function for TRP
     def TRP_rot(bond, mol):
-        angle1 = random.choice([15, 45, 90])*random.choice([1, -1])     # rotation angle around CA and CB
-        angle2 = random.choice([15, 45, 90])*random.choice([1, -1])     # rotation angle around CB and CG
-        ex_angle1 = random.uniform(-10.0, 10.0)     # small addition to the large angle1
-        ex_angle2 = random.uniform(-10.0, 10.0)     # small addition to the large angle2
-
+        angle1 = 0
         coords_for_rot1 = graph.bfs(bond[1])
         initial_coords = [mol[i].Coordin for i in coords_for_rot1]
-        rotate(mol, coords_for_rot1, bond[0], bond[1], angle1 + ex_angle1)
-        coords_for_rot2 = graph.bfs((bond[1] + 3))
-        rotate(mol, coords_for_rot2, bond[1], bond[1]+3, angle2 + ex_angle2)
-        return angle1, coords_for_rot1, initial_coords
+        if bond not in TRP_lst:
+            angle1 = random.choice([45, 90, 135, 180])*random.choice([1, -1])     # rotation angle around CA and CB
+            angle2 = random.choice([45, 90, 135, 180])*random.choice([1, -1])     # rotation angle around CB and CG
+            ex_angle1 = random.uniform(-10.0, 10.0)     # small addition to the large angle1
+            ex_angle2 = random.uniform(-10.0, 10.0)     # small addition to the large angle2
+            trp_angle1 = angle1 + ex_angle1
+            trp_angle2 = angle2 + ex_angle2
+
+            rotate(mol, coords_for_rot1, bond[0], bond[1], trp_angle1)
+            coords_for_rot2 = graph.bfs((bond[1] + 3))
+            rotate(mol, coords_for_rot2, bond[1], bond[1]+3, trp_angle2)
+        return angle1, coords_for_rot1, initial_coords, trp_angle2
 
     # evaluate start energy
     def start_energy():
@@ -163,20 +173,20 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             eps_step = 0
             eps = eps_amen
 
+        '''
         # rotate amino acid and memorize initial position
         coords_for_rot = graph.bfs(bond[1])
         initial_coords = [mol[i].Coordin for i in coords_for_rot]
         rotate(mol, coords_for_rot, bond[0], bond[1], angle)
+        '''
 
         # do the tryptophan function (if we use TRP function? we have to remove previous block with rotation)
-        '''
-        if random.uniform(0.0, 1.0) <= TRP_prob and mol[bond[0]].Name == 'CA' and mol[bond[0]].ResName == 'TRP':
-            angle, coords_for_rot, initial_coords = TRP_rot(bond, mol)
-        else:
-            coords_for_rot = graph.bfs(bond[1])
-            initial_coords = [mol[i].Coordin for i in coords_for_rot]
+        coords_for_rot = graph.bfs(bond[1])
+        initial_coords = [mol[i].Coordin for i in coords_for_rot]
+        if TRP_prob >= random.uniform(0.0, 1.0) and mol[bond[0]].ResName == 'TRP' and mol[bond[0]].ResSeq not in TRP_lst and mol[bond[0]].Name == 'CA':
+            angle, coords_for_rot, initial_coords, angle_TRP = TRP_rot(bond, mol)
+        elif mol[bond[0]].ResSeq not in TRP_lst:
             rotate(mol, coords_for_rot, bond[0], bond[1], angle)
-        '''
 
         # evaluate new energy and compare it to old one
         energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].ResSeq], eps)
@@ -196,12 +206,17 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
         choice = transition_probability(new_energy, old_energy)
 
-        if choice:
+        if choice and (mol[bond[0]].ResSeq not in TRP_lst):
+            if abs(angle) >= 90 or abs(angle_TRP) >= 90:
+                TRP_lst.append(mol[bond[0]].ResSeq)
+
+            print(angle, angle_TRP, TRP_lst, mol[bond[0]].ResSeq, step)
+
             rotations += [(bond[0], bond[1], angle)]
             iterations = 0
             energy_dict[mol[coords_for_rot[0]].ResSeq] = energy_C + energy_LJ/eps
             # use next line if you want to write every step in frame
-            # write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].ResSeq}_{step}.pdb')
+            #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].ResSeq}_{step}.pdb')
             logger(f"Step: {step}. Good current rotation:\n"
                    f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq},"
                    f" angle: {angle}, energy: {new_energy}\n\n")
@@ -215,6 +230,14 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
                    f" angle: {angle}, energy: {new_energy}\n\n")
 
         eps = 1
+        angle_TRP = 0
+        if mol[bond[0]].ResName == 'TRP' and len(TRP_lst) != 0:
+            TRP_queue_step += 1
+        if TRP_queue_step == TRP_queue_update:
+            if len(TRP_lst) != 0:
+                TRP_lst.pop(0)
+            TRP_queue_step = 0
+
 
     write_pdb(mol, 'out.pdb')
     logger(f"The best energy: {best_energy}\n"
