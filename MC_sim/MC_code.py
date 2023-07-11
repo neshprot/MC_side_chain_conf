@@ -173,7 +173,7 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         return TRP_count
 
     '''
-    I want to rotate only TRP in 6GUX_t
+    #I want to rotate only TRP in 6GUX_t
     # 141
     coords_for_rot = graph.bfs(2165)
     rotate(mol, coords_for_rot, 2163, 2165, 74)
@@ -183,7 +183,7 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     coords_for_rot = graph.bfs(2988)
     rotate(mol, coords_for_rot, 2986, 2988, 180)
     rotate(mol, coords_for_rot, 2988, 2991, 90)
-    
+
     # 15
     coords_for_rot = graph.bfs(207)
     rotate(mol, coords_for_rot, 205, 207, 200)
