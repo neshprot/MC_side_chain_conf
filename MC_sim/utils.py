@@ -248,6 +248,7 @@ def amino_acid(mol, rotating_resid):
         nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 8), (x + 8, x + 9)]
         return nrot_bonds
 
+    #189-ый надо добавить
     def PRO(x):
         return []
 
