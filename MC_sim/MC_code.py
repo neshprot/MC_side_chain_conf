@@ -28,7 +28,7 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     T1 = 100  # first temperature
     T2 = 1000   # second temperature
     T = T1
-    eps_amen = 0.1   # amendment of epsilon
+    eps_amen = 0.8   # amendment of epsilon
     eps = 1     # standard amendment of epsilon
     best_energy = 'None'
     T_count = 0
@@ -132,16 +132,20 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         first_prob1 = 80
         second_prob1 = 20
 
-        angle11 = random.uniform(0, 50)
-        angle12 = random.uniform(90, 180)
+        #angle11 = random.uniform(0, 50)
+        angle11 = random.randint(0, 50)
+        #angle12 = random.uniform(90, 180)
+        angle12 = random.randint(90, 180)
         angle_sign1 = random.choice([-1, 1])
         trp_angle1 = random.choices([angle11, angle12], weights=[first_prob1, second_prob1])[0] * angle_sign1
 
         first_prob2 = 20
         second_prob2 = 80
 
-        angle21 = random.uniform(0, 50)
-        angle22 = random.uniform(90, 180)
+        #angle21 = random.uniform(0, 50)
+        angle21 = random.randint(0, 50)
+        #angle22 = random.uniform(90, 180)
+        angle22 = random.randint(0, 50)
         angle_sign2 = random.choice([-1, 1])
         trp_angle2 = random.choices([angle21, angle22], weights=[first_prob2, second_prob2])[0] * angle_sign2
 
@@ -193,9 +197,14 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     coords_for_rot = graph.bfs(207)
     rotate(mol, coords_for_rot, 1360, 1362, 35)
     rotate(mol, coords_for_rot, 1362, 1365, 179)
-
+    
+    # 141
+    coords_for_rot = graph.bfs(2184)
+    rotate(mol, coords_for_rot, 2182, 2184, -45)
+    rotate(mol, coords_for_rot, 2184, 2187, 210)
     write_pdb(mol, 'ini.pdb')
     '''
+
 
     TRP_count = start_energy()
 
@@ -218,8 +227,10 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         first_prob = 30
         second_prob = 70
 
-        angle1 = random.uniform(0, 10)
-        angle2 = random.uniform(90, 180)
+        #angle1 = random.uniform(0, 10)
+        angle1 = random.randint(0, 10)
+        #angle2 = random.uniform(90, 180)
+        angle2 = random.randint(90, 180)
         angle_sign = random.choice([-1, 1])
         angle = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
 
@@ -263,6 +274,9 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             smth_happen = False
             if len(TRP_lst) == TRP_count:
                 TRP_lst.pop(0)
+
+        if angle == 0 and angle_TRP == 0:
+            smth_happen = False
 
         if smth_happen:
 
