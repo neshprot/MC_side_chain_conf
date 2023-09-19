@@ -175,7 +175,6 @@ def amino_acid(mol, rotating_resid):
     """graph representation of side bonds"""
     bonds = dict()
     rot_bonds = []
-    rot_bonds_CA = []
 
     def GLY(x):
         return []
@@ -235,7 +234,7 @@ def amino_acid(mol, rotating_resid):
              x + 5: [x + 5], x + 6: [x + 6], x + 7: [x + 7], x + 8: [x + 9, x + 10, x + 11],
              x + 9: [x + 9], x + 10: [x + 10], x + 11: [x + 12, x + 13, x + 14],
              x + 12: [x + 12], x + 13: [x + 13], x + 14: [x + 14]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 4), (x + 2, x + 8), (x + 8, x + 11)]
+        nrot_bonds = [(x, x + 2), (x + 2, x + 8)]
         return nrot_bonds
 
     def MET(x):
@@ -470,4 +469,3 @@ def post_proc(ini_mol, start_mol, end_mol, rotating_resid):
             counter += 1
     result = 1 - value/counter
     return result
-
