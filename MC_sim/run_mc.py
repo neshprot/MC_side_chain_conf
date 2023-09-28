@@ -1,10 +1,13 @@
+"""
+read config file and run script
+"""
 import configparser
-import json
+from json import loads
 
 
-from utils import *
+from utils import read_inp, read_pdb, amino_acid, read_psf, read_results, write_result
 from graph import Graph
-from MC_code import MonteCarlo
+from mc_code import montecarlo
 
 # PARSING CONFIG
 config = configparser.ConfigParser()
@@ -17,10 +20,10 @@ psf_file = config['PSF']['File']
 inp_file = config['INP']['File']
 attempts = float(config['PARAMS']['attempts'])
 stop_step = float(config['PARAMS']['stop_step'])
-rotating_resid = json.loads(config.get('ROTATING RESID', 'numbers'))
+rotating_resid = loads(config.get('ROTATING RESID', 'numbers'))
 
 # config files
-result_file_name = config['COMPUTING']['ResultFileName']
+result_file_name = config['COMPUTING']['ResultFilename']
 
 if __name__ == '__main__':
 
@@ -33,6 +36,6 @@ if __name__ == '__main__':
 
     read_results('result1', mol, graph)
 
-    rotations, best_energy = MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid)
+    rotations, best_energy = montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid)
 
-    write_result(result_file_name, rotations, best_energy)
+    write_result(result_file_name, rotations)

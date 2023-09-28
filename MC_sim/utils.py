@@ -1,7 +1,10 @@
-import numpy as np
+"""
+useful scripts for code
+"""
 import math
 from pathlib import Path
 import os.path
+import numpy as np
 
 vdwr = {
     "H": 1.10,
@@ -50,41 +53,49 @@ atoma_radius = {
 
 
 class Atom:
+    """
+    describing atom
+    """
     def __init__(self):
-        self.DataType = 'ATOM'  # "ATOM"/"HETATM"
-        self.Name = ''  # Atom name
-        self.AltLoc = ''  # Alternate location indicator.
-        self.ResName = ''  # Residue name
-        self.ChainId = 'U'  # Chain identifier
-        self.ResSeq = 0  # Residue sequence number
-        self.ResCode = ''  # Code for insertions of residues
-        self.Coordin = np.array([0, 0, 0])  # (X,Y,Z) orthogonal
-        self.Occup = 0.0  # Occupancy
-        self.TempFac = 0.0  # Temperature factor
-        self.Element = 'Xx'  # Element symbol
-        self.Charge = 0.0  # Atom charge
-        self.PartialCharge = 0.0 # Atom partial charge
-        self.Bonded = []    # atoms that is bonded to the current one
-        self.Epsilon = 0.0  # epsilon LJ
-        self.Rmin = 0.0     # Rmin/2 LJ
+        self.datatype = 'ATOM'  # "ATOM"/"HETATM"
+        self.name = ''  # Atom name
+        self.altloc = ''  # Alternate location indicator.
+        self.resname = ''  # Residue name
+        self.chainid = 'U'  # Chain identifier
+        self.resseq = 0  # Residue sequence number
+        self.rescode = ''  # Code for insertions of residues
+        self.coordin = np.array([0, 0, 0])  # (X,Y,Z) orthogonal
+        self.occup = 0.0  # occupancy
+        self.tempfac = 0.0  # Temperature factor
+        self.element = 'Xx'  # element symbol
+        self.charge = 0.0  # Atom charge
+        self.partialcharge = 0.0 # Atom partial charge
+        self.bonded = []    # atoms that is bonded to the current one
+        self.epsilon = 0.0  # epsilon LJ
+        self.rmin = 0.0     # rmin/2 LJ
 
 
 def read_inp(fname):
+    """
+    reading input file
+    :param fname: file name
+    :return: LJ constants such epsilon and rmin
+    """
     myself = Path(__file__).resolve()
     res = myself.parents[1]
     name = ''
-    const_dict = dict()
-    with open(f"{res}\input_files\{fname}", "r") as file:
+    const_dict = {}
+    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
         for line in file.readlines():
             newname = line[0:9].strip()
-            if newname == 'NONBONDED':
+            if newname == 'NONbonded':
                 name = newname
-            if name == 'NONBONDED' and line[7:15] == '0.000000':
+            if name == 'NONbonded' and line[7:15] == '0.000000':
                 split_line = line.split()
-                Name = split_line[0]
-                Epsilon = float(split_line[2])
-                Rmin = float(split_line[3])
-                const_dict.update({Name: (Epsilon, Rmin)})
+                name = split_line[0]
+                epsilon = float(split_line[2])
+                rmin = float(split_line[3])
+                const_dict.update({name: (epsilon, rmin)})
     return const_dict
 
 
@@ -94,27 +105,27 @@ def read_pdb(fname, const_dict):
     '''
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    with open(f"{res}\input_files\{fname}", "r") as file:
-        molecule = dict()
+    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+        molecule = {}
         for line in file.readlines():
             data_type = line[0:6].strip()
             if data_type not in ['ATOM', 'HETATM']:
                 continue
             atom = Atom()
-            atom.DataType = line[0:6].strip()
+            atom.datatype = line[0:6].strip()
             num = int(line[6:11])
-            atom.Name = line[12:16].strip()
-            atom.AltLoc = line[16].strip()
-            atom.ResName = line[17:20].strip()
-            atom.ChainId = line[21].strip()
-            atom.ResSeq = int(line[22:26])
-            atom.ResCode = line[26].strip()
-            atom.Coordin = np.array(list(map(float, [line[30:38], line[38:46], line[46:54]])))
-            atom.Occup = 0.0  # float(line[54:60])
-            atom.Tempfac = 0.0  # float(line[60:66])
-            atom.Element = atom.Name[0]  # line[76:78].strip()
-            atom.Epsilon = const_dict.get(atom.Name[0], (0.0, 0.0))[0]
-            atom.Rmin = const_dict.get(atom.Name[0], (0.0, 0.0))[1]
+            atom.name = line[12:16].strip()
+            atom.altloc = line[16].strip()
+            atom.resname = line[17:20].strip()
+            atom.chainid = line[21].strip()
+            atom.resseq = int(line[22:26])
+            atom.rescode = line[26].strip()
+            atom.coordin = np.array(list(map(float, [line[30:38], line[38:46], line[46:54]])))
+            atom.occup = 0.0  # float(line[54:60])
+            atom.tempfac = 0.0  # float(line[60:66])
+            atom.element = atom.name[0]  # line[76:78].strip()
+            atom.epsilon = const_dict.get(atom.name[0], (0.0, 0.0))[0]
+            atom.rmin = const_dict.get(atom.name[0], (0.0, 0.0))[1]
 
             molecule[num] = atom
 
@@ -122,31 +133,37 @@ def read_pdb(fname, const_dict):
 
 
 def read_psf(fname, mol):
+    """
+    read psf file
+    :param fname: file name 
+    :param mol: class for protein
+    :return: initialisation of atom's params
+    """
     myself = Path(__file__).resolve()
     res = myself.parents[1]
     name = ''
-    with open(f"{res}\input_files\{fname}", "r") as file:
-        def NATOM():
+    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+        def natom():
             unused_zero = line[69:70].strip()
             if unused_zero == '0':
                 num = int(line[0:8])
-                mol[num].PartialCharge = float(line[35:44])
+                mol[num].partialcharge = float(line[35:44])
 
-        def NBOND():
-            a = line.split()
-            a1 = a[0::2]
-            a2 = a[1::2]
-            for i, j in zip(a1, a2):
-                mol[float(i)].Bonded.append(float(j))
-                mol[float(j)].Bonded.append(float(i))
+        def nbond():
+            atom_list = line.split()
+            first_atom = atom_list[0::2]
+            second_atom = atom_list[1::2]
+            for i, j in zip(first_atom, second_atom):
+                mol[float(i)].bonded.append(float(j))
+                mol[float(j)].bonded.append(float(i))
 
-        def NTHETA():
+        def ntheta():
             pass
 
         def section_name(name):
-            return {'!NATOM': lambda: NATOM(),
-                    '!NBOND': lambda: NBOND(),
-                    '!NTHETA': lambda: NTHETA(),
+            return {'!NATOM': natom,
+                    '!NBOND': nbond,
+                    '!NTHETA': ntheta,
                     }.get(name, lambda: 0)()
 
         for line in file.readlines():
@@ -158,209 +175,245 @@ def read_psf(fname, mol):
 
 
 def write_pdb(molecule, fname):
-    with open(fname, "w") as f:
+    """
+    write pdb file with protein
+    :param molecule: protein
+    :param fname: file name
+    :return: pdb file
+    """
+    with open(fname, "w", encoding="utf-8") as file:
         for (idx, atom) in molecule.items():
             line = '{a0:<6}{a1:>5}{s}{a2:>4}{a3:>1}{a4:>3}{s}{a5:>1}' \
                    '{a6:>4}{a7:<1}{s:>3}{a8[0]:>8.3f}{a8[1]:>8.3f}{a8[2]:>8.3f}' \
                    '{a9:>6.2f}{a10:>6.2f}{s:>11}{a11:<2}\n'.format(
-                a0=atom.DataType, a1=idx, a2=atom.Name, a3=atom.AltLoc,
-                a4=atom.ResName, a5=atom.ChainId, a6=atom.ResSeq,
-                a7=atom.ResCode, a8=atom.Coordin, a9=atom.Occup,
-                a10=atom.TempFac, a11=atom.Element, s=' '
+                a0=atom.datatype, a1=idx, a2=atom.name, a3=atom.altloc,
+                a4=atom.resname, a5=atom.chainid, a6=atom.resseq,
+                a7=atom.rescode, a8=atom.coordin, a9=atom.occup,
+                a10=atom.tempfac, a11=atom.element, s=' '
             )
-            f.write(line)
-            
+            file.write(line)
+
 
 def amino_acid(mol, rotating_resid):
     """graph representation of side bonds"""
-    bonds = dict()
+    bonds = {}
     rot_bonds = []
 
-    def GLY(x):
-        return []
-
-    def ALA(x):
+    def ala(pos):
         # CA, CB, HB1, HB2, HB3
-        bonds.update({x: [x+2], x+2: [x+3, x+4, x+5], x+3: [x+3], x+4: [x+4], x+5: [x+5]})
-        nrot_bonds = [(x, x+2)]
+        bonds.update({pos: [pos+2], pos+2: [pos+3, pos+4, pos+5],
+                      pos+3: [pos+3], pos+4: [pos+4],
+                      pos+5: [pos+5]})
+        nrot_bonds = [(pos, pos+2)]
         return nrot_bonds
 
-    def SER(x):
+    def ser(pos):
         # CA, CB, HB1, HB2, OG, HG1
-        bonds.update({x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4], x + 5: [x + 6],
-                      x + 6: [x + 6]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5)]
+        bonds.update({pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+                      pos + 3: [pos + 3], pos + 4: [pos + 4],
+                      pos + 5: [pos + 6], pos + 6: [pos + 6]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
         return nrot_bonds
 
-    def THR(x):
+    def thr(pos):
         # CA, CB, HB, OG1, HG1, CG2, HG21, HG22, HG23
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 6], x + 3: [x + 3], x + 4: [x + 5], x + 5: [x + 5],
-             x + 6: [x + 7, x + 8, x + 9], x + 7: [x + 7], x+8: [x+8], x+9: [x+9]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 4), (x + 2, x + 6)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 6],
+             pos + 3: [pos + 3], pos + 4: [pos + 5],
+             pos + 5: [pos + 5], pos + 6: [pos + 7, pos + 8, pos + 9],
+             pos + 7: [pos + 7], pos+8: [pos+8], pos+9: [pos+9]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 4), (pos + 2, pos + 6)]
         return nrot_bonds
 
-    def CYS(x):
+    def cys(pos):
         # CA, CB, HB1, HB2, SG, HG1
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4], x + 5: [x + 6],
-             x + 6: [x + 6]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6], pos + 6: [pos + 6]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
         return nrot_bonds
 
-    def VAL(x):
+    def val(pos):
         # CA, CB, HB, CG1, HG11, HG12, HG13, CG2, HG21, HG22, HG23
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 8], x + 3: [x + 3], x + 4: [x + 5, x+6, x+7],
-             x + 5: [x + 5], x + 6: [x+6], x + 7: [x+7], x+8: [x+9, x+10, x+11], x+9: [x+9], x+10: [x+10],
-             x+11: [x+11]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 4), (x + 2, x + 8)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 8],
+             pos + 3: [pos + 3], pos + 4: [pos + 5, pos+6, pos+7],
+             pos + 5: [pos + 5], pos + 6: [pos+6],
+             pos + 7: [pos+7], pos+8: [pos+9, pos+10, pos+11],
+             pos+9: [pos+9], pos+10: [pos+10],
+             pos+11: [pos+11]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 4), (pos + 2, pos + 8)]
         return nrot_bonds
 
-    def LEU(x):
+    def leu(pos):
         # CA, CB, HB1, HB2, CG, HG, CD1, HD11, HD12, HD13, CD2, HD21, HD22, HD23
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 7, x + 11], x + 6: [x + 6], x + 7: [x + 8, x + 9, x + 10], x + 8: [x + 8],
-             x + 9: [x + 9], x + 10: [x + 10], x + 11: [x + 12, x+13, x+14],
-             x+12: [x+12], x+13: [x+13], x+14: [x+14]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 7), (x + 5, x + 11)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 7, pos + 11], pos + 6: [pos + 6],
+             pos + 7: [pos + 8, pos + 9, pos + 10], pos + 8: [pos + 8],
+             pos + 9: [pos + 9], pos + 10: [pos + 10],
+             pos + 11: [pos + 12, pos+13, pos+14],
+             pos+12: [pos+12], pos+13: [pos+13], pos+14: [pos+14]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 7), (pos + 5, pos + 11)]
         return nrot_bonds
 
-    def ILE(x):
+    def ile(pos):
         # CA, CB, HB, CG2, HG21, HG22, HG23, CG1, HG11, HG12, CD, HD1, HD2, HD3
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 8], x + 3: [x + 3], x + 4: [x + 5, x + 6, x + 7],
-             x + 5: [x + 5], x + 6: [x + 6], x + 7: [x + 7], x + 8: [x + 9, x + 10, x + 11],
-             x + 9: [x + 9], x + 10: [x + 10], x + 11: [x + 12, x + 13, x + 14],
-             x + 12: [x + 12], x + 13: [x + 13], x + 14: [x + 14]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 8)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 8],
+             pos + 3: [pos + 3], pos + 4: [pos + 5, pos + 6, pos + 7],
+             pos + 5: [pos + 5], pos + 6: [pos + 6],
+             pos + 7: [pos + 7], pos + 8: [pos + 9, pos + 10, pos + 11],
+             pos + 9: [pos + 9], pos + 10: [pos + 10],
+             pos + 11: [pos + 12, pos + 13, pos + 14], pos + 12: [pos + 12],
+             pos + 13: [pos + 13], pos + 14: [pos + 14]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 8)]
         return nrot_bonds
 
-    def MET(x):
+    def met(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, SD, CE, HE1, HE2, HE3
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 7, x + 8], x + 6: [x + 6], x + 7: [x + 7], x + 8: [x + 9],
-             x + 9: [x + 10, x + 11, x+12], x + 10: [x + 10], x + 11: [x + 11],
-             x + 12: [x+12]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 8), (x + 8, x + 9)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 7, pos + 8], pos + 6: [pos + 6],
+             pos + 7: [pos + 7], pos + 8: [pos + 9],
+             pos + 9: [pos + 10, pos + 11, pos+12], pos + 10: [pos + 10],
+             pos + 11: [pos + 11], pos + 12: [pos+12]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 8), (pos + 8, pos + 9)]
         return nrot_bonds
 
-    #189-ый надо добавить
-    def PRO(x):
-        return []
-
-    def PHE(x):
+    def phe(pos):
         # CA, CB, HB1, HB2, CG, CD1, HD1, CE1, HE1, CZ, HZ, CD2, HD2, CE2, HE2
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 8], x + 6: [x + 7, x + 12], x + 7: [x + 7], x + 8: [x + 9, x+14],
-             x + 9: [x + 9], x + 10: [x + 11], x + 11: [x + 11],
-             x+12: [x+10, x+13], x+13: [x+13], x+14: [x+10, x+15], x+15: [x + 15]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5], pos + 3: [pos + 3],
+             pos + 4: [pos + 4], pos + 5: [pos + 6, pos + 8],
+             pos + 6: [pos + 7, pos + 12], pos + 7: [pos + 7],
+             pos + 8: [pos + 9, pos+14], pos + 9: [pos + 9],
+             pos + 10: [pos + 11], pos + 11: [pos + 11],
+             pos+12: [pos+10, pos+13], pos+13: [pos+13],
+             pos+14: [pos+10, pos+15], pos+15: [pos + 15]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
         return nrot_bonds
 
-    def TYR(x):
+    def tyr(pos):
         # CA, CB, HB1, HB2, CG, CD1, HD1, CE1, HE1, CZ, OH, HH, CD2, HD2, CE2, HE2
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 8], x + 6: [x + 7, x + 13], x + 7: [x + 7], x + 8: [x + 9, x+15],
-             x + 9: [x + 10], x + 10: [x + 11], x + 11: [x + 12],
-             x+12: [x+12], x+13: [x+10, x+14], x+14: [x+14], x+15: [x + 10, x + 16], x+16: [x+16]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 10, x + 11)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 8], pos + 6: [pos + 7, pos + 13],
+             pos + 7: [pos + 7], pos + 8: [pos + 9, pos+15],
+             pos + 9: [pos + 10], pos + 10: [pos + 11],
+             pos + 11: [pos + 12], pos+12: [pos+12],
+             pos+13: [pos+10, pos+14], pos+14: [pos+14],
+             pos+15: [pos + 10, pos + 16], pos+16: [pos+16]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 10, pos + 11)]
         return nrot_bonds
 
-    def TRP(x):
-        # CA, CB, HB1, HB2, CG, CD1, HD1, NE1, HE1, CE2, CD2, CE3, HE3, CZ3, HZ3, CZ2, HZ2, CH2, HH2
+    def trp(pos):
+        # CA, CB, HB1, HB2, CG, CD1, HD1, NE1, HE1,
+        # CE2, CD2, CE3, HE3, CZ3, HZ3, CZ2, HZ2, CH2, HH2
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6], x + 6: [x + 7, x + 18], x + 7: [x + 8, x + 9], x + 8: [x + 8],
-             x + 9: [x + 10, x + 11], x + 10: [x + 10], x + 11: [x + 12, x + 18],
-             x+12: [x+13, x+14], x+13: [x+13], x+14: [x+15, x+16], x+15: [x + 15], x+16: [x+17, x+18], x+17: [x+17],
-             x+18: [x+19], x+19: [x+19]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6], pos + 6: [pos + 7, pos + 18],
+             pos + 7: [pos + 8, pos + 9], pos + 8: [pos + 8],
+             pos + 9: [pos + 10, pos + 11], pos + 10: [pos + 10],
+             pos + 11: [pos + 12, pos + 18], pos+12: [pos+13, pos+14],
+             pos+13: [pos+13], pos+14: [pos+15, pos+16],
+             pos+15: [pos + 15], pos+16: [pos+17, pos+18],
+             pos+17: [pos+17], pos+18: [pos+19],
+             pos+19: [pos+19]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
         return nrot_bonds
 
-    def ASP(x):
+    def asp(pos):
         # CA, CB, HB1, HB2, CG, OD1, OD2
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 7], x + 6: [x + 6], x + 7: [x + 7]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 7], pos + 6: [pos + 6],
+             pos + 7: [pos + 7]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
         return nrot_bonds
 
-    def GLU(x):
+    def glu(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, CD, OE1, OE2
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 7, x + 8], x + 6: [x + 6], x + 7: [x + 7], x + 8: [x + 9, x + 10],
-             x + 9: [x + 9], x + 10: [x + 10]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 8)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 7, pos + 8], pos + 6: [pos + 6],
+             pos + 7: [pos + 7], pos + 8: [pos + 9, pos + 10],
+             pos + 9: [pos + 9], pos + 10: [pos + 10]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 8)]
         return nrot_bonds
 
-    def ASN(x):
+    def asn(pos):
         # CA, CB, HB1, HB2, CG, OD1, ND2, HD21, HD22
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 7], x + 6: [x + 6], x + 7: [x + 8, x + 9], x + 8: [x + 8], x + 9: [x + 9]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 7)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 7], pos + 6: [pos + 6],
+             pos + 7: [pos + 8, pos + 9], pos + 8: [pos + 8],
+             pos + 9: [pos + 9]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 7)]
         return nrot_bonds
 
-    def GLN(x):
-        return []
-
-    def HIS(x):
-        return []
-
-    def LYS(x):
+    def lys(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, CD, HD1, HD2, CE, HE1, HE2, NZ, NZ1, NZ2, NZ3
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 4],
-             x + 5: [x + 6, x + 7, x + 8], x + 6: [x + 6], x + 7: [x + 7], x + 8: [x + 9, x + 10, x + 11],
-             x + 9: [x + 9], x + 10: [x + 10], x + 11: [x + 12, x + 13, x + 14],
-             x+12: [x+12], x + 13: [x + 13], x + 14: [x+15, x + 16, x + 17], x + 15: [x + 15], x + 16: [x + 16],
-             x + 17: [x + 17]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 8), (x + 8, x + 11), (x + 11, x + 14)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+             pos + 3: [pos + 3], pos + 4: [pos + 4],
+             pos + 5: [pos + 6, pos + 7, pos + 8], pos + 6: [pos + 6],
+             pos + 7: [pos + 7], pos + 8: [pos + 9, pos + 10, pos + 11],
+             pos + 9: [pos + 9], pos + 10: [pos + 10],
+             pos + 11: [pos + 12, pos + 13, pos + 14], pos+12: [pos+12],
+             pos + 13: [pos + 13], pos + 14: [pos+15, pos + 16, pos + 17],
+             pos + 15: [pos + 15], pos + 16: [pos + 16],
+             pos + 17: [pos + 17]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 8),
+                      (pos + 8, pos + 11), (pos + 11, pos + 14)]
         return nrot_bonds
 
-    def ARG(x):
+    def arg(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, CD, HD1, HD2, NE, HE, CZ, NH1, HH11, HH12, NH2, HH21, HH22
         bonds.update(
-            {x: [x + 2], x + 2: [x + 3, x + 4, x + 5], x + 3: [x + 3], x + 4: [x + 5],
-             x + 5: [x + 6, x + 7, x + 8], x + 6: [x + 6], x + 7: [x + 7], x + 8: [x + 9, x + 10, x + 11],
-             x + 9: [x + 9], x + 10: [x + 10], x + 11: [x + 12, x + 13],
-             x + 12: [x + 12], x + 13: [x + 14, x + 17], x + 14: [x + 15, x + 16], x + 15: [x + 15], x + 16: [x + 16],
-             x + 17: [x + 18, x + 19], x + 18: [x + 18], x + 19: [x + 19]})
-        nrot_bonds = [(x, x + 2), (x + 2, x + 5), (x + 5, x + 8), (x + 8, x + 11), (x + 11, x + 13),
-                     (x + 13, x + 14), (x + 13, x + 17)]
+            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5], pos + 3: [pos + 3],
+             pos + 4: [pos + 5], pos + 5: [pos + 6, pos + 7, pos + 8],
+             pos + 6: [pos + 6], pos + 7: [pos + 7],
+             pos + 8: [pos + 9, pos + 10, pos + 11], pos + 9: [pos + 9],
+             pos + 10: [pos + 10], pos + 11: [pos + 12, pos + 13],
+             pos + 12: [pos + 12], pos + 13: [pos + 14, pos + 17],
+             pos + 14: [pos + 15, pos + 16], pos + 15: [pos + 15],
+             pos + 16: [pos + 16], pos + 17: [pos + 18, pos + 19],
+             pos + 18: [pos + 18], pos + 19: [pos + 19]})
+        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 8),
+                      (pos + 8, pos + 11), (pos + 11, pos + 13),
+                     (pos + 13, pos + 14), (pos + 13, pos + 17)]
         return nrot_bonds
 
-    def side_chains(ResName, num):
-        return {'GLY': lambda: GLY(num),
-                'ALA': lambda: ALA(num),
-                'SER': lambda: SER(num),
-                'THR': lambda: THR(num),
-                'CYS': lambda: CYS(num),
-                'VAL': lambda: VAL(num),
-                'LEU': lambda: LEU(num),
-                'ILE': lambda: ILE(num),
-                'MET': lambda: MET(num),
-                'PHE': lambda: PHE(num),
-                'PRO': lambda: PRO(num),
-                'TYR': lambda: TYR(num),
-                'TRP': lambda: TRP(num),
-                'ASP': lambda: ASP(num),
-                'GLU': lambda: GLU(num),
-                'ASN': lambda: ASN(num),
-                'GLN': lambda: GLN(num),
-                'HIS': lambda: HIS(num),
-                'LYS': lambda: LYS(num),
-                'ARG': lambda: ARG(num)}.get(ResName, lambda: [])()
+    def side_chains(resname, num):
+        return {'ALA': lambda: ala(num),
+                'SER': lambda: ser(num),
+                'THR': lambda: thr(num),
+                'CYS': lambda: cys(num),
+                'VAL': lambda: val(num),
+                'LEU': lambda: leu(num),
+                'ILE': lambda: ile(num),
+                'MET': lambda: met(num),
+                'PHE': lambda: phe(num),
+                'TYR': lambda: tyr(num),
+                'TRP': lambda: trp(num),
+                'ASP': lambda: asp(num),
+                'GLU': lambda: glu(num),
+                'ASN': lambda: asn(num),
+                'LYS': lambda: lys(num),
+                'ARG': lambda: arg(num)}.get(resname, lambda: [])()
 
-    for i, a in enumerate(mol.values()):
-        if a.Name == 'CA' and a.ResSeq in rotating_resid:
-            nrot_bonds = side_chains(a.ResName, i+1)
+    for i, atom in enumerate(mol.values()):
+        if atom.name == 'CA' and atom.resseq in rotating_resid:
+            nrot_bonds = side_chains(atom.resname, i+1)
             rot_bonds += nrot_bonds
     return bonds, rot_bonds
 
@@ -378,29 +431,30 @@ def rotation(origin_point1, origin_point2, point, angle):
     vector = origin_point2 - origin_point1
     d_vec = math.sqrt(sum(x**2 for x in vector))
     norm_vector = vector/d_vec
-    d = math.sqrt(norm_vector[1]**2+norm_vector[2]**2)
-    
+    dist = math.sqrt(norm_vector[1]**2+norm_vector[2]**2)
+
     def count_matrix(origin_point, norm_vector, angle):
         trans_matrix = np.array([[1.0, 0.0, 0.0, 0.0],
                                 [0.0, 1.0, 0.0, 0.0],
                                [0.0, 0.0, 1.0, 0.0],
                                [-origin_point[0], -origin_point[1], -origin_point[2], 1.0]])
         rot_x_matrix = np.array([[1.0, 0.0, 0.0, 0.0],
-                                   [0.0, norm_vector[2]/d, norm_vector[1]/d, 0.0],
-                                   [0.0, -norm_vector[1]/d, norm_vector[2]/d, 0.0],
+                                   [0.0, norm_vector[2]/dist, norm_vector[1]/dist, 0.0],
+                                   [0.0, -norm_vector[1]/dist, norm_vector[2]/dist, 0.0],
                                    [0.0, 0.0, 0.0, 1.0]])
-        rot_y_matrix = np.array([[d, 0.0, norm_vector[0], 0.0],
+        rot_y_matrix = np.array([[dist, 0.0, norm_vector[0], 0.0],
                                    [0.0, 1.0, 0.0, 0.0],
-                                   [-norm_vector[0], 0.0, d, 0.0],
+                                   [-norm_vector[0], 0.0, dist, 0.0],
                                    [0.0, 0.0, 0.0, 1.0]])
-        a = np.radians(angle)
-        rot_a_matrix = np.array([[np.cos(a), np.sin(a), 0.0, 0.0],
-                                   [-np.sin(a), np.cos(a), 0.0, 0.0],
+        alpha = np.radians(angle)
+        rot_a_matrix = np.array([[np.cos(alpha), np.sin(alpha), 0.0, 0.0],
+                                   [-np.sin(alpha), np.cos(alpha), 0.0, 0.0],
                                    [0.0, 0.0, 1.0, 0.0],
                                    [0.0, 0.0, 0.0, 1.0]])
         return trans_matrix, rot_x_matrix, rot_y_matrix, rot_a_matrix
 
-    trans_matrix, rot_x_matrix, rot_y_matrix, rot_a_matrix = count_matrix(origin_point1, norm_vector, angle)
+    trans_matrix, rot_x_matrix, rot_y_matrix, rot_a_matrix = \
+        count_matrix(origin_point1, norm_vector, angle)
     matrix = np.dot(np.dot(trans_matrix, rot_x_matrix), rot_y_matrix)
 
     change_point = np.append(point, 1)
@@ -425,20 +479,20 @@ def rotate(mol, coords_for_rot, bond_num1, bond_num2, angle):
     :return: updates the coordinates of atoms in a protein
     """
     for i in coords_for_rot:
-        new_coord = rotation(mol[bond_num1].Coordin, mol[bond_num2].Coordin, mol[i].Coordin, angle)
-        mol[i].Coordin = new_coord
+        new_coord = rotation(mol[bond_num1].coordin, mol[bond_num2].coordin, mol[i].coordin, angle)
+        mol[i].coordin = new_coord
 
 
-def write_result(fname, rotations, best_energy):
+def write_result(fname, rotations):
     '''
     :param fname: name of the file
     :param rotations: list of all rotations with nums of atoms and angle
     :param best_energy: energy of the fragment of side chain
     :return: create file with good rotations
     '''
-    with open(fname, "w") as f:
+    with open(fname, "w", encoding="utf-8") as file:
         for i in rotations:
-            f.write(f"Rotation around an axis: {i[0]} {i[1]} by an angle: {i[2]}\n")
+            file.write(f"Rotation around an axis: {i[0]} {i[1]} by an angle: {i[2]}\n")
 
 
 def read_results(fname, mol, graph):
@@ -451,21 +505,31 @@ def read_results(fname, mol, graph):
     :return: rotate protein
     """
     if os.path.isfile(fname):
-        with open(fname, "r") as file:
+        with open(fname, "r", encoding="utf-8") as file:
             for line in file.readlines():
                 lst = line.split()
                 rotate(mol, graph.bfs(float(lst[5])), float(lst[4]), float(lst[5]), float(lst[9]))
 
+
 def post_proc(ini_mol, start_mol, end_mol, rotating_resid):
+    """
+    assessment of model fit, need upgrade
+    :param ini_mol:
+    :param start_mol:
+    :param end_mol:
+    :param rotating_resid:
+    :return:
+    """
     value = 0
     counter = 0
     for atom in start_mol:
-        if start_mol[atom].ResSeq not in rotating_resid:
+        if start_mol[atom].resseq not in rotating_resid:
             continue
-        else:
-            ini_dist = sum(ini_mol[atom].Coordin[i]**2 - start_mol[atom].Coordin[i]**2 for i in range(3))
-            fin_dist = sum(end_mol[atom].Coordin[i] ** 2 - start_mol[atom].Coordin[i] ** 2 for i in range(3))
-            value += 1/(1+math.exp(-abs(ini_dist-fin_dist)))-1/2
-            counter += 1
+        ini_dist = sum(ini_mol[atom].coordin[i]**2 - start_mol[atom].coordin[i]**2
+                       for i in range(3))
+        fin_dist = sum(end_mol[atom].coordin[i] ** 2 - start_mol[atom].coordin[i] ** 2
+                       for i in range(3))
+        value += 1/(1+math.exp(-abs(ini_dist-fin_dist)))-1/2
+        counter += 1
     result = 1 - value/counter
     return result

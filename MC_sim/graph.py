@@ -1,28 +1,60 @@
+"""
+tools for creating graph
+"""
 import collections
 
+
 class Queue:
+    """
+    queue for dots
+    """
     def __init__(self):
         self.elements = collections.deque()
 
     def empty(self):
+        """
+        check if queue is empty
+        :return: true or false
+        """
         return len(self.elements) == 0
 
-    def put(self, x):
-        self.elements.append(x)
+    def put(self, value):
+        """
+        put element in queue
+        :param value:
+        :return:
+        """
+        self.elements.append(value)
 
     def get(self):
+        """
+        get the element from queue
+        :return:
+        """
         return self.elements.popleft()
 
+
 class Graph:
-    def __init__(self,bonds):
+    """
+    graph and tools for working with it
+    """
+    def __init__(self, bonds):
         self.__bonds = bonds
 
     @property
     def bonds(self):
+        """
+        get bonds
+        :return:
+        """
         return self.__bonds
 
     def bfs(self, start):
-        # печать того, что мы нашли
+        """
+        graph bfs
+        :param start:
+        :return:
+        """
         frontier = Queue()
         frontier.put(start)
         visited = {}
@@ -32,8 +64,8 @@ class Graph:
         while not frontier.empty():
             current = frontier.get()
             points.append(current)
-            for next in self.__bonds[current]:
-                if next not in visited:
-                    frontier.put(next)
-                    visited[next] = True
+            for i in self.__bonds[current]:
+                if i not in visited:
+                    frontier.put(i)
+                    visited[i] = True
         return points[1::]

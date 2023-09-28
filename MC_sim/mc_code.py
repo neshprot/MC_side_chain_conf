@@ -1,10 +1,12 @@
-from utils import *
+"""
+Main script for MC sim
+"""
+from utils import math, rotate, write_pdb
 from logger import FileLogger
 import random
 
 
-
-def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
+def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     '''
     main block or MC algorythm
 
@@ -22,12 +24,12 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     rotations = []
     iterations = 0  # const
     step = 0    # const
-    energy_dict = dict()
-    res_dict = dict()
+    energy_dict = {}
+    res_dict = {}
     k = 1.987204259e-3  # Boltzmann constant
-    T1 = 100  # first temperature
-    T2 = 4000   # second temperature 1000
-    T = T1
+    t1 = 100  # first temperature
+    t2 = 4000   # second temperature 1000
+    t = t1
     eps_amen = 0.4   # amendment of epsilon 0.4
     eps = 1     # standard amendment of epsilon
     best_energy = 'None'
@@ -39,7 +41,6 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
     ILE_prob = 1
 
-    TRP_prob = 0.9
     TRP_queue_update = 50
     TRP_queue_step = 0  # const
     angle_TRP = 0   # const
@@ -73,8 +74,8 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             :param distance: distance between two atoms (angstrom)
             :return:
             '''
-            first_charge = mol[mol1].PartialCharge
-            second_charge = mol[mol2].PartialCharge
+            first_charge = mol[mol1].partialcharge
+            second_charge = mol[mol2].partialcharge
             result = first_charge * second_charge / distance * 332
             return result
 
@@ -86,18 +87,20 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             :param distance: distance between two atoms (angstrom)
             :return:
             '''
-            epsilon12 = math.sqrt(mol[mol1].Epsilon * mol[mol2].Epsilon)
-            rmin12 = mol[mol1].Rmin + mol[mol2].Rmin
+            epsilon12 = math.sqrt(mol[mol1].epsilon * mol[mol2].epsilon)
+            rmin12 = mol[mol1].rmin + mol[mol2].rmin
             result = epsilon12 * ((rmin12 / distance) ** 12 - 2 * (rmin12 / distance) ** 6)
             return result
 
-        # count the potencial between each atom of the aminoacid and the atoms at the distance of 10 angstroms
+        # count the potencial between each atom of the aminoacid
+        # and the atoms at the distance of 10 angstroms
         for mol1 in coords_for_rot:
             for mol2 in mol:
-                if mol1 not in mol[mol2].Bonded:
+                if mol1 not in mol[mol2].bonded:
 
                     # square distance between two atoms
-                    distance = sum((x - y) ** 2 for x, y in zip(mol[mol1].Coordin, mol[mol2].Coordin))
+                    distance = sum((x - y) ** 2 for x, y in 
+                                   zip(mol[mol1].coordin, mol[mol2].coordin))
 
                     if mol1 == mol2:
                         continue
@@ -109,13 +112,14 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
                         energy_LJ += energy_LJ_bet
 
                         if start_was and (mol2 in all_nums) and (mol1, mol2) in charge_dict:
-                            old_energy = energy_dict[mol[mol2].ResSeq] + energy_C_bet + energy_LJ_bet - charge_dict[
+                            old_energy = energy_dict[mol[mol2].resseq] + \
+                                         energy_C_bet + energy_LJ_bet - charge_dict[
                                 (mol1, mol2)]
-                            energy_dict.update({mol[mol2].ResSeq: old_energy})
+                            energy_dict.update({mol[mol2].resseq: old_energy})
 
                         charge_dict.update({(mol1, mol2): energy_C_bet + energy_LJ_bet})
                         charge_dict.update({(mol2, mol1): energy_C_bet + energy_LJ_bet})
-        print(f'{mol[coords_for_rot[0]].ResSeq} - {energy_C+energy_LJ}')
+        print(f'{mol[coords_for_rot[0]].resseq} - {energy_C+energy_LJ}')
         return energy_C, eps_amen * energy_LJ
 
     # evaluate start energy
@@ -124,19 +128,19 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         TRP_count = 0
         ini_rot_bonds = rot_bonds
         for atom in mol:
-            if mol[atom].ResSeq not in rotating_resid:
+            if mol[atom].resseq not in rotating_resid:
                 continue
-            if any(atom in i for i in ini_rot_bonds) and mol[atom].Name == 'CA':
+            if any(atom in i for i in ini_rot_bonds) and mol[atom].name == 'CA':
                 atom_lst = graph.bfs(atom)
                 energy_C, energy_LJ = Energy(mol, atom_lst, eps_amen=1)
                 res_energy = energy_C + energy_LJ
                 # record the energy of each aminoacid
-                energy_dict.update({mol[atom].ResSeq: res_energy})
+                energy_dict.update({mol[atom].resseq: res_energy})
                 # record all atoms in a particular amino acid
-                res_dict.update({mol[atom].ResSeq: atom_lst})
+                res_dict.update({mol[atom].resseq: atom_lst})
                 summ += res_energy
                 all_nums.append(atom)
-                if mol[atom].ResName == 'TRP':
+                if mol[atom].resname == 'TRP':
                     TRP_count += 1
         return TRP_count
 
@@ -183,10 +187,10 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             T_step = 0
             if T_count == 0:
                 T_count = 1
-                T = T2
+                t = t2
             else:
                 T_count = 0
-                T = T1
+                t = t1
 
         # epsilon change every eps_lim steps
         if eps_step == eps_lim:
@@ -194,10 +198,11 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             eps = eps_amen
 
         coords_for_rot = graph.bfs(bond[1])
-        initial_coords = [mol[i].Coordin for i in coords_for_rot]
+        initial_coords = [mol[i].coordin for i in coords_for_rot]
 
-        if mol[bond[0]].ResSeq not in TRP_lst:
-            if ILE_prob >= random.uniform(0.0, 1.0) and mol[bond[0]].ResName == 'ILE' and mol[bond[0]].Name == 'CA':
+        if mol[bond[0]].resseq not in TRP_lst:
+            if ILE_prob >= random.uniform(0.0, 1.0) and mol[bond[0]].resname == 'ILE' and\
+                    mol[bond[0]].name == 'CA':
                 angle, coords_for_rot, initial_coords = ILE_rot(bond, mol)
             else:
                 rotate(mol, coords_for_rot, bond[0], bond[1], angle)
@@ -213,16 +218,16 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         if smth_happen:
 
             # evaluate new energy and compare it to old one
-            energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].ResSeq], eps)
+            energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].resseq], eps)
             new_energy = energy_C + energy_LJ
-            old_energy = energy_dict[mol[coords_for_rot[0]].ResSeq]\
+            old_energy = energy_dict[mol[coords_for_rot[0]].resseq]\
 
             # whether the system has moved to a higher energy step
             def transition_probability(new_energy, old_energy):
                 if new_energy <= old_energy:
                     return True
                 else:
-                    prob_up = math.exp(-(new_energy - old_energy)/(k*T))
+                    prob_up = math.exp(-(new_energy - old_energy)/(k*t))
                     if random.uniform(0.0, 1.0) <= prob_up:
                         return True
                     else:
@@ -230,35 +235,37 @@ def MonteCarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
             choice = transition_probability(new_energy, old_energy)
 
-            if choice and (mol[bond[0]].ResSeq not in TRP_lst) and smth_happen:
+            if choice and (mol[bond[0]].resseq not in TRP_lst) and smth_happen:
 
-                if mol[bond[0]].ResName == 'TRP':
+                if mol[bond[0]].resname == 'TRP':
                     if abs(angle) >= 40 or abs(angle_TRP) >= 40:
-                        TRP_lst.append(mol[bond[0]].ResSeq)
+                        TRP_lst.append(mol[bond[0]].resseq)
                     angle = [angle, angle_TRP]
 
 
                 rotations += [(bond[0], bond[1], angle)]
                 iterations = 0
-                energy_dict[mol[coords_for_rot[0]].ResSeq] = energy_C + energy_LJ/eps
+                energy_dict[mol[coords_for_rot[0]].resseq] = energy_C + energy_LJ/eps
                 # use next line if you want to write every step in frame
-                #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].ResSeq}_{step}.pdb')
+                #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].resseq}_{step}.pdb')
                 logger(f"Step: {step}. Good current rotation:\n"
-                       f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq},"
+                       f"First num: {bond[0]}, second num: {bond[1]},"
+                       f" resid: {mol[coords_for_rot[0]].resseq},"
                        f" angle: {angle}, energy: {new_energy}\n\n")
             elif smth_happen:
                 iterations += 1
                 for i, num in enumerate(coords_for_rot):
-                    mol[num].Coordin = initial_coords[i]
+                    mol[num].coordin = initial_coords[i]
 
                 logger(f"Step: {step}. Bad current rotation:\n"
-                       f"First num: {bond[0]}, second num: {bond[1]}, resid: {mol[coords_for_rot[0]].ResSeq},"
+                       f"First num: {bond[0]}, second num: {bond[1]},"
+                       f" resid: {mol[coords_for_rot[0]].resseq},"
                        f" angle: {angle}, energy: {new_energy}\n\n")
 
 
             eps = 1
             angle_TRP = 0
-            if mol[bond[0]].ResName == 'TRP' and len(TRP_lst) != 0:
+            if mol[bond[0]].resname == 'TRP' and len(TRP_lst) != 0:
                 TRP_queue_step += 1
             if TRP_queue_step == TRP_queue_update:
                 if len(TRP_lst) != 0:
