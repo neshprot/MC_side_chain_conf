@@ -119,7 +119,6 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
                         charge_dict.update({(mol1, mol2): energy_C_bet + energy_LJ_bet})
                         charge_dict.update({(mol2, mol1): energy_C_bet + energy_LJ_bet})
-        print(f'{mol[coords_for_rot[0]].resseq} - {energy_C+energy_LJ}')
         return energy_C, eps_amen * energy_LJ
 
     # evaluate start energy
@@ -140,9 +139,6 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
                 res_dict.update({mol[atom].resseq: atom_lst})
                 summ += res_energy
                 all_nums.append(atom)
-                if mol[atom].resname == 'TRP':
-                    TRP_count += 1
-        return TRP_count
 
     #special function for ILE
     def ILE_rot(bond, mol):
@@ -157,11 +153,7 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         rotate(mol, coords_for_rot2, bond[1], bond[1] + 6, ile_angle2)
         return [ile_angle1, ile_angle2], coords_for_rot, initial_coords
 
-    TRP_count = start_energy()
-
-    t = 0
-    while t == 0:
-        pass
+    start_energy()
 
     start_was = True
 
@@ -170,8 +162,8 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
         bond = random.choice(rot_bonds)     # selecting a random bond for rotation
 
-        first_prob = 30
-        second_prob = 70
+        first_prob = 1
+        second_prob = 0
 
         angle1 = random.randint(0, 10)
         angle2 = random.randint(90, 180)
@@ -200,80 +192,46 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         coords_for_rot = graph.bfs(bond[1])
         initial_coords = [mol[i].coordin for i in coords_for_rot]
 
-        if mol[bond[0]].resseq not in TRP_lst:
-            if ILE_prob >= random.uniform(0.0, 1.0) and mol[bond[0]].resname == 'ILE' and\
-                    mol[bond[0]].name == 'CA':
-                angle, coords_for_rot, initial_coords = ILE_rot(bond, mol)
+        rotate(mol, coords_for_rot, bond[0], bond[1], angle)
+
+        # evaluate new energy and compare it to old one
+        energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].resseq], eps)
+        new_energy = energy_C + energy_LJ
+        old_energy = energy_dict[mol[coords_for_rot[0]].resseq]
+
+        # whether the system has moved to a higher energy step
+        def transition_probability(new_energy, old_energy):
+            if new_energy <= old_energy:
+                return True
             else:
-                rotate(mol, coords_for_rot, bond[0], bond[1], angle)
-            smth_happen = True
-        else:
-            smth_happen = False
-            if len(TRP_lst) == TRP_count:
-                TRP_lst.pop(0)
-
-        if angle == 0 and angle_TRP == 0:
-            smth_happen = False
-
-        if smth_happen:
-
-            # evaluate new energy and compare it to old one
-            energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].resseq], eps)
-            new_energy = energy_C + energy_LJ
-            old_energy = energy_dict[mol[coords_for_rot[0]].resseq]\
-
-            # whether the system has moved to a higher energy step
-            def transition_probability(new_energy, old_energy):
-                if new_energy <= old_energy:
+                prob_up = math.exp(-(new_energy - old_energy)/(k*t))
+                if random.uniform(0.0, 1.0) <= prob_up:
                     return True
                 else:
-                    prob_up = math.exp(-(new_energy - old_energy)/(k*t))
-                    if random.uniform(0.0, 1.0) <= prob_up:
-                        return True
-                    else:
-                        return False
+                    return False
 
-            choice = transition_probability(new_energy, old_energy)
+        choice = transition_probability(new_energy, old_energy)
 
-            if choice and (mol[bond[0]].resseq not in TRP_lst) and smth_happen:
-
-                if mol[bond[0]].resname == 'TRP':
-                    if abs(angle) >= 40 or abs(angle_TRP) >= 40:
-                        TRP_lst.append(mol[bond[0]].resseq)
-                    angle = [angle, angle_TRP]
-
-
-                rotations += [(bond[0], bond[1], angle)]
-                iterations = 0
-                energy_dict[mol[coords_for_rot[0]].resseq] = energy_C + energy_LJ/eps
-                # use next line if you want to write every step in frame
-                #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].resseq}_{step}.pdb')
-                logger(f"Step: {step}. Good current rotation:\n"
-                       f"First num: {bond[0]}, second num: {bond[1]},"
-                       f" resid: {mol[coords_for_rot[0]].resseq},"
-                       f" angle: {angle}, energy: {new_energy}\n\n")
-            elif smth_happen:
-                iterations += 1
-                for i, num in enumerate(coords_for_rot):
-                    mol[num].coordin = initial_coords[i]
-
-                logger(f"Step: {step}. Bad current rotation:\n"
-                       f"First num: {bond[0]}, second num: {bond[1]},"
-                       f" resid: {mol[coords_for_rot[0]].resseq},"
-                       f" angle: {angle}, energy: {new_energy}\n\n")
-
-
-            eps = 1
-            angle_TRP = 0
-            if mol[bond[0]].resname == 'TRP' and len(TRP_lst) != 0:
-                TRP_queue_step += 1
-            if TRP_queue_step == TRP_queue_update:
-                if len(TRP_lst) != 0:
-                    TRP_lst.pop(0)
-                TRP_queue_step = 0
-
+        if choice:
+            iterations = 0
+            energy_dict[mol[coords_for_rot[0]].resseq] = energy_C + energy_LJ/eps
+            # use next line if you want to write every step in frame
+            #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].resseq}_{step}.pdb')
+            logger(f"Step: {step}. Good current rotation:\n"
+                   f"First num: {bond[0]}, second num: {bond[1]},"
+                   f" resid: {mol[coords_for_rot[0]].resseq},"
+                   f" angle: {angle}, energy: {new_energy}\n\n")
         else:
-            step -= 1
+            iterations += 1
+            for i, num in enumerate(coords_for_rot):
+                mol[num].coordin = initial_coords[i]
+
+            logger(f"Step: {step}. Bad current rotation:\n"
+                   f"First num: {bond[0]}, second num: {bond[1]},"
+                   f" resid: {mol[coords_for_rot[0]].resseq},"
+                   f" angle: {angle}, energy: {new_energy}\n\n")
+
+        eps = 1
 
     write_pdb(mol, 'out.pdb')
     logger(f"The best energy: {best_energy}\n"
