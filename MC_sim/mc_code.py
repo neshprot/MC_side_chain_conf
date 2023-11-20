@@ -1,9 +1,37 @@
 """
 Main script for MC sim
 """
-from utils import math, rotate, write_pdb
+from utils import math, rotate, write_pdb, TorsionAngle, get_torsion_angle, get_torsions, amino_acid, print_torsions
 from logger import FileLogger
 import random
+import numpy as np
+
+
+file_path = "/home/mikhail/work/Protein_Model/MC_side_chain_conf-master/RotamerTables/BoundRotamers.txt"
+rotamer_map = {}
+
+with open(file_path, 'r') as file:
+    next(file)  # Пропускаем заголовок
+    for line in file:
+        data = line.strip().split(',')
+        amino = data[0]
+        rotamer = int(data[1])
+        probability = float(data[2])
+        chi_values = [(float(val) + 360) % 360 if val != "NA" else None for val in data[3:]]
+
+        if amino in rotamer_map:
+            rotamer_map[amino][rotamer] = {
+                "Probability": probability,
+                "Chi_Values": chi_values
+            }
+        else:
+            rotamer_map[amino] = {
+                rotamer: {
+                    "Probability": probability,
+                    "Chi_Values": chi_values
+                }
+            }
+
 
 
 def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
@@ -28,9 +56,9 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     res_dict = {}
     k = 1.987204259e-3  # Boltzmann constant
     t1 = 100  # first temperature
-    t2 = 4000   # second temperature 1000
+    t2 = 1000   # second temperature 1000
     t = t1
-    eps_amen = 0.4   # amendment of epsilon 0.4
+    eps_amen = 1   # amendment of epsilon 0.4
     eps = 1     # standard amendment of epsilon
     best_energy = 'None'
     T_count = 0     # const
@@ -119,6 +147,7 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
                         charge_dict.update({(mol1, mol2): energy_C_bet + energy_LJ_bet})
                         charge_dict.update({(mol2, mol1): energy_C_bet + energy_LJ_bet})
+       # print(f'{mol[coords_for_rot[0]].resseq} - {energy_C+energy_LJ}')
         return energy_C, eps_amen * energy_LJ
 
     # evaluate start energy
@@ -129,7 +158,11 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         for atom in mol:
             if mol[atom].resseq not in rotating_resid:
                 continue
-            if any(atom in i for i in ini_rot_bonds) and mol[atom].name == 'CA':
+            res = []
+            for x in ini_rot_bonds.values():
+                res.extend(x if isinstance(x, list) else [x]) 
+            if any(atom in i for i in res) and mol[atom].name == 'CA':
+                
                 atom_lst = graph.bfs(atom)
                 energy_C, energy_LJ = Energy(mol, atom_lst, eps_amen=1)
                 res_energy = energy_C + energy_LJ
@@ -156,51 +189,14 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
     start_energy()
 
     start_was = True
-
+    list_residue_classes = {}
+    for res in rotating_resid:
+        residue = TorsionAngle(res)
+        list_residue_classes[res] = residue
     # main block with consecutive rotations
-    while iterations <= attempts and step < stop_step:
+    probability = 0.3
 
-        bond = random.choice(rot_bonds)     # selecting a random bond for rotation
-
-        first_prob = 1
-        second_prob = 0
-
-        angle1 = random.randint(0, 10)
-        angle2 = random.randint(90, 180)
-        angle_sign = random.choice([-1, 1])
-        angle = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
-
-        step += 1
-        T_step += 1
-        eps_step += 1
-
-        # temperature changes every T_lim steps
-        if T_step == T_lim:
-            T_step = 0
-            if T_count == 0:
-                T_count = 1
-                t = t2
-            else:
-                T_count = 0
-                t = t1
-
-        # epsilon change every eps_lim steps
-        if eps_step == eps_lim:
-            eps_step = 0
-            eps = eps_amen
-
-        coords_for_rot = graph.bfs(bond[1])
-        initial_coords = [mol[i].coordin for i in coords_for_rot]
-
-        rotate(mol, coords_for_rot, bond[0], bond[1], angle)
-
-        # evaluate new energy and compare it to old one
-        energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].resseq], eps)
-        new_energy = energy_C + energy_LJ
-        old_energy = energy_dict[mol[coords_for_rot[0]].resseq]
-
-        # whether the system has moved to a higher energy step
-        def transition_probability(new_energy, old_energy):
+    def transition_probability(new_energy, old_energy):
             if new_energy <= old_energy:
                 return True
             else:
@@ -209,29 +205,160 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
                     return True
                 else:
                     return False
+    
+    while iterations <= attempts and step < stop_step:
+        random_residue = random.choice(rotating_resid)
+        rot = rot_bonds[random_residue]
+        if not rot:
+            continue
+        
+        if random.random() < probability and mol[rot[0][0]].resname in rotamer_map.keys():
+            list_residue_classes[random_residue].update_rotamer(rotamer_map[mol[rot[0][0]].resname])
+            dmap = list_residue_classes[random_residue].rotamers()
+            rotamers = list(dmap.keys())
+            probabilities = [dmap[rotamer]["Probability"] for rotamer in rotamers]
+            chosen_rotamer = random.choices(rotamers, weights=probabilities, k=1)[0]
+            torsions = dmap[chosen_rotamer]['Chi_Values']
+            bonds, _ = amino_acid(mol, [random_residue])
+            my_tors = get_torsions(mol, bonds)
+            new_tors = [i for i in my_tors if (i[1], i[2]) in rot and i[0]]
+            seen = {}
+            result = []
+            for sublist in new_tors:
+                key = sublist[0]
+                if key not in seen:
+                    seen[key] = True
+                    result.append(sublist)
 
-        choice = transition_probability(new_energy, old_energy)
+            torsions = [torsions[a] for a in range(len(torsions)) if torsions[a] != None and len(result) >= a+1]
+            result = result[0:len(torsions)]
+            dif = []
+            for i in range(len(torsions)):
+                dif += [result[i][4] - torsions[i]]
+            for torsion in range(len(dif)):
+                bond = (result[torsion][1], result[torsion][2])
+                step += 1
+                T_step += 1
+                eps_step += 1
 
-        if choice:
-            iterations = 0
-            energy_dict[mol[coords_for_rot[0]].resseq] = energy_C + energy_LJ/eps
-            # use next line if you want to write every step in frame
-            #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].resseq}_{step}.pdb')
-            logger(f"Step: {step}. Good current rotation:\n"
-                   f"First num: {bond[0]}, second num: {bond[1]},"
-                   f" resid: {mol[coords_for_rot[0]].resseq},"
-                   f" angle: {angle}, energy: {new_energy}\n\n")
+                # temperature changes every T_lim steps
+                if T_step == T_lim:
+                    T_step = 0
+                    if T_count == 0:
+                        T_count = 1
+                        t = t2
+                    else:
+                        T_count = 0
+                        t = t1
+
+                # epsilon change every eps_lim steps
+                if eps_step == eps_lim:
+                    eps_step = 0
+                    eps = eps_amen
+
+                coords_for_rot = graph.bfs(bond[1])
+                initial_coords = [mol[i].coordin for i in coords_for_rot]
+
+                list_residue_classes[random_residue].update_torsion_angles(bond, dif[torsion])
+                rotate(mol, coords_for_rot, bond[0], bond[1], (-1) * np.sign(dif[torsion]) * abs(dif[torsion]))
+                energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].resseq], eps)
+                new_energy = energy_C + energy_LJ
+                old_energy = energy_dict[mol[coords_for_rot[0]].resseq]
+
+                choice = transition_probability(new_energy, old_energy)
+
+                if choice:
+                    rotations += [(bond[0], bond[1], dif[torsion])]
+                    iterations = 0
+                    energy_dict[mol[coords_for_rot[0]].resseq] = energy_C + energy_LJ/eps
+                    # use next line if you want to write every step in frame
+                    #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].resseq}_{step}.pdb')
+                    logger(f"Step: {step}. Good current rotation:\n"
+                        f"First num: {bond[0]}, second num: {bond[1]},"
+                        f" resid: {mol[coords_for_rot[0]].resseq},"
+                        f" angle: {dif[torsion]}, energy: {new_energy}\n\n")
+                else:
+                    iterations += 1
+                    for i, num in enumerate(coords_for_rot):
+                        mol[num].coordin = initial_coords[i]
+
+                    logger(f"Step: {step}. Bad current rotation:\n"
+                        f"First num: {bond[0]}, second num: {bond[1]},"
+                        f" resid: {mol[coords_for_rot[0]].resseq},"
+                        f" angle: {dif[torsion]}, energy: {new_energy}\n\n")
+
+                eps = 1
         else:
-            iterations += 1
-            for i, num in enumerate(coords_for_rot):
-                mol[num].coordin = initial_coords[i]
+            
 
-            logger(f"Step: {step}. Bad current rotation:\n"
-                   f"First num: {bond[0]}, second num: {bond[1]},"
-                   f" resid: {mol[coords_for_rot[0]].resseq},"
-                   f" angle: {angle}, energy: {new_energy}\n\n")
+        
+        
+            bond = random.choice(rot)     # selecting a random bond for rotation
 
-        eps = 1
+            first_prob = 0.7
+            second_prob = 0.3
+
+            angle1 = random.randint(0, 10)
+            angle2 = random.randint(90, 180)
+            angle_sign = random.choice([-1, 1])
+            angle = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
+
+            step += 1
+            T_step += 1
+            eps_step += 1
+
+            # temperature changes every T_lim steps
+            if T_step == T_lim:
+                T_step = 0
+                if T_count == 0:
+                    T_count = 1
+                    t = t2
+                else:
+                    T_count = 0
+                    t = t1
+
+            # epsilon change every eps_lim steps
+            if eps_step == eps_lim:
+                eps_step = 0
+                eps = eps_amen
+
+            coords_for_rot = graph.bfs(bond[1])
+            initial_coords = [mol[i].coordin for i in coords_for_rot]
+
+            list_residue_classes[random_residue].update_torsion_angles(bond, angle)
+            rotate(mol, coords_for_rot, bond[0], bond[1], angle)   
+
+            # evaluate new energy and compare it to old one
+            energy_C, energy_LJ = Energy(mol, res_dict[mol[coords_for_rot[0]].resseq], eps)
+            new_energy = energy_C + energy_LJ
+            old_energy = energy_dict[mol[coords_for_rot[0]].resseq]
+
+            # whether the system has moved to a higher energy step
+            
+
+            choice = transition_probability(new_energy, old_energy)
+
+            if choice:
+                rotations += [(bond[0], bond[1], angle)]
+                iterations = 0
+                energy_dict[mol[coords_for_rot[0]].resseq] = energy_C + energy_LJ/eps
+                # use next line if you want to write every step in frame
+                #write_pdb(mol, f'for_frames/out_{mol[coords_for_rot[0]].resseq}_{step}.pdb')
+                logger(f"Step: {step}. Good current rotation:\n"
+                    f"First num: {bond[0]}, second num: {bond[1]},"
+                    f" resid: {mol[coords_for_rot[0]].resseq},"
+                    f" angle: {angle}, energy: {new_energy}\n\n")
+            else:
+                iterations += 1
+                for i, num in enumerate(coords_for_rot):
+                    mol[num].coordin = initial_coords[i]
+
+                logger(f"Step: {step}. Bad current rotation:\n"
+                    f"First num: {bond[0]}, second num: {bond[1]},"
+                    f" resid: {mol[coords_for_rot[0]].resseq},"
+                    f" angle: {angle}, energy: {new_energy}\n\n")
+
+            eps = 1
 
     write_pdb(mol, 'out.pdb')
     logger(f"The best energy: {best_energy}\n"
