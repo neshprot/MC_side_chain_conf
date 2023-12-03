@@ -6,7 +6,6 @@ from pathlib import Path
 import os.path
 import numpy as np
 from graph import Graph
-from Bio.PDB import PDBParser
 
 vdwr = {
     "H": 1.10,
@@ -113,7 +112,7 @@ def read_inp(fname):
     res = myself.parents[1]
     name = ''
     const_dict = {}
-    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
         for line in file.readlines():
             newname = line[0:9].strip()
             if newname == 'NONbonded':
@@ -133,7 +132,7 @@ def read_pdb(fname, const_dict):
     '''
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
         molecule = {}
         for line in file.readlines():
             data_type = line[0:6].strip()
@@ -170,7 +169,7 @@ def read_psf(fname, mol):
     myself = Path(__file__).resolve()
     res = myself.parents[1]
     name = ''
-    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
         def natom():
             unused_zero = line[69:70].strip()
             if unused_zero == '0':

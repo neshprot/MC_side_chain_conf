@@ -1457,9 +1457,9 @@ X    CS   SS   X        0.0000  3     0.20 ! guess
                 !adm jr., 7/01
 
 C    CT1  NH1  C        0.2000  1   180.00 ! ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 C    CT2  NH1  C        0.2000  1   180.00 ! ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 C    N    CP1  C        0.8000  3     0.00 ! ALLOW PRO PEP
                 ! 6-31g* AcProNH2, ProNH2, 6-31g*//3-21g AcProNHCH3 RLD 4/23/93
 CA   CA   CA   CA       3.1000  2   180.00 ! ALLOW   ARO
@@ -1477,13 +1477,13 @@ CC   CP1  N    C        0.8000  3     0.00 ! ALLOW PRO PEP
 CC   CT1  CT2  CA       0.0400  3     0.00 ! ALLOW   ARO
                 ! 2.7 kcal/mole CH3 rot in ethylbenzene, adm jr, 3/7/92
 CC   CT1  NH1  C        0.2000  1   180.00 ! ALLOW PEP POL
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 CC   CT2  NH1  C        0.2000  1   180.00 ! ALLOW PEP POL
                 ! Alanine dipeptide; NMA; acetate; etc. adm jr., 3/3/93c
 CD   CP1  N    C        0.0000  1   180.00 ! ALLOW PRO PEP
                 ! 6-31g* AcProNH2, ProNH2, 6-31g*//3-21g AcProNHCH3 RLD 4/23/93
 CD   CT1  NH1  C        0.2000  1   180.00 ! ALLOW PEP POL
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 CD   CT2  NH1  C        0.2000  1   180.00 ! ALLOW PEP POL
                 ! Alanine dipeptide; NMA; acetate; etc. backbon adm jr., 3/3/93c
 CE1  CE1  CT3  HA       0.0300  3     0.00 ! 
@@ -1553,7 +1553,7 @@ CT1  C    NH1  CT1      1.6000  1     0.00 !  ALLOW PEP
 CT1  C    NH1  CT1      2.5000  2   180.00 !  ALLOW PEP
                 ! Gives appropriate NMA cis/trans barrier. (LK)
 CT1  CT1  NH1  C        1.8000  1     0.00 ! ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 CT1  CT2  CA   CA       0.2300  2   180.00 ! ALLOW   ARO ALI
                 ! ethylbenzene ethyl rotation, adm jr. 3/7/92
 CT1  CT2  CPH1 CPH1     0.2000  1     0.00 ! ALLOW ARO
@@ -1599,7 +1599,7 @@ CT2  CPH1 NR2  CPH2     3.0000  2   180.00 ! ALLOW ARO
 CT2  CPH1 NR3  CPH2     2.5000  2   180.00 ! ALLOW ARO
                 ! his, adm jr., 6/27/90
 CT2  CT1  NH1  C        1.8000  1     0.00 ! ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 CT2  CT2  CPH1 CPH1     0.4000  1     0.00 ! ALLOW ARO
                 ! 4-methylimidazole 4-21G//6-31G* rot bar. ADM JR., 9/4/89
 CT2  CT2  CT2  CT2      0.1500  1     0.00 ! ALLOW ALI
@@ -1651,7 +1651,7 @@ CT3  CE1  CE2  HE2      5.2000  2   180.00 !
 CT3  CPH1 NR1  CPH2     3.0000  2   180.00 ! ALLOW ARO
                 ! his, ADM JR., 7/22/89, FROM HA CPH1 NR1 CPH2
 CT3  CT1  NH1  C        1.8000  1     0.00 ! ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 CT3  CT2  CA   CA       0.2300  2   180.00 ! ALLOW   ARO ALI
                 ! ethylbenzene ethyl rotation, adm jr. 3/7/92
 CT3  CT2  CPH1 CPH1     0.2000  1     0.00 ! ALLOW ARO
@@ -2015,15 +2015,15 @@ NH1  C    CP1  N        0.3000  1     0.00 ! ALLOW PEP PRO
 NH1  C    CP1  N       -0.3000  4     0.00 ! ALLOW PEP PRO
                 ! 6-31g* AcProNH2, ProNH2, 6-31g*//3-21g AcProNHCH3 RLD 4/23/93
 NH1  C    CT1  CT1      0.0000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide corrxn for new C VDW rmin, 4/10/93 (LK)
+                ! ala dipeptide corrxn for new C VDW Rmin, 4/10/93 (LK)
 NH1  C    CT1  CT2      0.0000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide corrxn for new C VDW rmin, 4/10/93 (LK)
+                ! ala dipeptide corrxn for new C VDW Rmin, 4/10/93 (LK)
 NH1  C    CT1  CT3      0.0000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide corrxn for new C VDW rmin, 4/10/93 (LK)
+                ! ala dipeptide corrxn for new C VDW Rmin, 4/10/93 (LK)
 NH1  C    CT1  HB       0.0000  1     0.00 !   ALLOW PEP
                 ! Alanine Dipeptide ab initio calc's (LK)
 NH1  C    CT1  NH1      0.6000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93
 NH1  C    CT2  CT2      0.0000  1     0.00 !   ALLOW PEP
                 ! from NH1  C    CT1  CT2, for lactams, adm jr.
 NH1  C    CT2  HA       0.0000  3     0.00 ! ALLOW PEP
@@ -2031,7 +2031,7 @@ NH1  C    CT2  HA       0.0000  3     0.00 ! ALLOW PEP
 NH1  C    CT2  HB       0.0000  1     0.00 !   ALLOW PEP
                 ! Alanine Dipeptide ab initio calc's (LK)
 NH1  C    CT2  NH1      0.6000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93
 NH1  C    CT3  HA       0.0000  3     0.00 ! ALLOW PEP
                 ! LK for autogenerate dihe, sp2-methyl, no dihedral potential
 NH1  CT1  C    N        0.4000  1     0.00 ! ALLOW PEP PRO
@@ -2055,7 +2055,7 @@ NH2  CC   CT2  HA       0.0000  3   180.00 ! ALLOW POL
 NH3  CT1  C    N        0.4000  1     0.00 ! ALLOW PEP PRO
                 ! 6-31g* AcProNH2, ProNH2, 6-31g*//3-21g AcProNHCH3 RLD 4/23/93
 NH3  CT1  C    NH1      0.6000  1     0.00 ! ALLOW PEP PRO
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93
 NH3  CT1  CC   NH2      0.4000  1     0.00 ! ALLOW PEP PRO
                 ! Alanine dipeptide; NMA; acetate; etc. backbone param. RLD 3/22/92
 NH3  CT2  C    N        0.4000  1     0.00 ! ALLOW PEP PRO
@@ -2161,11 +2161,11 @@ O    C    CP1  HB       0.6000  2     0.00 ! ALLOW PEP PRO
 O    C    CP1  N       -0.3000  4     0.00 ! ALLOW PEP PRO
                 ! 6-31g* AcProNH2, ProNH2, 6-31g*//3-21g AcProNHCH3 RLD 4/23/93
 O    C    CT1  CT1      1.4000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 O    C    CT1  CT2      1.4000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 O    C    CT1  CT3      1.4000  1     0.00 !   ALLOW PEP
-                ! ala dipeptide update for new C VDW rmin, adm jr., 3/3/93c
+                ! ala dipeptide update for new C VDW Rmin, adm jr., 3/3/93c
 O    C    CT1  HB       0.0000  1     0.00 !   ALLOW PEP
                 ! Alanine Dipeptide ab initio calc's (LK)
 O    C    CT1  NH1      0.0000  1     0.00 !   ALLOW PEP
@@ -3991,16 +3991,16 @@ C    NH1  CT2  C    NH1  CT2  C    N   24
 -1.715700 -0.534910 0.258100 0.329180 -0.126160
 -0.940260 -1.319240 -0.990850 -0.896700
 
-NONbonded nbxmod  5 atom cdiel shift vatom vdistance vswitch -
+NONBONDED nbxmod  5 atom cdiel shift vatom vdistance vswitch -
 cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5 
                 !adm jr., 5/08/91, suggested cutoff scheme
 !
-!V(Lennard-Jones) = Eps,i,j[(rmin,i,j/ri,j)**12 - 2(rmin,i,j/ri,j)**6]
+!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
 !
 !epsilon: kcal/mole, Eps,i,j = sqrt(eps,i * eps,j)
-!rmin/2: A, rmin,i,j = rmin/2,i + rmin/2,j
+!Rmin/2: A, Rmin,i,j = Rmin/2,i + Rmin/2,j
 !
-!atom  ignored    epsilon      rmin/2   ignored   eps,1-4       rmin/2,1-4
+!atom  ignored    epsilon      Rmin/2   ignored   eps,1-4       Rmin/2,1-4
 !
 !carbons
 C      0.000000  -0.110000     2.000000 ! ALLOW   PEP POL ARO

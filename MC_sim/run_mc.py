@@ -11,7 +11,8 @@ from mc_code import montecarlo
 
 # PARSING CONFIG
 config = configparser.ConfigParser()
-config.read('/home/mikhail/work/Protein_Model/MC_side_chain_conf-master/MC_sim/config.ini')
+config.read('config.ini')
+
 
 # config constants
 pdb_file = config['PDB']['File']
@@ -32,7 +33,7 @@ if __name__ == '__main__':
     const_dict = read_inp(inp_file)
     mol = read_pdb(pdb_file, const_dict)
     wild_mol = read_pdb(pdb_wild_file, const_dict)
-    #mol = rotate_trp_tors_angle(wild_mol, mol, trp_resid)   
+    mol = rotate_trp_tors_angle(wild_mol, mol, trp_resid)
 
     bonds, rot_bonds = amino_acid(mol, rotating_resid)
         

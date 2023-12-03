@@ -1,0 +1,2980 @@
+
+Step: 2. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 139.4357894160896, energy: 501.17667265516366
+
+Step: 3. Bad current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 108.51533669530954, energy: 1006.4668860683728
+
+Step: 4. Bad current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -27.84312936112579, energy: 606.8025431328914
+
+Step: 5. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 5, energy: 500.85844987999
+
+Step: 6. Bad current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 3, energy: 32.53479596404923
+
+Step: 7. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -8, energy: 297.5364243834066
+
+Step: 8. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 256.4322208661567, energy: 19.131413595150686
+
+Step: 9. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 110.44908841699046, energy: 14.423932819873357
+
+Step: 10. Bad current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 5, energy: 194.91959321761533
+
+Step: 11. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 2, energy: 98.2141204801246
+
+Step: 12. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -79.29064466928503, energy: 123.6818775522489
+
+Step: 13. Bad current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -27.616407608810448, energy: 170.03193102708414
+
+Step: 14. Bad current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 9, energy: 131.02867910623007
+
+Step: 15. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: -6, energy: 46.85142813326991
+
+Step: 16. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 4, energy: 19.546851720362447
+
+Step: 17. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -6, energy: 3.1351227669792534
+
+Step: 18. Bad current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 2.2737367544323206e-13, energy: 16.50219068944907
+
+Step: 19. Bad current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 5.115907697472721e-13, energy: 16.50219068944906
+
+Step: 20. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 12.145811814554179, energy: 12.88647221118742
+
+Step: 21. Bad current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: -7, energy: 131.6122954731639
+
+Step: 22. Bad current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: -10, energy: 147.62592260056078
+
+Step: 23. Bad current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -3, energy: 22.294480822859768
+
+Step: 24. Bad current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 10, energy: 15.545011871019247
+
+Step: 25. Bad current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 135, energy: 54.36611884155775
+
+Step: 26. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -4, energy: 9.841470686132599
+
+Step: 27. Bad current rotation:
+First num: 1426, second num: 1430, resid: 92, angle: -4, energy: 13.690042117360752
+
+Step: 28. Good current rotation:
+First num: 205, second num: 207, resid: 15, angle: 5, energy: 43.9011761548755
+
+Step: 29. Good current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 0, energy: -14.40747270891202
+
+Step: 30. Bad current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: 6, energy: 26.1119656829411
+
+Step: 31. Good current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: 5, energy: 19.20234892871366
+
+Step: 32. Bad current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 290.13388887330285, energy: 110.1077836174484
+
+Step: 33. Bad current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 96.27797934167612, energy: 185.38842883514357
+
+Step: 34. Good current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 0, energy: -14.407472708911955
+
+Step: 35. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 3, energy: 208.38950196343512
+
+Step: 36. Good current rotation:
+First num: 3303, second num: 3306, resid: 212, angle: -4, energy: 10.656100701995848
+
+Step: 37. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: -123, energy: 18.585693500102746
+
+Step: 38. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -1, energy: 11.289123071734569
+
+Step: 39. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -6, energy: 1.1264062022824766
+
+Step: 40. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 1, energy: 15.361673906002029
+
+Step: 41. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -6, energy: 216.834865216322
+
+Step: 42. Good current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -119.60212180505431, energy: -29.430006361294947
+
+Step: 43. Bad current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -5, energy: 315.06399171084666
+
+Step: 44. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 147, energy: 31.590679108110397
+
+Step: 45. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: -132, energy: 3.4361260662733715
+
+Step: 46. Good current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1.5932255965630588, energy: -11.31727801176605
+
+Step: 47. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -3.716273362119182, energy: -9.949851946400992
+
+Step: 48. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -123, energy: 19.54983856185704
+
+Step: 49. Bad current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -9, energy: 112.68329199216566
+
+Step: 50. Good current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: 8, energy: 532.2198525594788
+
+Step: 51. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 0, energy: 12.437261777001458
+
+Step: 52. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -164.992926543409, energy: 32.23442985932331
+
+Step: 53. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 250.20864285622787, energy: 26.853841136264087
+
+Step: 54. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 2, energy: -26.00455797365063
+
+Step: 55. Bad current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: -27.300000000000097, energy: 503.2327986707808
+
+Step: 56. Bad current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 101.01533669530954, energy: 648.2531652030059
+
+Step: 57. Bad current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -38.34312936112576, energy: 553.3176176508493
+
+Step: 58. Bad current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -10.738415556093798, energy: 14.542691524040915
+
+Step: 59. Bad current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 5, energy: 328.0605706339057
+
+Step: 60. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: -1, energy: -42.35624963345588
+
+Step: 61. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: -27.237038481910673
+
+Step: 62. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 19.10548697293691
+
+Step: 63. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -10.239940111401097, energy: 322.54076306889976
+
+Step: 64. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 145.3476702574476, energy: 217.07934503997035
+
+Step: 65. Bad current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 128.02315237933038, energy: 295.47072524187394
+
+Step: 66. Good current rotation:
+First num: 205, second num: 207, resid: 15, angle: 10, energy: 24.61956874012488
+
+Step: 67. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: -9, energy: 135.7333230577314
+
+Step: 68. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 124.9000000000002, energy: 18.922207585842088
+
+Step: 69. Bad current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -254.53841555609375, energy: 45.482336030352926
+
+Step: 70. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: -7, energy: 46.027617011520945
+
+Step: 71. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -140, energy: 45.71160694671465
+
+Step: 72. Bad current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -7, energy: 114.15603247857811
+
+Step: 73. Bad current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: -4, energy: 14.906287736990034
+
+Step: 74. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 165, energy: 0.24240376230431815
+
+Step: 75. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: -145, energy: -2.456820592857349
+
+Step: 76. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 2.2737367544323206e-13, energy: 6.3920270124937595
+
+Step: 77. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 5.115907697472721e-13, energy: 6.392027012493763
+
+Step: 78. Bad current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -2, energy: 211.37601257939548
+
+Step: 79. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 127.3317576389158, energy: 9.904600317043439
+
+Step: 80. Good current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.792215861477416, energy: -22.389968287974295
+
+Step: 81. Good current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: 9, energy: -29.624862307628277
+
+Step: 82. Bad current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 171, energy: 136.6435625972473
+
+Step: 83. Good current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 6, energy: -33.90634812800407
+
+Step: 84. Good current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: 3, energy: -30.52141081370704
+
+Step: 85. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: -105.6682423610842, energy: 15.415803365030754
+
+Step: 86. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 181.3, energy: 0.4588540122083584
+
+Step: 87. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 4, energy: -17.69638408422623
+
+Step: 88. Good current rotation:
+First num: 205, second num: 207, resid: 15, angle: 189.45288226729025, energy: -12.987024959406957
+
+Step: 89. Good current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300919, energy: -35.776654310887
+
+Step: 90. Bad current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: -6, energy: 588.3252882184913
+
+Step: 91. Good current rotation:
+First num: 1426, second num: 1430, resid: 92, angle: -10, energy: 9.546951432269415
+
+Step: 92. Good current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -5, energy: -33.06299767096275
+
+Step: 93. Bad current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 3, energy: 230.89255180839183
+
+Step: 94. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 3, energy: -20.91567273757672
+
+Step: 95. Bad current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 7, energy: 132.30996521773977
+
+Step: 96. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -7, energy: -31.17270955653642
+
+Step: 97. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -2, energy: 20.039335620701532
+
+Step: 98. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -164.992926543409, energy: 29.90966336786757
+
+Step: 99. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 250.20864285622787, energy: 35.934987584785446
+
+Step: 100. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: -9, energy: 47.08680701163032
+
+Step: 102. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -8, energy: 0.0
+
+Step: 103. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 10, energy: 0.0
+
+Step: 104. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 180, energy: 0.0
+
+Step: 105. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 232.41269657765105, energy: 0.0
+
+Step: 106. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -21.99815505983986, energy: 0.0
+
+Step: 107. Good current rotation:
+First num: 2113, second num: 2115, resid: 137, angle: 176, energy: 0.0
+
+Step: 108. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -114.37005394950728, energy: 0.0
+
+Step: 109. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 115.13257480409163, energy: 0.0
+
+Step: 110. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -264.5384155560936, energy: 0.0
+
+Step: 111. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 152, energy: 0.0
+
+Step: 112. Bad current rotation:
+First num: 1326, second num: 1327, resid: 86, angle: 0, energy: 0.0
+
+Step: 113. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: -5, energy: 0.0
+
+Step: 114. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: -1, energy: 0.0
+
+Step: 115. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 2, energy: 0.0
+
+Step: 116. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 243.93578941608962, energy: 0.0
+
+Step: 117. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 101.11533669530957, energy: 0.0
+
+Step: 118. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -18.143129361125744, energy: 0.0
+
+Step: 119. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 0, energy: 0.0
+
+Step: 120. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 4, energy: 0.0
+
+Step: 121. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 3, energy: 0.0
+
+Step: 122. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: -2, energy: 0.0
+
+Step: 123. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 9, energy: 0.0
+
+Step: 124. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -8, energy: 0.0
+
+Step: 125. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -7, energy: 0.0
+
+Step: 126. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -8, energy: 0.0
+
+Step: 127. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: -10, energy: 0.0
+
+Step: 128. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: 10, energy: 0.0
+
+Step: 129. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: -1, energy: 0.0
+
+Step: 130. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -173, energy: 0.0
+
+Step: 131. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 30.609355330715005, energy: 0.0
+
+Step: 132. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 260.28359239118964, energy: 0.0
+
+Step: 133. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 134. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 4, energy: 0.0
+
+Step: 135. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 0, energy: 0.0
+
+Step: 136. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 4, energy: 0.0
+
+Step: 137. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -120.60601253918622, energy: 0.0
+
+Step: 138. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 40.03974135847031, energy: 0.0
+
+Step: 139. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -3, energy: 0.0
+
+Step: 140. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 1, energy: 0.0
+
+Step: 141. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: 3, energy: 0.0
+
+Step: 142. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 114.94315940612853, energy: 0.0
+
+Step: 143. Bad current rotation:
+First num: 911, second num: 914, resid: 60, angle: -71.42996130876048, energy: 0.0
+
+Step: 144. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: 6, energy: 0.0
+
+Step: 145. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 8, energy: 0.0
+
+Step: 146. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: 10, energy: 0.0
+
+Step: 147. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: -7, energy: 0.0
+
+Step: 148. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 0, energy: 0.0
+
+Step: 149. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -6, energy: 0.0
+
+Step: 150. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 17.63305745816774, energy: 0.0
+
+Step: 151. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -331.58433544644527, energy: 0.0
+
+Step: 152. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -59.86611112669709, energy: 0.0
+
+Step: 153. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 96.277979341676, energy: 0.0
+
+Step: 154. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 2, energy: 0.0
+
+Step: 155. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -234.39999999999992, energy: 0.0
+
+Step: 156. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -315.8000000000001, energy: 0.0
+
+Step: 157. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -10, energy: 0.0
+
+Step: 158. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: -5, energy: 0.0
+
+Step: 159. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 2, energy: 0.0
+
+Step: 160. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 246.93140776890993, energy: 0.0
+
+Step: 161. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 68.90864285622791, energy: 0.0
+
+Step: 162. Bad current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 254.136362358749, energy: 0.0
+
+Step: 163. Bad current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 114.36612622743706, energy: 0.0
+
+Step: 164. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -175.91202367410028, energy: 0.0
+
+Step: 165. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: -8, energy: 0.0
+
+Step: 166. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -3, energy: 0.0
+
+Step: 167. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -5, energy: 0.0
+
+Step: 168. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 0, energy: 0.0
+
+Step: 169. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 5, energy: 0.0
+
+Step: 170. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 9, energy: 0.0
+
+Step: 171. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -10, energy: 0.0
+
+Step: 172. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 6, energy: 0.0
+
+Step: 173. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -119.12367764047511, energy: 0.0
+
+Step: 174. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 120.05191404293657, energy: 0.0
+
+Step: 175. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -140.74830031908397, energy: 0.0
+
+Step: 176. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -7, energy: 0.0
+
+Step: 177. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 6, energy: 0.0
+
+Step: 178. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: 7, energy: 0.0
+
+Step: 179. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 9, energy: 0.0
+
+Step: 180. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 2, energy: 0.0
+
+Step: 181. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -8, energy: 0.0
+
+Step: 182. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: 8, energy: 0.0
+
+Step: 183. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -7, energy: 0.0
+
+Step: 184. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -174, energy: 0.0
+
+Step: 185. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 9, energy: 0.0
+
+Step: 186. Bad current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -10, energy: 0.0
+
+Step: 187. Bad current rotation:
+First num: 1326, second num: 1327, resid: 86, angle: -4, energy: 0.0
+
+Step: 188. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 6, energy: 0.0
+
+Step: 189. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -93, energy: 0.0
+
+Step: 190. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 0, energy: 0.0
+
+Step: 191. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: -5, energy: 0.0
+
+Step: 192. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 6, energy: 0.0
+
+Step: 193. Good current rotation:
+First num: 2115, second num: 2116, resid: 137, angle: 7, energy: 0.0
+
+Step: 194. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 256.4322208661567, energy: 0.0
+
+Step: 195. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 110.44908841699046, energy: 0.0
+
+Step: 196. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -8, energy: 0.0
+
+Step: 197. Bad current rotation:
+First num: 911, second num: 914, resid: 60, angle: 120, energy: 0.0
+
+Step: 198. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: 6, energy: 0.0
+
+Step: 199. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: -8, energy: 0.0
+
+Step: 200. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 6, energy: 0.0
+
+Step: 202. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: 0, energy: 0.0
+
+Step: 203. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: -2, energy: 0.0
+
+Step: 204. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 170, energy: 0.0
+
+Step: 205. Good current rotation:
+First num: 2113, second num: 2115, resid: 137, angle: 7, energy: 0.0
+
+Step: 206. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 122.13388887330274, energy: 0.0
+
+Step: 207. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 96.27797934167606, energy: 0.0
+
+Step: 208. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: -9, energy: 0.0
+
+Step: 209. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 225.44315940612853, energy: 0.0
+
+Step: 210. Bad current rotation:
+First num: 911, second num: 914, resid: 60, angle: -58.029961308760505, energy: 0.0
+
+Step: 211. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -1, energy: 0.0
+
+Step: 212. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -4, energy: 0.0
+
+Step: 213. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 222.89804018007163, energy: 0.0
+
+Step: 214. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -59.13804436186558, energy: 0.0
+
+Step: 215. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -119.60212180505431, energy: 0.0
+
+Step: 216. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 0, energy: 0.0
+
+Step: 217. Bad current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 1.1368683772161603e-13, energy: 0.0
+
+Step: 218. Bad current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -1.1368683772161603e-13, energy: 0.0
+
+Step: 219. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 246.93140776890993, energy: 0.0
+
+Step: 220. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 68.90864285622791, energy: 0.0
+
+Step: 221. Bad current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: -9, energy: 0.0
+
+Step: 222. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -235.20601253918625, energy: 0.0
+
+Step: 223. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -126.7602586415297, energy: 0.0
+
+Step: 224. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: 4, energy: 0.0
+
+Step: 225. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 248.67397351089687, energy: 0.0
+
+Step: 226. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -67.51717123009229, energy: 0.0
+
+Step: 227. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -8, energy: 0.0
+
+Step: 228. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 8, energy: 0.0
+
+Step: 229. Bad current rotation:
+First num: 1300, second num: 1303, resid: 85, angle: 8, energy: 0.0
+
+Step: 230. Bad current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: 0, energy: 0.0
+
+Step: 231. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 9, energy: 0.0
+
+Step: 232. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: -149, energy: 0.0
+
+Step: 233. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 233.13222086615667, energy: 0.0
+
+Step: 234. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -0.3509115830094913, energy: 0.0
+
+Step: 235. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1.5932255965630588, energy: 0.0
+
+Step: 236. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -3.716273362119182, energy: 0.0
+
+Step: 237. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 169, energy: 0.0
+
+Step: 238. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -6, energy: 0.0
+
+Step: 239. Good current rotation:
+First num: 2942, second num: 2943, resid: 188, angle: 2, energy: 0.0
+
+Step: 240. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 8, energy: 0.0
+
+Step: 241. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 0, energy: 0.0
+
+Step: 242. Bad current rotation:
+First num: 2113, second num: 2115, resid: 137, angle: 0, energy: 0.0
+
+Step: 243. Bad current rotation:
+First num: 1326, second num: 1327, resid: 86, angle: -2, energy: 0.0
+
+Step: 244. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 239.07397351089685, energy: 0.0
+
+Step: 245. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300923, energy: 0.0
+
+Step: 246. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 127.37397351089686, energy: 0.0
+
+Step: 247. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -90.71717123009228, energy: 0.0
+
+Step: 248. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -6, energy: 0.0
+
+Step: 249. Good current rotation:
+First num: 1426, second num: 1430, resid: 92, angle: 2, energy: 0.0
+
+Step: 250. Bad current rotation:
+First num: 1326, second num: 1327, resid: 86, angle: 10, energy: 0.0
+
+Step: 251. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 112.39804018007163, energy: 0.0
+
+Step: 252. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -72.53804436186556, energy: 0.0
+
+Step: 253. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 0, energy: 0.0
+
+Step: 254. Bad current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 0, energy: 0.0
+
+Step: 255. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 0, energy: 0.0
+
+Step: 256. Good current rotation:
+First num: 2942, second num: 2943, resid: 188, angle: 6, energy: 0.0
+
+Step: 257. Good current rotation:
+First num: 3303, second num: 3306, resid: 212, angle: -5, energy: 0.0
+
+Step: 258. Bad current rotation:
+First num: 1300, second num: 1303, resid: 85, angle: -10, energy: 0.0
+
+Step: 259. Bad current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -2, energy: 0.0
+
+Step: 260. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 26.63305745816757, energy: 0.0
+
+Step: 261. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -151.58433544644566, energy: 0.0
+
+Step: 262. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: -7, energy: 0.0
+
+Step: 263. Good current rotation:
+First num: 3303, second num: 3306, resid: 212, angle: -4, energy: 0.0
+
+Step: 264. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -120.60601253918622, energy: 0.0
+
+Step: 265. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 40.03974135847031, energy: 0.0
+
+Step: 266. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 146, energy: 0.0
+
+Step: 267. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -10, energy: 0.0
+
+Step: 268. Bad current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 2, energy: 0.0
+
+Step: 269. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: 4, energy: 0.0
+
+Step: 270. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 6.073973510896849, energy: 0.0
+
+Step: 271. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -76.01717123009229, energy: 0.0
+
+Step: 272. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 7, energy: 0.0
+
+Step: 273. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 266.93140776890993, energy: 0.0
+
+Step: 274. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 320.80864285622795, energy: 0.0
+
+Step: 275. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 4, energy: 0.0
+
+Step: 276. Bad current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: -134, energy: 0.0
+
+Step: 277. Bad current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: 10, energy: 0.0
+
+Step: 278. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 5, energy: 0.0
+
+Step: 279. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -4, energy: 0.0
+
+Step: 280. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 1, energy: 0.0
+
+Step: 281. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 30.609355330715005, energy: 0.0
+
+Step: 282. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 252.28359239118953, energy: 0.0
+
+Step: 283. Bad current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 253.43578941608962, energy: 0.0
+
+Step: 284. Bad current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 127.41533669530958, energy: 0.0
+
+Step: 285. Bad current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -30.243129361125767, energy: 0.0
+
+Step: 286. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: 0, energy: 0.0
+
+Step: 287. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: -6, energy: 0.0
+
+Step: 288. Bad current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 232.41269657765105, energy: 0.0
+
+Step: 289. Bad current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -21.998155059839974, energy: 0.0
+
+Step: 290. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 10, energy: 0.0
+
+Step: 291. Bad current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 232.41269657765105, energy: 0.0
+
+Step: 292. Bad current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -21.998155059839974, energy: 0.0
+
+Step: 293. Good current rotation:
+First num: 1426, second num: 1430, resid: 92, angle: -5, energy: 0.0
+
+Step: 294. Bad current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 7.586869180198619, energy: 0.0
+
+Step: 295. Bad current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 9, energy: 0.0
+
+Step: 296. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 10, energy: 0.0
+
+Step: 297. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 1, energy: 0.0
+
+Step: 298. Bad current rotation:
+First num: 2115, second num: 2116, resid: 137, angle: -155, energy: 0.0
+
+Step: 299. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 300. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 302. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 5, energy: 0.0
+
+Step: 303. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 10, energy: 0.0
+
+Step: 304. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 256.4322208661567, energy: 0.0
+
+Step: 305. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 110.44908841699046, energy: 0.0
+
+Step: 306. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -8.906012539186236, energy: 0.0
+
+Step: 307. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -126.56025864152971, energy: 0.0
+
+Step: 308. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -119.60212180505431, energy: 0.0
+
+Step: 309. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 4, energy: 0.0
+
+Step: 310. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -3, energy: 0.0
+
+Step: 311. Bad current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -8, energy: 0.0
+
+Step: 312. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: -3, energy: 0.0
+
+Step: 313. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: -8, energy: 0.0
+
+Step: 314. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 252.03305745816772, energy: 0.0
+
+Step: 315. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 164.21566455355457, energy: 0.0
+
+Step: 316. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -2, energy: 0.0
+
+Step: 317. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 2, energy: 0.0
+
+Step: 318. Bad current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -126.42367764047515, energy: 0.0
+
+Step: 319. Bad current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 122.25191404293662, energy: 0.0
+
+Step: 320. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -43.048300319083864, energy: 0.0
+
+Step: 321. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 9, energy: 0.0
+
+Step: 322. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 0, energy: 0.0
+
+Step: 323. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: -8, energy: 0.0
+
+Step: 324. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 5.2978781949456675, energy: 0.0
+
+Step: 325. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 30.609355330715005, energy: 0.0
+
+Step: 326. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 252.28359239118953, energy: 0.0
+
+Step: 327. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 2, energy: 0.0
+
+Step: 328. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: 0, energy: 0.0
+
+Step: 329. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 7, energy: 0.0
+
+Step: 330. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -10, energy: 0.0
+
+Step: 331. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 244.536362358749, energy: 0.0
+
+Step: 332. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 12.56612622743711, energy: 0.0
+
+Step: 333. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -155.91202367410028, energy: 0.0
+
+Step: 334. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 1, energy: 0.0
+
+Step: 335. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -129, energy: 0.0
+
+Step: 336. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 7, energy: 0.0
+
+Step: 337. Good current rotation:
+First num: 2115, second num: 2119, resid: 137, angle: -6, energy: 0.0
+
+Step: 338. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 9, energy: 0.0
+
+Step: 339. Bad current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -9, energy: 0.0
+
+Step: 340. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -179, energy: 0.0
+
+Step: 341. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 10, energy: 0.0
+
+Step: 342. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 0, energy: 0.0
+
+Step: 343. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 127.39226299928504, energy: 0.0
+
+Step: 344. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 102.80778413852295, energy: 0.0
+
+Step: 345. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -9, energy: 0.0
+
+Step: 346. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: -3, energy: 0.0
+
+Step: 347. Bad current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -10.738415556093798, energy: 0.0
+
+Step: 348. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -10.239940111401097, energy: 0.0
+
+Step: 349. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 146.3476702574476, energy: 0.0
+
+Step: 350. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 121.02315237933072, energy: 0.0
+
+Step: 351. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 4, energy: 0.0
+
+Step: 352. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -8, energy: 0.0
+
+Step: 353. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 1, energy: 0.0
+
+Step: 354. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 0, energy: 0.0
+
+Step: 355. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: -1, energy: 0.0
+
+Step: 356. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: -1, energy: 0.0
+
+Step: 357. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: 6, energy: 0.0
+
+Step: 358. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -14.299999999999784, energy: 0.0
+
+Step: 359. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -114.79999999999939, energy: 0.0
+
+Step: 360. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 5, energy: 0.0
+
+Step: 361. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: -4, energy: 0.0
+
+Step: 362. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: -5, energy: 0.0
+
+Step: 363. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 0, energy: 0.0
+
+Step: 364. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -2.3000000000000114, energy: 0.0
+
+Step: 365. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -218.9999999999999, energy: 0.0
+
+Step: 366. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -259.8000000000001, energy: 0.0
+
+Step: 367. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -254.53841555609375, energy: 0.0
+
+Step: 368. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: 5, energy: 0.0
+
+Step: 369. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 57.73388887330299, energy: 0.0
+
+Step: 370. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -219.52202065832387, energy: 0.0
+
+Step: 371. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -1, energy: 0.0
+
+Step: 372. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -10, energy: 0.0
+
+Step: 373. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -6, energy: 0.0
+
+Step: 374. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 1, energy: 0.0
+
+Step: 375. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: -1, energy: 0.0
+
+Step: 376. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 8, energy: 0.0
+
+Step: 377. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -5, energy: 0.0
+
+Step: 378. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 112.39804018007163, energy: 0.0
+
+Step: 379. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -72.53804436186556, energy: 0.0
+
+Step: 380. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -166, energy: 0.0
+
+Step: 381. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 2, energy: 0.0
+
+Step: 382. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 383. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 127.39226299928504, energy: 0.0
+
+Step: 384. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 102.80778413852295, energy: 0.0
+
+Step: 385. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: 10, energy: 0.0
+
+Step: 386. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -1, energy: 0.0
+
+Step: 387. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -156, energy: 0.0
+
+Step: 388. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 10, energy: 0.0
+
+Step: 389. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: -3, energy: 0.0
+
+Step: 390. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 239.07397351089685, energy: 0.0
+
+Step: 391. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300923, energy: 0.0
+
+Step: 392. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: -7, energy: 0.0
+
+Step: 393. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 9.600000000000136, energy: 0.0
+
+Step: 394. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 101.79999999999984, energy: 0.0
+
+Step: 395. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -19.99999999999983, energy: 0.0
+
+Step: 396. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 12.145811814554179, energy: 0.0
+
+Step: 397. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 4, energy: 0.0
+
+Step: 398. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 10.000000000000057, energy: 0.0
+
+Step: 399. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -115, energy: 0.0
+
+Step: 400. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -5, energy: 0.0
+
+Step: 402. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 136, energy: 0.0
+
+Step: 403. Good current rotation:
+First num: 2115, second num: 2119, resid: 137, angle: 4, energy: 0.0
+
+Step: 404. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: -159, energy: 0.0
+
+Step: 405. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 8, energy: 0.0
+
+Step: 406. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 256.4322208661567, energy: 0.0
+
+Step: 407. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 110.44908841699046, energy: 0.0
+
+Step: 408. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 3, energy: 0.0
+
+Step: 409. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -119.60212180505431, energy: 0.0
+
+Step: 410. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 4, energy: 0.0
+
+Step: 411. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 6, energy: 0.0
+
+Step: 412. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -10, energy: 0.0
+
+Step: 413. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -112.7541881854458, energy: 0.0
+
+Step: 414. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1.5932255965630588, energy: 0.0
+
+Step: 415. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -3.716273362119182, energy: 0.0
+
+Step: 416. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -236.1700539495073, energy: 0.0
+
+Step: 417. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 115.23257480409154, energy: 0.0
+
+Step: 418. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 239.07397351089685, energy: 0.0
+
+Step: 419. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300923, energy: 0.0
+
+Step: 420. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 5, energy: 0.0
+
+Step: 421. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: -9, energy: 0.0
+
+Step: 422. Good current rotation:
+First num: 3306, second num: 3307, resid: 212, angle: 128, energy: 0.0
+
+Step: 423. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 127.37397351089686, energy: 0.0
+
+Step: 424. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -90.71717123009228, energy: 0.0
+
+Step: 425. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 1, energy: 0.0
+
+Step: 426. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: 8, energy: 0.0
+
+Step: 427. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1.5932255965630588, energy: 0.0
+
+Step: 428. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -3.716273362119182, energy: 0.0
+
+Step: 429. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 10, energy: 0.0
+
+Step: 430. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 12.792262999285015, energy: 0.0
+
+Step: 431. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.992215861477064, energy: 0.0
+
+Step: 432. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -121.83994011140106, energy: 0.0
+
+Step: 433. Bad current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 11.94767025744784, energy: 0.0
+
+Step: 434. Bad current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 190.92315237933025, energy: 0.0
+
+Step: 435. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 3, energy: 0.0
+
+Step: 436. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3, energy: 0.0
+
+Step: 437. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 142, energy: 0.0
+
+Step: 438. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -254.53841555609375, energy: 0.0
+
+Step: 439. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 2.8421709430404007e-13, energy: 0.0
+
+Step: 440. Bad current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 7.586869180198619, energy: 0.0
+
+Step: 441. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -118.89999999999998, energy: 0.0
+
+Step: 442. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 7, energy: 0.0
+
+Step: 443. Bad current rotation:
+First num: 3228, second num: 3230, resid: 208, angle: 10, energy: 0.0
+
+Step: 444. Bad current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: 1, energy: 0.0
+
+Step: 445. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -10, energy: 0.0
+
+Step: 446. Good current rotation:
+First num: 3306, second num: 3307, resid: 212, angle: -10, energy: 0.0
+
+Step: 447. Bad current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 4, energy: 0.0
+
+Step: 448. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: -8, energy: 0.0
+
+Step: 449. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -106, energy: 0.0
+
+Step: 450. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: -3, energy: 0.0
+
+Step: 451. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -4, energy: 0.0
+
+Step: 452. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 0, energy: 0.0
+
+Step: 453. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 243.80000000000013, energy: 0.0
+
+Step: 454. Good current rotation:
+First num: 3306, second num: 3307, resid: 212, angle: -9, energy: 0.0
+
+Step: 455. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 456. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -6, energy: 0.0
+
+Step: 457. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: 0, energy: 0.0
+
+Step: 458. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: -8, energy: 0.0
+
+Step: 459. Bad current rotation:
+First num: 3228, second num: 3230, resid: 208, angle: 9, energy: 0.0
+
+Step: 460. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 114.94315940612853, energy: 0.0
+
+Step: 461. Bad current rotation:
+First num: 911, second num: 914, resid: 60, angle: -71.42996130876048, energy: 0.0
+
+Step: 462. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 4, energy: 0.0
+
+Step: 463. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -164, energy: 0.0
+
+Step: 464. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 239.07397351089685, energy: 0.0
+
+Step: 465. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300923, energy: 0.0
+
+Step: 466. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 7, energy: 0.0
+
+Step: 467. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -9, energy: 0.0
+
+Step: 468. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 4, energy: 0.0
+
+Step: 469. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 4, energy: 0.0
+
+Step: 470. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -3, energy: 0.0
+
+Step: 471. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: -6.401959819928379, energy: 0.0
+
+Step: 472. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -52.63804436186558, energy: 0.0
+
+Step: 473. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -10, energy: 0.0
+
+Step: 474. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 239.09226299928503, energy: 0.0
+
+Step: 475. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.792215861477075, energy: 0.0
+
+Step: 476. Bad current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -121.83994011140106, energy: 0.0
+
+Step: 477. Bad current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 11.94767025744784, energy: 0.0
+
+Step: 478. Bad current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 190.92315237933025, energy: 0.0
+
+Step: 479. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 0, energy: 0.0
+
+Step: 480. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 113, energy: 0.0
+
+Step: 481. Bad current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: -6, energy: 0.0
+
+Step: 482. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -236.1700539495073, energy: 0.0
+
+Step: 483. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 115.23257480409154, energy: 0.0
+
+Step: 484. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -3, energy: 0.0
+
+Step: 485. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 0, energy: 0.0
+
+Step: 486. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 57.73388887330299, energy: 0.0
+
+Step: 487. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -66.5220206583237, energy: 0.0
+
+Step: 488. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 1, energy: 0.0
+
+Step: 489. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -10, energy: 0.0
+
+Step: 490. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 161, energy: 0.0
+
+Step: 491. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 7, energy: 0.0
+
+Step: 492. Bad current rotation:
+First num: 919, second num: 920, resid: 60, angle: 3, energy: 0.0
+
+Step: 493. Bad current rotation:
+First num: 909, second num: 911, resid: 60, angle: 114.94315940612853, energy: 0.0
+
+Step: 494. Bad current rotation:
+First num: 911, second num: 914, resid: 60, angle: -71.42996130876048, energy: 0.0
+
+Step: 495. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 112.39804018007163, energy: 0.0
+
+Step: 496. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -72.53804436186556, energy: 0.0
+
+Step: 497. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 19.135789416089438, energy: 0.0
+
+Step: 498. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 105.71533669530982, energy: 0.0
+
+Step: 499. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 74.75822896510277, energy: 0.0
+
+Step: 500. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 246.93140776890993, energy: 0.0
+
+Step: 501. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 68.90864285622791, energy: 0.0
+
+Step: 502. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -3, energy: 0.0
+
+Step: 503. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 243.79999999999995, energy: 0.0
+
+Step: 504. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: 8, energy: 0.0
+
+Step: 505. Good current rotation:
+First num: 2942, second num: 2943, resid: 188, angle: -10, energy: 0.0
+
+Step: 506. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 7, energy: 0.0
+
+Step: 507. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 6, energy: 0.0
+
+Step: 508. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 1, energy: 0.0
+
+Step: 509. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 1, energy: 0.0
+
+Step: 510. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -152, energy: 0.0
+
+Step: 511. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -2.9399401114010857, energy: 0.0
+
+Step: 512. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 8.147670257447658, energy: 0.0
+
+Step: 513. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -151.77684762066963, energy: 0.0
+
+Step: 514. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -8, energy: 0.0
+
+Step: 515. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 0, energy: 0.0
+
+Step: 516. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1, energy: 0.0
+
+Step: 517. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -104, energy: 0.0
+
+Step: 518. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 1.1368683772161603e-13, energy: 0.0
+
+Step: 519. Good current rotation:
+First num: 1426, second num: 1430, resid: 92, angle: -4, energy: 0.0
+
+Step: 520. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 12.792262999285015, energy: 0.0
+
+Step: 521. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.992215861477064, energy: 0.0
+
+Step: 522. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 7.586869180198619, energy: 0.0
+
+Step: 523. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 1, energy: 0.0
+
+Step: 524. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: -7, energy: 0.0
+
+Step: 525. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -114.37005394950728, energy: 0.0
+
+Step: 526. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 115.13257480409163, energy: 0.0
+
+Step: 527. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 256.13636235874907, energy: 0.0
+
+Step: 528. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 114.36612622743701, energy: 0.0
+
+Step: 529. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -175.91202367409778, energy: 0.0
+
+Step: 530. Good current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: 6, energy: 0.0
+
+Step: 531. Good current rotation:
+First num: 2942, second num: 2943, resid: 188, angle: 7, energy: 0.0
+
+Step: 532. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 2, energy: 0.0
+
+Step: 533. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 5, energy: 0.0
+
+Step: 534. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 239.41269657765105, energy: 0.0
+
+Step: 535. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -21.998155059839917, energy: 0.0
+
+Step: 536. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 7, energy: 0.0
+
+Step: 537. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 9, energy: 0.0
+
+Step: 538. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -118.89999999999998, energy: 0.0
+
+Step: 539. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: -3.200000000000273, energy: 0.0
+
+Step: 540. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: 342.69999999999806, energy: 0.0
+
+Step: 541. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -5, energy: 0.0
+
+Step: 542. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 1, energy: 0.0
+
+Step: 543. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -8.906012539186236, energy: 0.0
+
+Step: 544. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -126.56025864152971, energy: 0.0
+
+Step: 545. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -6, energy: 0.0
+
+Step: 546. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -8, energy: 0.0
+
+Step: 547. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -0.0, energy: 0.0
+
+Step: 548. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 2.2737367544323206e-13, energy: 0.0
+
+Step: 549. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 121.50000000000028, energy: 0.0
+
+Step: 550. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 114.00000000000011, energy: 0.0
+
+Step: 551. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -72.30903771255896, energy: 0.0
+
+Step: 552. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 9, energy: 0.0
+
+Step: 553. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -6, energy: 0.0
+
+Step: 554. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -6, energy: 0.0
+
+Step: 555. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 246.93140776890993, energy: 0.0
+
+Step: 556. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 68.90864285622791, energy: 0.0
+
+Step: 557. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 5, energy: 0.0
+
+Step: 558. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -6, energy: 0.0
+
+Step: 559. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -1, energy: 0.0
+
+Step: 560. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -5, energy: 0.0
+
+Step: 561. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -11.299999999999784, energy: 0.0
+
+Step: 562. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -115.79999999999944, energy: 0.0
+
+Step: 563. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -1, energy: 0.0
+
+Step: 564. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 127.39226299928504, energy: 0.0
+
+Step: 565. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 102.80778413852295, energy: 0.0
+
+Step: 566. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 168, energy: 0.0
+
+Step: 567. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -4, energy: 0.0
+
+Step: 568. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: -2, energy: 0.0
+
+Step: 569. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -10, energy: 0.0
+
+Step: 570. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 5.2978781949456675, energy: 0.0
+
+Step: 571. Good current rotation:
+First num: 3228, second num: 3230, resid: 208, angle: 5, energy: 0.0
+
+Step: 572. Good current rotation:
+First num: 1305, second num: 1306, resid: 85, angle: 0, energy: 0.0
+
+Step: 573. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -243.8, energy: 0.0
+
+Step: 574. Good current rotation:
+First num: 3303, second num: 3306, resid: 212, angle: -8, energy: 0.0
+
+Step: 575. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: 3, energy: 0.0
+
+Step: 576. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: -110.50000000000017, energy: 0.0
+
+Step: 577. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -13.400000000000261, energy: 0.0
+
+Step: 578. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 3, energy: 0.0
+
+Step: 579. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 580. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 581. Bad current rotation:
+First num: 1326, second num: 1327, resid: 86, angle: -8, energy: 0.0
+
+Step: 582. Good current rotation:
+First num: 3228, second num: 3230, resid: 208, angle: -158, energy: 0.0
+
+Step: 583. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -5, energy: 0.0
+
+Step: 584. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -10, energy: 0.0
+
+Step: 585. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 5, energy: 0.0
+
+Step: 586. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -0.0, energy: 0.0
+
+Step: 587. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 243.79999999999995, energy: 0.0
+
+Step: 588. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 1, energy: 0.0
+
+Step: 589. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 239.09226299928503, energy: 0.0
+
+Step: 590. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.792215861477075, energy: 0.0
+
+Step: 591. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: -9, energy: 0.0
+
+Step: 592. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 80.03305745816729, energy: 0.0
+
+Step: 593. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 283.2156645535539, energy: 0.0
+
+Step: 594. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 10, energy: 0.0
+
+Step: 595. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: 5, energy: 0.0
+
+Step: 596. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 6, energy: 0.0
+
+Step: 597. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -10, energy: 0.0
+
+Step: 598. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 6, energy: 0.0
+
+Step: 599. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: -3, energy: 0.0
+
+Step: 600. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -9, energy: 0.0
+
+Step: 602. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: -3, energy: 0.0
+
+Step: 603. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: 225.44315940612853, energy: 0.0
+
+Step: 604. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -58.029961308760505, energy: 0.0
+
+Step: 605. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -10.239940111401097, energy: 0.0
+
+Step: 606. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 137.3476702574477, energy: 0.0
+
+Step: 607. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 128.0231523793305, energy: 0.0
+
+Step: 608. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 30.609355330715005, energy: 0.0
+
+Step: 609. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 252.28359239118953, energy: 0.0
+
+Step: 610. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -5.684341886080802e-14, energy: 0.0
+
+Step: 611. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -1.1368683772161603e-13, energy: 0.0
+
+Step: 612. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 9, energy: 0.0
+
+Step: 613. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 3, energy: 0.0
+
+Step: 614. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 1, energy: 0.0
+
+Step: 615. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 7, energy: 0.0
+
+Step: 616. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 289.1338888733029, energy: 0.0
+
+Step: 617. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 96.27797934167617, energy: 0.0
+
+Step: 618. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: -6, energy: 0.0
+
+Step: 619. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -7, energy: 0.0
+
+Step: 620. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -2, energy: 0.0
+
+Step: 621. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: 10, energy: 0.0
+
+Step: 622. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -4, energy: 0.0
+
+Step: 623. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -8, energy: 0.0
+
+Step: 624. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -10, energy: 0.0
+
+Step: 625. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: 10, energy: 0.0
+
+Step: 626. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 5, energy: 0.0
+
+Step: 627. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 0, energy: 0.0
+
+Step: 628. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -10, energy: 0.0
+
+Step: 629. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 630. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 631. Good current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: 1, energy: 0.0
+
+Step: 632. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 5, energy: 0.0
+
+Step: 633. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: -7, energy: 0.0
+
+Step: 634. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -1, energy: 0.0
+
+Step: 635. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 2, energy: 0.0
+
+Step: 636. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -1, energy: 0.0
+
+Step: 637. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -3, energy: 0.0
+
+Step: 638. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -6, energy: 0.0
+
+Step: 639. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 1, energy: 0.0
+
+Step: 640. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -236.1700539495073, energy: 0.0
+
+Step: 641. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 115.23257480409154, energy: 0.0
+
+Step: 642. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -4, energy: 0.0
+
+Step: 643. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 7.586869180198619, energy: 0.0
+
+Step: 644. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: -124.89999999999998, energy: 0.0
+
+Step: 645. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: 1, energy: 0.0
+
+Step: 646. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 5, energy: 0.0
+
+Step: 647. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1.5932255965630588, energy: 0.0
+
+Step: 648. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -3.716273362119182, energy: 0.0
+
+Step: 649. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: 6, energy: 0.0
+
+Step: 650. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 127.37397351089686, energy: 0.0
+
+Step: 651. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -90.71717123009228, energy: 0.0
+
+Step: 652. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -2, energy: 0.0
+
+Step: 653. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -3, energy: 0.0
+
+Step: 654. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: -4, energy: 0.0
+
+Step: 655. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -2, energy: 0.0
+
+Step: 656. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: -1, energy: 0.0
+
+Step: 657. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: -6, energy: 0.0
+
+Step: 658. Good current rotation:
+First num: 3303, second num: 3306, resid: 212, angle: 108, energy: 0.0
+
+Step: 659. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: -10, energy: 0.0
+
+Step: 660. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -7, energy: 0.0
+
+Step: 661. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -8, energy: 0.0
+
+Step: 662. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -107.39999999999992, energy: 0.0
+
+Step: 663. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -313.49999999999994, energy: 0.0
+
+Step: 664. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: -2, energy: 0.0
+
+Step: 665. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 4, energy: 0.0
+
+Step: 666. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: 2, energy: 0.0
+
+Step: 667. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -122.00000000000006, energy: 0.0
+
+Step: 668. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -1.2999999999999545, energy: 0.0
+
+Step: 669. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 5, energy: 0.0
+
+Step: 670. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 5, energy: 0.0
+
+Step: 671. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: -5, energy: 0.0
+
+Step: 672. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: -8, energy: 0.0
+
+Step: 673. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -1, energy: 0.0
+
+Step: 674. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -8, energy: 0.0
+
+Step: 675. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -0.0, energy: 0.0
+
+Step: 676. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -4.999999999999943, energy: 0.0
+
+Step: 677. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 10, energy: 0.0
+
+Step: 678. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 1, energy: 0.0
+
+Step: 679. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 142, energy: 0.0
+
+Step: 680. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 239.09226299928503, energy: 0.0
+
+Step: 681. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.792215861477075, energy: 0.0
+
+Step: 682. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 0, energy: 0.0
+
+Step: 683. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: -2, energy: 0.0
+
+Step: 684. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: 6, energy: 0.0
+
+Step: 685. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 135.23140776890995, energy: 0.0
+
+Step: 686. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 235.50864285622794, energy: 0.0
+
+Step: 687. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 4, energy: 0.0
+
+Step: 688. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -2, energy: 0.0
+
+Step: 689. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 154, energy: 0.0
+
+Step: 690. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 240.13222086615673, energy: 0.0
+
+Step: 691. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -0.3509115830094913, energy: 0.0
+
+Step: 692. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -231.65418818544578, energy: 0.0
+
+Step: 693. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -5, energy: 0.0
+
+Step: 694. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 0, energy: 0.0
+
+Step: 695. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 5, energy: 0.0
+
+Step: 696. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -138.4236776404752, energy: 0.0
+
+Step: 697. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 112.55191404293657, energy: 0.0
+
+Step: 698. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -152.24830031908374, energy: 0.0
+
+Step: 699. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 0, energy: 0.0
+
+Step: 700. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 101, energy: 0.0
+
+Step: 702. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 3, energy: 0.0
+
+Step: 703. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 10, energy: 0.0
+
+Step: 704. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 9, energy: 0.0
+
+Step: 705. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 6.092262999285026, energy: 0.0
+
+Step: 706. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 117.50778413852294, energy: 0.0
+
+Step: 707. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 9, energy: 0.0
+
+Step: 708. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -5, energy: 0.0
+
+Step: 709. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 246.93140776890993, energy: 0.0
+
+Step: 710. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 68.90864285622791, energy: 0.0
+
+Step: 711. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: -7, energy: 0.0
+
+Step: 712. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: -236.21313081980134, energy: 0.0
+
+Step: 713. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 9, energy: 0.0
+
+Step: 714. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: 175, energy: 0.0
+
+Step: 715. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -4.923677640475091, energy: 0.0
+
+Step: 716. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 236.25191404293662, energy: 0.0
+
+Step: 717. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -138.74830031908385, energy: 0.0
+
+Step: 718. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -231.65418818544578, energy: 0.0
+
+Step: 719. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: -4, energy: 0.0
+
+Step: 720. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -120.10677440343693, energy: 0.0
+
+Step: 721. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -12.616273362119216, energy: 0.0
+
+Step: 722. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 180, energy: 0.0
+
+Step: 723. Good current rotation:
+First num: 3306, second num: 3307, resid: 212, angle: -1, energy: 0.0
+
+Step: 724. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -6, energy: 0.0
+
+Step: 725. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 148, energy: 0.0
+
+Step: 726. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -10.239940111401097, energy: 0.0
+
+Step: 727. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 137.3476702574477, energy: 0.0
+
+Step: 728. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 128.0231523793305, energy: 0.0
+
+Step: 729. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: 162, energy: 0.0
+
+Step: 730. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: 5, energy: 0.0
+
+Step: 731. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 112.39804018007163, energy: 0.0
+
+Step: 732. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -72.53804436186556, energy: 0.0
+
+Step: 733. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: 0, energy: 0.0
+
+Step: 734. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: -1, energy: 0.0
+
+Step: 735. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -8.906012539186236, energy: 0.0
+
+Step: 736. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -126.56025864152971, energy: 0.0
+
+Step: 737. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: 115.94315940612859, energy: 0.0
+
+Step: 738. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -66.42996130876048, energy: 0.0
+
+Step: 739. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: 10, energy: 0.0
+
+Step: 740. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 10, energy: 0.0
+
+Step: 741. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 9, energy: 0.0
+
+Step: 742. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 7, energy: 0.0
+
+Step: 743. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 5, energy: 0.0
+
+Step: 744. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 10, energy: 0.0
+
+Step: 745. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -7, energy: 0.0
+
+Step: 746. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 10, energy: 0.0
+
+Step: 747. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 7, energy: 0.0
+
+Step: 748. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 3, energy: 0.0
+
+Step: 749. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 4, energy: 0.0
+
+Step: 750. Good current rotation:
+First num: 919, second num: 920, resid: 60, angle: 8, energy: 0.0
+
+Step: 751. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: -10, energy: 0.0
+
+Step: 752. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: 5, energy: 0.0
+
+Step: 753. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -111.59999999999997, energy: 0.0
+
+Step: 754. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -130.4000000000002, energy: 0.0
+
+Step: 755. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 52.900000000000034, energy: 0.0
+
+Step: 756. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 232.13222086615673, energy: 0.0
+
+Step: 757. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -0.3509115830166252, energy: 0.0
+
+Step: 758. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: -3, energy: 0.0
+
+Step: 759. Good current rotation:
+First num: 2115, second num: 2116, resid: 137, angle: -6, energy: 0.0
+
+Step: 760. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -5, energy: 0.0
+
+Step: 761. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 6, energy: 0.0
+
+Step: 762. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 119, energy: 0.0
+
+Step: 763. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: -118.80000000000052, energy: 0.0
+
+Step: 764. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: 19.899999999999864, energy: 0.0
+
+Step: 765. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 3, energy: 0.0
+
+Step: 766. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: -133, energy: 0.0
+
+Step: 767. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 5, energy: 0.0
+
+Step: 768. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 769. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 5, energy: 0.0
+
+Step: 770. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -8, energy: 0.0
+
+Step: 771. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 2, energy: 0.0
+
+Step: 772. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 139.63305745816774, energy: 0.0
+
+Step: 773. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -142.28433544644565, energy: 0.0
+
+Step: 774. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -4, energy: 0.0
+
+Step: 775. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: -7, energy: 0.0
+
+Step: 776. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 170.73388887330287, energy: 0.0
+
+Step: 777. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -234.22202065832352, energy: 0.0
+
+Step: 778. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 779. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 780. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -3, energy: 0.0
+
+Step: 781. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 6, energy: 0.0
+
+Step: 782. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -8, energy: 0.0
+
+Step: 783. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: -5, energy: 0.0
+
+Step: 784. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: -10, energy: 0.0
+
+Step: 785. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 5, energy: 0.0
+
+Step: 786. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: 9, energy: 0.0
+
+Step: 787. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: 2, energy: 0.0
+
+Step: 788. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 4, energy: 0.0
+
+Step: 789. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: 9, energy: 0.0
+
+Step: 790. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: -1, energy: 0.0
+
+Step: 791. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 239.07397351089685, energy: 0.0
+
+Step: 792. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300923, energy: 0.0
+
+Step: 793. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 5, energy: 0.0
+
+Step: 794. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: -120.10677440343693, energy: 0.0
+
+Step: 795. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -12.616273362119216, energy: 0.0
+
+Step: 796. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 2, energy: 0.0
+
+Step: 797. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 275.7999999999997, energy: 0.0
+
+Step: 798. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 10, energy: 0.0
+
+Step: 799. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 7, energy: 0.0
+
+Step: 800. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -241.90601253918624, energy: 0.0
+
+Step: 801. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 54.7397413584703, energy: 0.0
+
+Step: 802. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 253.43578941608962, energy: 0.0
+
+Step: 803. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: -104.58466330469042, energy: 0.0
+
+Step: 804. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 3.43451019469353, energy: 0.0
+
+Step: 805. Good current rotation:
+First num: 3228, second num: 3232, resid: 208, angle: 126, energy: 0.0
+
+Step: 806. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: 1, energy: 0.0
+
+Step: 807. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 808. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 222.89804018007163, energy: 0.0
+
+Step: 809. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -59.13804436186558, energy: 0.0
+
+Step: 810. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: -1.1368683772161603e-13, energy: 0.0
+
+Step: 811. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 3.410605131648481e-13, energy: 0.0
+
+Step: 812. Bad current rotation:
+First num: 3278, second num: 3280, resid: 211, angle: 1.5932255965630588, energy: 0.0
+
+Step: 813. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -3.716273362119182, energy: 0.0
+
+Step: 814. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: 7, energy: 0.0
+
+Step: 815. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: -115, energy: 0.0
+
+Step: 816. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: -9, energy: 0.0
+
+Step: 817. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 118.89999999999998, energy: 0.0
+
+Step: 818. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -5.8000000000004945, energy: 0.0
+
+Step: 819. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: -342.69999999999993, energy: 0.0
+
+Step: 820. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 6, energy: 0.0
+
+Step: 821. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 8, energy: 0.0
+
+Step: 822. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 823. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 824. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 6, energy: 0.0
+
+Step: 825. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 826. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: -8, energy: 0.0
+
+Step: 827. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 10, energy: 0.0
+
+Step: 828. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 6, energy: 0.0
+
+Step: 829. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: 8, energy: 0.0
+
+Step: 830. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -6, energy: 0.0
+
+Step: 831. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: -141.30000000000007, energy: 0.0
+
+Step: 832. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: -26.400000000000063, energy: 0.0
+
+Step: 833. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -18.37052171578071, energy: 0.0
+
+Step: 834. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: -2.887303422348964, energy: 0.0
+
+Step: 835. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -10.49815505983986, energy: 0.0
+
+Step: 836. Bad current rotation:
+First num: 3076, second num: 3080, resid: 196, angle: 3, energy: 0.0
+
+Step: 837. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -1.1368683772161603e-13, energy: 0.0
+
+Step: 838. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 112.39999999999966, energy: 0.0
+
+Step: 839. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 314.4999999999995, energy: 0.0
+
+Step: 840. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: 3, energy: 0.0
+
+Step: 841. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 8, energy: 0.0
+
+Step: 842. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 104, energy: 0.0
+
+Step: 843. Good current rotation:
+First num: 3228, second num: 3230, resid: 208, angle: 3, energy: 0.0
+
+Step: 844. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 2, energy: 0.0
+
+Step: 845. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -11.699999999999932, energy: 0.0
+
+Step: 846. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: -116.59999999999974, energy: 0.0
+
+Step: 847. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: 50.289348911173875, energy: 0.0
+
+Step: 848. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: -94.19999999999982, energy: 0.0
+
+Step: 849. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 16.59999999999991, energy: 0.0
+
+Step: 850. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -33.283388556645605, energy: 0.0
+
+Step: 851. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: -122.00000000000006, energy: 0.0
+
+Step: 852. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -9.30000000000041, energy: 0.0
+
+Step: 853. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 2, energy: 0.0
+
+Step: 854. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: 9.699999999999989, energy: 0.0
+
+Step: 855. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 123.60000000000002, energy: 0.0
+
+Step: 856. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -37.36712927541814, energy: 0.0
+
+Step: 857. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 154, energy: 0.0
+
+Step: 858. Bad current rotation:
+First num: 1363, second num: 1366, resid: 89, angle: -8, energy: 0.0
+
+Step: 859. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 2, energy: 0.0
+
+Step: 860. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: 9, energy: 0.0
+
+Step: 861. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: 0, energy: 0.0
+
+Step: 862. Good current rotation:
+First num: 2110, second num: 2113, resid: 137, angle: -7, energy: 0.0
+
+Step: 863. Good current rotation:
+First num: 2115, second num: 2119, resid: 137, angle: -1, energy: 0.0
+
+Step: 864. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: -1, energy: 0.0
+
+Step: 865. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: 229.30000000000092, energy: 0.0
+
+Step: 866. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: -6.500000000000057, energy: 0.0
+
+Step: 867. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: -118.90000000000003, energy: 0.0
+
+Step: 868. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -3.2000000000000455, energy: 0.0
+
+Step: 869. Good current rotation:
+First num: 3216, second num: 3219, resid: 207, angle: 342.69999999999993, energy: 0.0
+
+Step: 870. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -8, energy: 0.0
+
+Step: 871. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -9, energy: 0.0
+
+Step: 872. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -4, energy: 0.0
+
+Step: 873. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 13.931407768909935, energy: 0.0
+
+Step: 874. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 250.20864285622793, energy: 0.0
+
+Step: 875. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 1, energy: 0.0
+
+Step: 876. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 229.3, energy: 0.0
+
+Step: 877. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -6.5, energy: 0.0
+
+Step: 878. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -263.5384155560937, energy: 0.0
+
+Step: 879. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 880. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 881. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: -5.684341886080802e-14, energy: 0.0
+
+Step: 882. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: 2.8421709430404007e-13, energy: 0.0
+
+Step: 883. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -2.2737367544323206e-13, energy: 0.0
+
+Step: 884. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 121.99999999999994, energy: 0.0
+
+Step: 885. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -346.7000000000008, energy: 0.0
+
+Step: 886. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: 120, energy: 0.0
+
+Step: 887. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: 3, energy: 0.0
+
+Step: 888. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 57.50935533071521, energy: 0.0
+
+Step: 889. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -205.8164076088106, energy: 0.0
+
+Step: 890. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 891. Good current rotation:
+First num: 919, second num: 920, resid: 60, angle: -3, energy: 0.0
+
+Step: 892. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 1.1368683772161603e-13, energy: 0.0
+
+Step: 893. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -1.1368683772161603e-13, energy: 0.0
+
+Step: 894. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 9, energy: 0.0
+
+Step: 895. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 10, energy: 0.0
+
+Step: 896. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 8, energy: 0.0
+
+Step: 897. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 107.20000000000016, energy: 0.0
+
+Step: 898. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 18.19999999999976, energy: 0.0
+
+Step: 899. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -238.5021218050543, energy: 0.0
+
+Step: 900. Good current rotation:
+First num: 909, second num: 911, resid: 60, angle: -3, energy: 0.0
+
+Step: 902. Good current rotation:
+First num: 3213, second num: 3216, resid: 207, angle: -4, energy: 0.0
+
+Step: 903. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: -196.49064466928502, energy: 0.0
+
+Step: 904. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -45.81640760881044, energy: 0.0
+
+Step: 905. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: 5, energy: 0.0
+
+Step: 906. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -1, energy: 0.0
+
+Step: 907. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 187.83222086615666, energy: 0.0
+
+Step: 908. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 5.349088416990469, energy: 0.0
+
+Step: 909. Good current rotation:
+First num: 1292, second num: 1294, resid: 85, angle: 139.4357894160896, energy: 0.0
+
+Step: 910. Good current rotation:
+First num: 1294, second num: 1297, resid: 85, angle: 108.51533669530954, energy: 0.0
+
+Step: 911. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: -27.84312936112579, energy: 0.0
+
+Step: 912. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 248.83636235874906, energy: 0.0
+
+Step: 913. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 231.56612622743705, energy: 0.0
+
+Step: 914. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: 103.88797632590155, energy: 0.0
+
+Step: 915. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: -6, energy: 0.0
+
+Step: 916. Good current rotation:
+First num: 919, second num: 920, resid: 60, angle: -1, energy: 0.0
+
+Step: 917. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 4, energy: 0.0
+
+Step: 918. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: -4, energy: 0.0
+
+Step: 919. Good current rotation:
+First num: 1305, second num: 1309, resid: 85, angle: -9, energy: 0.0
+
+Step: 920. Good current rotation:
+First num: 1440, second num: 1444, resid: 93, angle: -10, energy: 0.0
+
+Step: 921. Good current rotation:
+First num: 3350, second num: 3352, resid: 215, angle: 57.73388887330299, energy: 0.0
+
+Step: 922. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: -223.52202065832378, energy: 0.0
+
+Step: 923. Good current rotation:
+First num: 3211, second num: 3213, resid: 207, angle: 1, energy: 0.0
+
+Step: 924. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 2, energy: 0.0
+
+Step: 925. Good current rotation:
+First num: 2113, second num: 2115, resid: 137, angle: -136, energy: 0.0
+
+Step: 926. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 227.09999999999997, energy: 0.0
+
+Step: 927. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: 298.09999999999985, energy: 0.0
+
+Step: 928. Bad current rotation:
+First num: 3074, second num: 3076, resid: 196, angle: -119.60212180505431, energy: 0.0
+
+Step: 929. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 1.7053025658242404e-13, energy: 0.0
+
+Step: 930. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -5.684341886080802e-14, energy: 0.0
+
+Step: 931. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -9, energy: 0.0
+
+Step: 932. Good current rotation:
+First num: 2942, second num: 2943, resid: 188, angle: 0, energy: 0.0
+
+Step: 933. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 934. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 935. Bad current rotation:
+First num: 205, second num: 207, resid: 15, angle: 239.07397351089685, energy: 0.0
+
+Step: 936. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -257.3171712300923, energy: 0.0
+
+Step: 937. Good current rotation:
+First num: 3228, second num: 3230, resid: 208, angle: 0, energy: 0.0
+
+Step: 938. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: 9, energy: 0.0
+
+Step: 939. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -7, energy: 0.0
+
+Step: 940. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -2, energy: 0.0
+
+Step: 941. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: 8, energy: 0.0
+
+Step: 942. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: -3, energy: 0.0
+
+Step: 943. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 4, energy: 0.0
+
+Step: 944. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: -100, energy: 0.0
+
+Step: 945. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 121.91269657765105, energy: 0.0
+
+Step: 946. Good current rotation:
+First num: 2934, second num: 2937, resid: 188, angle: -35.39815505983984, energy: 0.0
+
+Step: 947. Good current rotation:
+First num: 1438, second num: 1440, resid: 93, angle: -127.63841555609321, energy: 0.0
+
+Step: 948. Good current rotation:
+First num: 3303, second num: 3306, resid: 212, angle: -8, energy: 0.0
+
+Step: 949. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 6, energy: 0.0
+
+Step: 950. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 222.89804018007163, energy: 0.0
+
+Step: 951. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -59.13804436186558, energy: 0.0
+
+Step: 952. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 4, energy: 0.0
+
+Step: 953. Bad current rotation:
+First num: 3029, second num: 3031, resid: 193, angle: 3.7299460504926856, energy: 0.0
+
+Step: 954. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 120.33257480409156, energy: 0.0
+
+Step: 955. Good current rotation:
+First num: 1352, second num: 1354, resid: 88, angle: 4, energy: 0.0
+
+Step: 956. Bad current rotation:
+First num: 1316, second num: 1318, resid: 86, angle: 112.39804018007163, energy: 0.0
+
+Step: 957. Bad current rotation:
+First num: 1318, second num: 1321, resid: 86, angle: -72.53804436186556, energy: 0.0
+
+Step: 958. Bad current rotation:
+First num: 3031, second num: 3037, resid: 193, angle: 6, energy: 0.0
+
+Step: 959. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: 68.60000000000014, energy: 0.0
+
+Step: 960. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 105.10000000000107, energy: 0.0
+
+Step: 961. Good current rotation:
+First num: 3298, second num: 3300, resid: 212, angle: -5.684341886080802e-14, energy: 0.0
+
+Step: 962. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: -1.7053025658242404e-13, energy: 0.0
+
+Step: 963. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: 9, energy: 0.0
+
+Step: 964. Bad current rotation:
+First num: 3005, second num: 3007, resid: 192, angle: 13.931407768909935, energy: 0.0
+
+Step: 965. Bad current rotation:
+First num: 3007, second num: 3010, resid: 192, angle: 250.20864285622793, energy: 0.0
+
+Step: 966. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: -2.000000000000284, energy: 0.0
+
+Step: 967. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: -4.999999999999943, energy: 0.0
+
+Step: 968. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -7.958078640513122e-13, energy: 0.0
+
+Step: 969. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: 0, energy: 0.0
+
+Step: 970. Good current rotation:
+First num: 1424, second num: 1426, resid: 92, angle: 1, energy: 0.0
+
+Step: 971. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: 2, energy: 0.0
+
+Step: 972. Good current rotation:
+First num: 2932, second num: 2934, resid: 188, angle: 2, energy: 0.0
+
+Step: 973. Bad current rotation:
+First num: 3280, second num: 3283, resid: 211, angle: -5, energy: 0.0
+
+Step: 974. Good current rotation:
+First num: 1347, second num: 1349, resid: 88, angle: 1.1368683772161603e-13, energy: 0.0
+
+Step: 975. Good current rotation:
+First num: 1349, second num: 1352, resid: 88, angle: -5.684341886080802e-14, energy: 0.0
+
+Step: 976. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -106, energy: 0.0
+
+Step: 977. Good current rotation:
+First num: 1833, second num: 1835, resid: 118, angle: 17.63305745816774, energy: 0.0
+
+Step: 978. Good current rotation:
+First num: 1835, second num: 1838, resid: 118, angle: -156.58433544644566, energy: 0.0
+
+Step: 979. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: -2, energy: 0.0
+
+Step: 980. Bad current rotation:
+First num: 3076, second num: 3078, resid: 196, angle: 8, energy: 0.0
+
+Step: 981. Bad current rotation:
+First num: 1361, second num: 1363, resid: 89, angle: 1, energy: 0.0
+
+Step: 982. Good current rotation:
+First num: 3300, second num: 3303, resid: 212, angle: 6, energy: 0.0
+
+Step: 983. Good current rotation:
+First num: 1426, second num: 1428, resid: 92, angle: 119, energy: 0.0
+
+Step: 984. Good current rotation:
+First num: 1440, second num: 1442, resid: 93, angle: -121, energy: 0.0
+
+Step: 985. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -1, energy: 0.0
+
+Step: 986. Bad current rotation:
+First num: 207, second num: 210, resid: 15, angle: -1, energy: 0.0
+
+Step: 987. Good current rotation:
+First num: 3352, second num: 3355, resid: 215, angle: 8, energy: 0.0
+
+Step: 988. Good current rotation:
+First num: 911, second num: 914, resid: 60, angle: 1, energy: 0.0
+
+Step: 989. Bad current rotation:
+First num: 2182, second num: 2184, resid: 141, angle: 239.09226299928503, energy: 0.0
+
+Step: 990. Bad current rotation:
+First num: 2184, second num: 2187, resid: 141, angle: -63.792215861477075, energy: 0.0
+
+Step: 991. Good current rotation:
+First num: 3088, second num: 3090, resid: 197, angle: 7.2999999999999545, energy: 0.0
+
+Step: 992. Good current rotation:
+First num: 3090, second num: 3093, resid: 197, angle: -117.19999999999993, energy: 0.0
+
+Step: 993. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -281.80000000000007, energy: 0.0
+
+Step: 994. Good current rotation:
+First num: 3093, second num: 3096, resid: 197, angle: -1, energy: 0.0
+
+Step: 995. Good current rotation:
+First num: 1297, second num: 1300, resid: 85, angle: 9, energy: 0.0
+
+Step: 996. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: -7, energy: 0.0
+
+Step: 997. Good current rotation:
+First num: 3226, second num: 3228, resid: 208, angle: 8.586869180198505, energy: 0.0
+
+Step: 998. Good current rotation:
+First num: 2102, second num: 2104, resid: 137, angle: -40.42367764047518, energy: 0.0
+
+Step: 999. Good current rotation:
+First num: 2104, second num: 2107, resid: 137, angle: 112.55191404293663, energy: 0.0
+
+Step: 1000. Good current rotation:
+First num: 2107, second num: 2110, resid: 137, angle: -152.2483003190839, energy: 0.0
+
+The best energy: None
+Step/Stop 1000/1000.0
+
