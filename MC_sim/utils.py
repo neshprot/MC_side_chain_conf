@@ -110,14 +110,14 @@ def read_inp(fname):
     """
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    name = ''
+    name_part = ''
     const_dict = {}
-    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
         for line in file.readlines():
             newname = line[0:9].strip()
             if newname == 'NONbonded':
-                name = newname
-            if name == 'NONbonded' and line[7:15] == '0.000000':
+                name_part = newname
+            if name_part == 'NONbonded' and line[7:15] == '0.000000':
                 split_line = line.split()
                 name = split_line[0]
                 epsilon = float(split_line[2])
@@ -132,7 +132,7 @@ def read_pdb(fname, const_dict):
     '''
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
         molecule = {}
         for line in file.readlines():
             data_type = line[0:6].strip()
@@ -169,11 +169,12 @@ def read_psf(fname, mol):
     myself = Path(__file__).resolve()
     res = myself.parents[1]
     name = ''
-    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
         def natom():
             unused_zero = line[69:70].strip()
             if unused_zero == '0':
                 num = int(line[0:8])
+                print(num)
                 mol[num].partialcharge = float(line[35:44])
 
         def nbond():
@@ -198,6 +199,7 @@ def read_psf(fname, mol):
             if newname in ['!NATOM', '!NBOND', '!NTHET']:
                 name = newname
                 continue
+            
             section_name(name)
 
 

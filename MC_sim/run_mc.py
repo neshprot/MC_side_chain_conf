@@ -11,11 +11,11 @@ from mc_code import montecarlo
 
 # PARSING CONFIG
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('/home/mikhail/work/Protein_Model/MC_side_chain_conf/MC_sim/config.ini')
 
 
 # config constants
-pdb_file = config['PDB']['File']
+pdb_file = config['PDB']['file']
 pdb_wild_file = config['PDB']['Wild_file']
 value1 = float(config['PDB']['ENERGY'])
 psf_file = config['PSF']['File']

@@ -1,15 +1,19 @@
 """
 Main script for MC sim
 """
+import time
+
 from utils import math, rotate, write_pdb, TorsionAngle, get_torsion_angle, get_torsions, amino_acid, print_torsions, \
-    read_inp, read_pdb
+    read_inp, read_pdb, read_psf
 from logger import FileLogger
 import random
 import numpy as np
 import os
 import configparser
+from graph import Graph
+import subprocess
 
-file_path = 'RotamerTables\BoundRotamers.txt'
+file_path = '/home/mikhail/work/Protein_Model/MC_side_chain_conf/MC_sim/RotamerTables/BoundRotamers.txt'
 rotamer_map = {}
 
 with open(file_path, 'r') as file:
@@ -150,6 +154,27 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         # print(f'{mol[coords_for_rot[0]].resseq} - {energy_C+energy_LJ}')
         return energy_C, eps_amen * energy_LJ
 
+    def after_md_energy():
+        summ = 0
+        TRP_count = 0
+        ini_rot_bonds = rot_bonds
+        for atom in mol:
+            if mol[atom].resseq not in rotating_resid:
+                continue
+            res = []
+            for x in ini_rot_bonds.values():
+                res.extend(x if isinstance(x, list) else [x])
+            if any(atom in i for i in res) and mol[atom].name == 'CA':
+                atom_lst = graph.bfs(atom)
+                energy_C, energy_LJ = Energy(mol, atom_lst, eps_amen=1)
+                res_energy = energy_C + energy_LJ
+                # record the energy of each aminoacid
+                energy_dict.update({mol[atom].resseq: res_energy})
+                # record all atoms in a particular amino acid
+                res_dict.update({mol[atom].resseq: atom_lst})
+                summ += res_energy
+                all_nums.append(atom)
+
     # evaluate start energy
     def start_energy():
         summ = 0
@@ -193,7 +218,7 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         residue = TorsionAngle(res)
         list_residue_classes[res] = residue
     # main block with consecutive rotations
-    probability = 0.3
+    probability = 0
 
     def transition_probability(new_energy, old_energy):
         if new_energy <= old_energy:
@@ -223,22 +248,92 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             if eps_step == eps_lim:
                 eps_step = 0
                 eps = eps_amen
-            os.system('C:/Users/admin/Documents/work/NAMD_2.14_Win64-multicore/namd2.exe C:/Users/admin/PycharmProjects/python/MC_side_chain_conf/input_files/m1.conf')
+            # Список файлов для удаления
+            files_to_delete = [
+                "d95n_0_working_min-0.coor",
+                "d95n_0_working_min-0.dcd",
+                "d95n_0_working_min-0.restart.coor",
+                "d95n_0_working_min-0.restart.coor.old",
+                "d95n_0_working_min-0.restart.vel",
+                "d95n_0_working_min-0.restart.vel.old",
+                "d95n_0_working_min-0.restart.xsc",
+                "d95n_0_working_min-0.restart.xsc.old",
+                "d95n_0_working_min-0.vel",
+                "d95n_0_working_min-0.xsc",
+                "d95n_0_working_min-0.xst",
+                "FFTW_NAMD_2.14_Linux-x86_64-multicore.txt",
+                "m1.log"
+            ]
+
+            # Путь к директории с файлами
+            input_files_dir = "/home/mikhail/work/Protein_Model/MC_side_chain_conf/input_files"
+
+            # Смена директории
+            os.chdir(input_files_dir)
+            time.sleep(5)
+
+            # Вывод содержимого директории
+
+            # Запуск NAMD и запись лога
+            os.system('namd2 /home/mikhail/work/Protein_Model/MC_side_chain_conf/input_files/m1.conf'
+                      '> /home/mikhail/work/Protein_Model/MC_side_chain_conf/input_files/m1.log')
+
+            time.sleep(10)
+
+            # Запуск VMD для обработки данных
+            os.system('vmd -dispdev text -e /home/mikhail/work/Protein_Model/MC_side_chain_conf/input_files/extract.tcl')
+
+            time.sleep(10)
+
+            # Удаление файлов
+            for file in files_to_delete:
+                try:
+                    os.remove(os.path.join(input_files_dir, file))
+                    print(f"{file} удален успешно")
+                except FileNotFoundError:
+                    print(f"{file} не найден")
+                except Exception as e:
+                    print(f"Ошибка при удалении {file}: {e}")
+
+            # Возврат к исходной директории
+            os.chdir("..")
+            time.sleep(5)
+
             config = configparser.ConfigParser()
-            config.read('config.ini')
+            config.read('/home/mikhail/work/Protein_Model/MC_side_chain_conf/MC_sim/config.ini')
 
             # config constants
-            pdb_file = config['PDB']['File']
+            pdb_file = config['PDB']['AFTER_MD']
+            print(pdb_file)
             inp_file = config['INP']['File']
+            psf_file = config['PSF']['File']
+            print(psf_file)
+
             const_dict = read_inp(inp_file)
             mol = read_pdb(pdb_file, const_dict)
-            continue
+            bonds, rot_bonds = amino_acid(mol, rotating_resid)
+            
+            read_psf(psf_file, mol)
+            energy_dict = {}
+            res_dict = {}
+            charge_dict = dict()
+
+            all_nums = []
+
+            start_was = False
+            
+            graph = Graph(bonds)
+
+            after_md_energy()
+            start_was = True
+            print(energy_dict)
 
         random_residue = random.choice(rotating_resid)
         rot = rot_bonds[random_residue]
         if not rot:
             continue
-        if random.random() < probability and mol[rot[0][0]].resname in rotamer_map.keys():
+        if random.random() < probability and mol[rot[0][0]].resname in rotamer_map.keys() and mol[
+            rot[0][0]].resname != 'TRP':
             list_residue_classes[random_residue].update_rotamer(rotamer_map[mol[rot[0][0]].resname])
             dmap = list_residue_classes[random_residue].rotamers()
             rotamers = list(dmap.keys())
@@ -273,8 +368,7 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             angle2 = random.randint(90, 180)
             angle_sign = random.choice([-1, 1])
             angle = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
-            rot_dict = {}
-            rot_dict[bond] = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
+            rot_dict = {bond: angle}
 
         for bond, angle in rot_dict.items():
             step += 1
