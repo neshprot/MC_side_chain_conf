@@ -4,7 +4,7 @@ Main script for MC sim
 import time
 
 from utils import math, rotate, write_pdb, TorsionAngle, get_torsion_angle, get_torsions, amino_acid, print_torsions, \
-    read_inp, read_pdb, read_psf
+    read_inp, read_pdb, read_psf, rotate_trp_tors_angle
 from logger import FileLogger
 import random
 import numpy as np
@@ -12,6 +12,7 @@ import os
 import configparser
 from graph import Graph
 import subprocess
+import numpy
 
 file_path = '/home/mikhail/work/Protein_Model/MC_side_chain_conf/MC_sim/RotamerTables/BoundRotamers.txt'
 rotamer_map = {}
@@ -39,7 +40,7 @@ with open(file_path, 'r') as file:
             }
 
 
-def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
+def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, trp_resid):
     '''
     main block or MC algorythm
 
@@ -154,26 +155,6 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
         # print(f'{mol[coords_for_rot[0]].resseq} - {energy_C+energy_LJ}')
         return energy_C, eps_amen * energy_LJ
 
-    def after_md_energy():
-        summ = 0
-        TRP_count = 0
-        ini_rot_bonds = rot_bonds
-        for atom in mol:
-            if mol[atom].resseq not in rotating_resid:
-                continue
-            res = []
-            for x in ini_rot_bonds.values():
-                res.extend(x if isinstance(x, list) else [x])
-            if any(atom in i for i in res) and mol[atom].name == 'CA':
-                atom_lst = graph.bfs(atom)
-                energy_C, energy_LJ = Energy(mol, atom_lst, eps_amen=1)
-                res_energy = energy_C + energy_LJ
-                # record the energy of each aminoacid
-                energy_dict.update({mol[atom].resseq: res_energy})
-                # record all atoms in a particular amino acid
-                res_dict.update({mol[atom].resseq: atom_lst})
-                summ += res_energy
-                all_nums.append(atom)
 
     # evaluate start energy
     def start_energy():
@@ -225,30 +206,13 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             return True
         else:
             prob_up = math.exp(-(new_energy - old_energy) / (k * t))
-            if random.uniform(0.0, 1.0) <= prob_up:
+            if numpy.random.random()<= prob_up:
                 return True
             else:
                 return False
-
-    while iterations <= attempts and step < stop_step:
-        if step % 100 == 0:
-            step += 1
-            T_step += 1
-            eps_step += 1
-            # temperature changes every T_lim steps
-            if T_step == T_lim:
-                T_step = 0
-                if T_count == 0:
-                    T_count = 1
-                    t = t2
-                else:
-                    T_count = 0
-                    t = t1
-            # epsilon change every eps_lim steps
-            if eps_step == eps_lim:
-                eps_step = 0
-                eps = eps_amen
-            # Список файлов для удаления
+            
+    def md():
+        # Список файлов для удаления
             files_to_delete = [
                 "d95n_0_working_min-0.coor",
                 "d95n_0_working_min-0.dcd",
@@ -299,18 +263,24 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             os.chdir("..")
             time.sleep(5)
 
+    while iterations <= attempts and step < stop_step:
+        if step % 1000 == 0:
+            md()
+
             config = configparser.ConfigParser()
             config.read('/home/mikhail/work/Protein_Model/MC_side_chain_conf/MC_sim/config.ini')
 
             # config constants
             pdb_file = config['PDB']['AFTER_MD']
-            print(pdb_file)
             inp_file = config['INP']['File']
             psf_file = config['PSF']['File']
-            print(psf_file)
+            pdb_wild_file = config['PDB']['Wild_file']
+            
 
             const_dict = read_inp(inp_file)
             mol = read_pdb(pdb_file, const_dict)
+            wild_mol = read_pdb(pdb_wild_file, const_dict)
+            mol = rotate_trp_tors_angle(wild_mol, mol, trp_resid)
             bonds, rot_bonds = amino_acid(mol, rotating_resid)
             
             read_psf(psf_file, mol)
@@ -324,9 +294,8 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
             
             graph = Graph(bonds)
 
-            after_md_energy()
+            start_energy()
             start_was = True
-            print(energy_dict)
 
         random_residue = random.choice(rotating_resid)
         rot = rot_bonds[random_residue]
@@ -362,15 +331,16 @@ def montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid):
 
         else:
             bond = random.choice(rot)  # selecting a random bond for rotation
-            first_prob = 0.9
-            second_prob = 0.1
-            angle1 = random.randint(0, 10)
+            first_prob = 1
+            second_prob = 0
+            angle1 = random.randint(0, 15)
             angle2 = random.randint(90, 180)
             angle_sign = random.choice([-1, 1])
             angle = random.choices([angle1, angle2], weights=[first_prob, second_prob])[0] * angle_sign
             rot_dict = {bond: angle}
 
         for bond, angle in rot_dict.items():
+            print(bond, angle)
             step += 1
             T_step += 1
             eps_step += 1
