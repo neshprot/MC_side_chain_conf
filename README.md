@@ -41,3 +41,5 @@ numpy
 - Add aminoacids: PRO, GLN, HIS
 - Add function to analyze pdb file and refill missing atoms
 - Add constraints
+
+  чтобы запустилось на винде, надо поменять расстановку слешей в utils и поменять все ссылки на файлы в основных программах(ссылка на конфиг и ссылка на карту ротамеров в монте карло)

@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 import os.path
 import numpy as np
+from graph import Graph
 
 vdwr = {
     "H": 1.10,
@@ -21,7 +22,7 @@ resname_3to1 = {
     "SER": "S",
     "GLU": "E",
     "GLN": "Q",
-    "ASP": "D",
+    "ASP": "D", 
     "ASN": "N",
     "PHE": "F",
     "ALA": "A",
@@ -50,6 +51,32 @@ atoma_radius = {
     "C": 0.7,
     "S": 1.27
 }
+
+
+class TorsionAngle:
+    def __init__(self, residue_number):
+        self.residue_number = residue_number
+        self.torsion_angles = {}
+        self.rotamer_dict = {}
+
+
+    def update_torsion_angles(self, bond, new_torsion):
+        if bond in self.torsion_angles:
+            self.torsion_angles[bond].append(new_torsion)
+        else:
+            self.torsion_angles[bond] = [new_torsion]
+    def update_rotamer(self, rotamers):
+        self.rotamer_dict = rotamers
+
+
+    def print_angels_bond(self, bond):
+        return self.torsion_angles[bond]
+    
+
+    def print_angles(self):
+        return self.torsion_angles
+    def rotamers(self):
+        return self.rotamer_dict
 
 
 class Atom:
@@ -83,14 +110,14 @@ def read_inp(fname):
     """
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    name = ''
+    name_part = ''
     const_dict = {}
-    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
         for line in file.readlines():
             newname = line[0:9].strip()
             if newname == 'NONbonded':
-                name = newname
-            if name == 'NONbonded' and line[7:15] == '0.000000':
+                name_part = newname
+            if name_part == 'NONbonded' and line[7:15] == '0.000000':
                 split_line = line.split()
                 name = split_line[0]
                 epsilon = float(split_line[2])
@@ -105,7 +132,7 @@ def read_pdb(fname, const_dict):
     '''
     myself = Path(__file__).resolve()
     res = myself.parents[1]
-    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
         molecule = {}
         for line in file.readlines():
             data_type = line[0:6].strip()
@@ -142,11 +169,12 @@ def read_psf(fname, mol):
     myself = Path(__file__).resolve()
     res = myself.parents[1]
     name = ''
-    with open(fr"{res}\input_files\{fname}", "r", encoding="utf-8") as file:
+    with open(fr"{res}/input_files/{fname}", "r", encoding="utf-8") as file:
         def natom():
             unused_zero = line[69:70].strip()
             if unused_zero == '0':
                 num = int(line[0:8])
+                print(num)
                 mol[num].partialcharge = float(line[35:44])
 
         def nbond():
@@ -171,6 +199,7 @@ def read_psf(fname, mol):
             if newname in ['!NATOM', '!NBOND', '!NTHET']:
                 name = newname
                 continue
+            
             section_name(name)
 
 
@@ -200,16 +229,16 @@ def amino_acid(mol, rotating_resid):
     rot_bonds = []
 
     def ala(pos):
-        # CA, CB, HB1, HB2, HB3
-        bonds.update({pos: [pos+2], pos+2: [pos+3, pos+4, pos+5],
+        # CA, C, CB, HB1, HB2, HB3
+        bonds.update({pos+6: [pos], pos: [pos+2], pos+2: [pos+3, pos+4, pos+5],
                       pos+3: [pos+3], pos+4: [pos+4],
                       pos+5: [pos+5]})
         nrot_bonds = [(pos, pos+2)]
         return nrot_bonds
 
     def ser(pos):
-        # CA, CB, HB1, HB2, OG, HG1
-        bonds.update({pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+        # CA, C, CB, HB1, HB2, OG, HG1
+        bonds.update({pos + 7: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
                       pos + 3: [pos + 3], pos + 4: [pos + 4],
                       pos + 5: [pos + 6], pos + 6: [pos + 6]})
         nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
@@ -218,7 +247,7 @@ def amino_acid(mol, rotating_resid):
     def thr(pos):
         # CA, CB, HB, OG1, HG1, CG2, HG21, HG22, HG23
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 6],
+            {pos+10: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 6],
              pos + 3: [pos + 3], pos + 4: [pos + 5],
              pos + 5: [pos + 5], pos + 6: [pos + 7, pos + 8, pos + 9],
              pos + 7: [pos + 7], pos+8: [pos+8], pos+9: [pos+9]})
@@ -228,7 +257,7 @@ def amino_acid(mol, rotating_resid):
     def cys(pos):
         # CA, CB, HB1, HB2, SG, HG1
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 7: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6], pos + 6: [pos + 6]})
         nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5)]
@@ -237,7 +266,7 @@ def amino_acid(mol, rotating_resid):
     def val(pos):
         # CA, CB, HB, CG1, HG11, HG12, HG13, CG2, HG21, HG22, HG23
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 8],
+            {pos+12: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 8],
              pos + 3: [pos + 3], pos + 4: [pos + 5, pos+6, pos+7],
              pos + 5: [pos + 5], pos + 6: [pos+6],
              pos + 7: [pos+7], pos+8: [pos+9, pos+10, pos+11],
@@ -249,7 +278,7 @@ def amino_acid(mol, rotating_resid):
     def leu(pos):
         # CA, CB, HB1, HB2, CG, HG, CD1, HD11, HD12, HD13, CD2, HD21, HD22, HD23
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos+15: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 7, pos + 11], pos + 6: [pos + 6],
              pos + 7: [pos + 8, pos + 9, pos + 10], pos + 8: [pos + 8],
@@ -262,7 +291,7 @@ def amino_acid(mol, rotating_resid):
     def ile(pos):
         # CA, CB, HB, CG2, HG21, HG22, HG23, CG1, HG11, HG12, CD, HD1, HD2, HD3
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 8],
+            {pos + 15: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 8],
              pos + 3: [pos + 3], pos + 4: [pos + 5, pos + 6, pos + 7],
              pos + 5: [pos + 5], pos + 6: [pos + 6],
              pos + 7: [pos + 7], pos + 8: [pos + 9, pos + 10, pos + 11],
@@ -275,7 +304,7 @@ def amino_acid(mol, rotating_resid):
     def met(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, SD, CE, HE1, HE2, HE3
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 13: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 7, pos + 8], pos + 6: [pos + 6],
              pos + 7: [pos + 7], pos + 8: [pos + 9],
@@ -287,7 +316,7 @@ def amino_acid(mol, rotating_resid):
     def phe(pos):
         # CA, CB, HB1, HB2, CG, CD1, HD1, CE1, HE1, CZ, HZ, CD2, HD2, CE2, HE2
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5], pos + 3: [pos + 3],
+            {pos+16: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5], pos + 3: [pos + 3],
              pos + 4: [pos + 4], pos + 5: [pos + 6, pos + 8],
              pos + 6: [pos + 7, pos + 12], pos + 7: [pos + 7],
              pos + 8: [pos + 9, pos+14], pos + 9: [pos + 9],
@@ -300,7 +329,7 @@ def amino_acid(mol, rotating_resid):
     def tyr(pos):
         # CA, CB, HB1, HB2, CG, CD1, HD1, CE1, HE1, CZ, OH, HH, CD2, HD2, CE2, HE2
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos+17: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 8], pos + 6: [pos + 7, pos + 13],
              pos + 7: [pos + 7], pos + 8: [pos + 9, pos+15],
@@ -315,7 +344,7 @@ def amino_acid(mol, rotating_resid):
         # CA, CB, HB1, HB2, CG, CD1, HD1, NE1, HE1,
         # CE2, CD2, CE3, HE3, CZ3, HZ3, CZ2, HZ2, CH2, HH2
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 20: [pos],pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6], pos + 6: [pos + 7, pos + 18],
              pos + 7: [pos + 8, pos + 9], pos + 8: [pos + 8],
@@ -331,7 +360,7 @@ def amino_acid(mol, rotating_resid):
     def asp(pos):
         # CA, CB, HB1, HB2, CG, OD1, OD2
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 8: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 7], pos + 6: [pos + 6],
              pos + 7: [pos + 7]})
@@ -341,7 +370,7 @@ def amino_acid(mol, rotating_resid):
     def glu(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, CD, OE1, OE2
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 11: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 7, pos + 8], pos + 6: [pos + 6],
              pos + 7: [pos + 7], pos + 8: [pos + 9, pos + 10],
@@ -352,7 +381,7 @@ def amino_acid(mol, rotating_resid):
     def asn(pos):
         # CA, CB, HB1, HB2, CG, OD1, ND2, HD21, HD22
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 10: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 7], pos + 6: [pos + 6],
              pos + 7: [pos + 8, pos + 9], pos + 8: [pos + 8],
@@ -363,7 +392,7 @@ def amino_acid(mol, rotating_resid):
     def lys(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, CD, HD1, HD2, CE, HE1, HE2, NZ, NZ1, NZ2, NZ3
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
+            {pos + 18: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5],
              pos + 3: [pos + 3], pos + 4: [pos + 4],
              pos + 5: [pos + 6, pos + 7, pos + 8], pos + 6: [pos + 6],
              pos + 7: [pos + 7], pos + 8: [pos + 9, pos + 10, pos + 11],
@@ -372,14 +401,14 @@ def amino_acid(mol, rotating_resid):
              pos + 13: [pos + 13], pos + 14: [pos+15, pos + 16, pos + 17],
              pos + 15: [pos + 15], pos + 16: [pos + 16],
              pos + 17: [pos + 17]})
-        nrot_bonds = [(pos, pos + 2), (pos + 2, pos + 5), (pos + 5, pos + 8),
+        nrot_bonds = [(pos, pos + 2),   (pos + 2, pos + 5), (pos + 5, pos + 8),
                       (pos + 8, pos + 11), (pos + 11, pos + 14)]
         return nrot_bonds
 
     def arg(pos):
         # CA, CB, HB1, HB2, CG, HG1, HG2, CD, HD1, HD2, NE, HE, CZ, NH1, HH11, HH12, NH2, HH21, HH22
         bonds.update(
-            {pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5], pos + 3: [pos + 3],
+            {pos + 20: [pos], pos: [pos + 2], pos + 2: [pos + 3, pos + 4, pos + 5], pos + 3: [pos + 3],
              pos + 4: [pos + 5], pos + 5: [pos + 6, pos + 7, pos + 8],
              pos + 6: [pos + 6], pos + 7: [pos + 7],
              pos + 8: [pos + 9, pos + 10, pos + 11], pos + 9: [pos + 9],
@@ -410,11 +439,11 @@ def amino_acid(mol, rotating_resid):
                 'ASN': lambda: asn(num),
                 'LYS': lambda: lys(num),
                 'ARG': lambda: arg(num)}.get(resname, lambda: [])()
-
+    rot_bonds = {}
     for i, atom in enumerate(mol.values()):
         if atom.name == 'CA' and atom.resseq in rotating_resid:
             nrot_bonds = side_chains(atom.resname, i+1)
-            rot_bonds += nrot_bonds
+            rot_bonds[atom.resseq] = nrot_bonds
     return bonds, rot_bonds
 
 
@@ -533,3 +562,66 @@ def post_proc(ini_mol, start_mol, end_mol, rotating_resid):
         counter += 1
     result = 1 - value/counter
     return result
+
+
+def get_torsion_angle(point1, point2, point3, point4):
+    rad2deg = 180.0 / math.pi
+    vector1 = np.cross(np.array(point2) - np.array(point1), np.array(point2) - np.array(point3))
+    vector2 = np.cross(np.array(point3) - np.array(point2), np.array(point3) - np.array(point4))  
+    norm_vector1 = vector1 / np.linalg.norm(vector1)
+    norm_vector2 = vector2 / np.linalg.norm(vector2)
+    dot_product = np.dot(norm_vector1, norm_vector2)
+    sign = 2 * float(np.dot(norm_vector1, (np.array(point3) - np.array(point4)) / np.linalg.norm(np.array(point3) - np.array(point4))) < 0) - 1
+    torsion = -np.arccos(dot_product) * rad2deg * sign
+    torsion = (torsion + 360) % 360
+    return torsion
+
+
+def get_torsions(mol, bonds):
+    torsions = []
+    for position, atoms in bonds.items():
+        n_position_bonds = len(bonds[position])
+        for a in range(n_position_bonds):
+            k = bonds[position][a]
+            n_kbonds = len(bonds[k])
+            for b in range(n_kbonds):
+                i = bonds[k][b]
+                n_ibonds = len(bonds[i])
+                for c in range(n_ibonds):
+                    l = bonds[i][c]
+                    if (l == position or l == i):
+                        continue
+                    t1234 = get_torsion_angle(mol[position].coordin, mol[k].coordin, mol[i].coordin, mol[l].coordin)
+                    if mol[k].name[0] == 'C' and mol[i].name[0] == 'C':
+                        torsions.append([position, k, i, l, t1234])
+    return torsions
+
+
+def print_torsions(mol, torsions):
+    n_torsions = len(torsions)
+    print('%i torsion(s) found (degrees) %i in  resseq' % (n_torsions, mol[torsions[0][0]].resseq))
+    for q in range(n_torsions):
+        n1, n2, n3, n4 = torsions[q][0:4]
+        t1234 = torsions[q][4]
+        nstr = '%i-%i-%i-%i' % (n1, n2, n3, n4)
+        tstr = '(%s-%s-%s-%s) ' % (mol[n1].name, mol[n2].name, mol[n3].name, mol[n4].name)
+        print(' %-15s  %-13s  %8.3f\n' % (nstr, tstr, t1234), end='')
+    print('\n', end='')
+
+
+def rotate_trp_tors_angle(mol_1, mol_2, rotating_resid):
+    for trp_number in rotating_resid:
+        trp_dif = []
+        bonds_1, rot_bonds_1 = amino_acid(mol_1, [trp_number])
+        bonds_2, rot_bonds_2 = amino_acid(mol_2, [trp_number])
+        graph_2 = Graph(bonds_2)
+        torsions_1 = [get_torsions(mol_1, bonds_1)[0], get_torsions(mol_1, bonds_1)[1]]
+        torsions_2 = [get_torsions(mol_2, bonds_2)[0], get_torsions(mol_2, bonds_2)[1]]
+        trp_dif += [torsions_2[0][4] - torsions_1[0][4], torsions_2[1][4] - torsions_1[1][4]]
+        rot_1 = trp_dif[0]
+        rot_2 = trp_dif[1]
+        rotate(mol_2, graph_2.bfs(torsions_2[0][2]), torsions_2[0][1], torsions_2[0][2], (-1) * np.sign(rot_1) * abs(rot_1))
+        rotate(mol_2, graph_2.bfs(torsions_2[1][2]), torsions_2[1][1], torsions_2[1][2], (-1) * np.sign(rot_2) * abs(rot_2))
+        #print_torsions(mol_1, get_torsions(mol_1, bonds_1))
+        #print_torsions(mol_2, [get_torsions(mol_2, bonds_2)[0], get_torsions(mol_2, bonds_2)[1]])
+    return mol_2
