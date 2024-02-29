@@ -44,6 +44,6 @@ if __name__ == '__main__':
     read_results('result1', mol, graph)
 
 
-    rotations, best_energy = montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid)
+    rotations, best_energy = montecarlo(mol, graph, rot_bonds, attempts, stop_step, rotating_resid, trp_resid)
 
     write_result(result_file_name, rotations)

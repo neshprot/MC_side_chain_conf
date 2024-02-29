@@ -564,6 +564,8 @@ def post_proc(ini_mol, start_mol, end_mol, rotating_resid):
     return result
 
 
+
+
 def get_torsion_angle(point1, point2, point3, point4):
     rad2deg = 180.0 / math.pi
     vector1 = np.cross(np.array(point2) - np.array(point1), np.array(point2) - np.array(point3))
@@ -575,6 +577,7 @@ def get_torsion_angle(point1, point2, point3, point4):
     torsion = -np.arccos(dot_product) * rad2deg * sign
     torsion = (torsion + 360) % 360
     return torsion
+
 
 
 def get_torsions(mol, bonds):
@@ -592,8 +595,8 @@ def get_torsions(mol, bonds):
                     if (l == position or l == i):
                         continue
                     t1234 = get_torsion_angle(mol[position].coordin, mol[k].coordin, mol[i].coordin, mol[l].coordin)
-                    if mol[k].name[0] == 'C' and mol[i].name[0] == 'C':
-                        torsions.append([position, k, i, l, t1234])
+                    
+                    torsions.append([position, k, i, l, t1234])
     return torsions
 
 
@@ -615,13 +618,13 @@ def rotate_trp_tors_angle(mol_1, mol_2, rotating_resid):
         bonds_1, rot_bonds_1 = amino_acid(mol_1, [trp_number])
         bonds_2, rot_bonds_2 = amino_acid(mol_2, [trp_number])
         graph_2 = Graph(bonds_2)
-        torsions_1 = [get_torsions(mol_1, bonds_1)[0], get_torsions(mol_1, bonds_1)[1]]
-        torsions_2 = [get_torsions(mol_2, bonds_2)[0], get_torsions(mol_2, bonds_2)[1]]
+        torsions_1 = [get_torsions(mol_1, bonds_1)[2], get_torsions(mol_1, bonds_1)[3]]
+        torsions_2 = [get_torsions(mol_2, bonds_2)[2], get_torsions(mol_2, bonds_2)[3]]
         trp_dif += [torsions_2[0][4] - torsions_1[0][4], torsions_2[1][4] - torsions_1[1][4]]
         rot_1 = trp_dif[0]
         rot_2 = trp_dif[1]
         rotate(mol_2, graph_2.bfs(torsions_2[0][2]), torsions_2[0][1], torsions_2[0][2], (-1) * np.sign(rot_1) * abs(rot_1))
         rotate(mol_2, graph_2.bfs(torsions_2[1][2]), torsions_2[1][1], torsions_2[1][2], (-1) * np.sign(rot_2) * abs(rot_2))
-        #print_torsions(mol_1, get_torsions(mol_1, bonds_1))
-        #print_torsions(mol_2, [get_torsions(mol_2, bonds_2)[0], get_torsions(mol_2, bonds_2)[1]])
+        print_torsions(mol_2, [get_torsions(mol_2, bonds_2)[2], get_torsions(mol_2, bonds_2)[3]])
+        print_torsions(mol_1, [get_torsions(mol_1, bonds_1)[2], get_torsions(mol_1, bonds_1)[3]])
     return mol_2
