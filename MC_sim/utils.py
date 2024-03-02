@@ -174,7 +174,6 @@ def read_psf(fname, mol):
             unused_zero = line[69:70].strip()
             if unused_zero == '0':
                 num = int(line[0:8])
-                print(num)
                 mol[num].partialcharge = float(line[35:44])
 
         def nbond():
@@ -567,6 +566,7 @@ def post_proc(ini_mol, start_mol, end_mol, rotating_resid):
 
 
 def get_torsion_angle(point1, point2, point3, point4):
+    #Calculate torsion angle
     rad2deg = 180.0 / math.pi
     vector1 = np.cross(np.array(point2) - np.array(point1), np.array(point2) - np.array(point3))
     vector2 = np.cross(np.array(point3) - np.array(point2), np.array(point3) - np.array(point4))  
@@ -581,7 +581,16 @@ def get_torsion_angle(point1, point2, point3, point4):
 
 
 def get_torsions(mol, bonds):
+    #function for selecting the atoms of the main chain that form the torsion angle
     torsions = []
+    seen_triplets = set()
+    
+    def starts_with_C(atoms):
+        return all(atom.name.startswith('C') for atom in atoms)
+    
+    def has_digits(atoms):
+        return any(char.isdigit() for atom in atoms for char in atom.name)
+
     for position, atoms in bonds.items():
         n_position_bonds = len(bonds[position])
         for a in range(n_position_bonds):
@@ -592,24 +601,45 @@ def get_torsions(mol, bonds):
                 n_ibonds = len(bonds[i])
                 for c in range(n_ibonds):
                     l = bonds[i][c]
-                    if (l == position or l == i):
+                    if (l == position or l == i or (k, i, l) in seen_triplets):
                         continue
-                    t1234 = get_torsion_angle(mol[position].coordin, mol[k].coordin, mol[i].coordin, mol[l].coordin)
-                    
-                    torsions.append([position, k, i, l, t1234])
-    return torsions
+                    seen_triplets.add((k, i, l))
+
+                    if has_digits([mol[k], mol[i]]):
+                        continue
+
+                    if starts_with_C([mol[position], mol[k], mol[i]]):
+                        torsion = [position, k, i, l]
+                        angle = get_torsion_angle(mol[position].coordin, mol[k].coordin, mol[i].coordin, mol[l].coordin)
+
+                        torsions.append(torsion+ [angle])
+    torsions.sort(key=lambda x: all(mol[atom].name.startswith('C') for atom in x[0:4]), reverse=True)
+    seen = {}
+    result = []
+    for sublist in torsions:
+        key = tuple(sublist[1:3])
+        if key not in seen:
+            seen[key] = True
+            result.append(sublist)
+
+    
+
+    return result
 
 
 def print_torsions(mol, torsions):
+    #torsions is list with format [atom1, atom2, atom3, atom4, torsion_angle]
     n_torsions = len(torsions)
-    print('%i torsion(s) found (degrees) %i in  resseq' % (n_torsions, mol[torsions[0][0]].resseq))
-    for q in range(n_torsions):
-        n1, n2, n3, n4 = torsions[q][0:4]
-        t1234 = torsions[q][4]
-        nstr = '%i-%i-%i-%i' % (n1, n2, n3, n4)
-        tstr = '(%s-%s-%s-%s) ' % (mol[n1].name, mol[n2].name, mol[n3].name, mol[n4].name)
-        print(' %-15s  %-13s  %8.3f\n' % (nstr, tstr, t1234), end='')
-    print('\n', end='')
+    print(f"{n_torsions} torsion(s) found (degrees) in resseq {mol[torsions[0][0]].resseq}")
+    
+    for torsion in torsions:
+        n1, n2, n3, n4 = torsion[0:4]
+        t1234 = torsion[4]
+        nstr = f"{n1}-{n2}-{n3}-{n4}"
+        tstr = f"({mol[n1].name}-{mol[n2].name}-{mol[n3].name}-{mol[n4].name})"
+        print(f"{nstr.ljust(15)}  {tstr.ljust(13)}  {t1234:8.3f}")
+    
+    print("\n")
 
 
 def rotate_trp_tors_angle(mol_1, mol_2, rotating_resid):
@@ -618,13 +648,16 @@ def rotate_trp_tors_angle(mol_1, mol_2, rotating_resid):
         bonds_1, rot_bonds_1 = amino_acid(mol_1, [trp_number])
         bonds_2, rot_bonds_2 = amino_acid(mol_2, [trp_number])
         graph_2 = Graph(bonds_2)
-        torsions_1 = [get_torsions(mol_1, bonds_1)[2], get_torsions(mol_1, bonds_1)[3]]
-        torsions_2 = [get_torsions(mol_2, bonds_2)[2], get_torsions(mol_2, bonds_2)[3]]
-        trp_dif += [torsions_2[0][4] - torsions_1[0][4], torsions_2[1][4] - torsions_1[1][4]]
-        rot_1 = trp_dif[0]
-        rot_2 = trp_dif[1]
-        rotate(mol_2, graph_2.bfs(torsions_2[0][2]), torsions_2[0][1], torsions_2[0][2], (-1) * np.sign(rot_1) * abs(rot_1))
-        rotate(mol_2, graph_2.bfs(torsions_2[1][2]), torsions_2[1][1], torsions_2[1][2], (-1) * np.sign(rot_2) * abs(rot_2))
-        print_torsions(mol_2, [get_torsions(mol_2, bonds_2)[2], get_torsions(mol_2, bonds_2)[3]])
-        print_torsions(mol_1, [get_torsions(mol_1, bonds_1)[2], get_torsions(mol_1, bonds_1)[3]])
+        
+        torsions_1 = get_torsions(mol_1, bonds_1)[0:2]
+        torsions_2 = get_torsions(mol_2, bonds_2)[0:2]
+        
+        trp_dif.extend([torsions_2[0][4] - torsions_1[0][4], torsions_2[1][4] - torsions_1[1][4]])
+        
+        for idx, trp_diff in enumerate(trp_dif):
+            rotate(mol_2, graph_2.bfs(torsions_2[idx][2]), torsions_2[idx][1], torsions_2[idx][2], (-1) * np.sign(trp_diff) * abs(trp_diff))
+        
+        #print_torsions(mol_2, [get_torsions(mol_2, bonds_2)[0], get_torsions(mol_2, bonds_2)[1]])
+        #print_torsions(mol_1, [get_torsions(mol_1, bonds_1)[0], get_torsions(mol_1, bonds_1)[1]])
+    
     return mol_2

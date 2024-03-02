@@ -42,4 +42,7 @@ numpy
 - Add function to analyze pdb file and refill missing atoms
 - Add constraints
 
-  чтобы запустилось на винде, надо поменять расстановку слешей в utils и поменять все ссылки на файлы в основных программах(ссылка на конфиг и ссылка на карту ротамеров в монте карло)
+## Rotamers shablon
+txt file then has structure:
+"Amino Acid","Bound Rotamer_number", "Probability" ,"Chi1" ,"Chi2" ,"Chi3" ,"Chi4"
+chi-angles - angles from main chain
