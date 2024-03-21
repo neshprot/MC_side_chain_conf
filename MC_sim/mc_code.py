@@ -249,6 +249,7 @@ def montecarlo(mol, graph, rot_bonds, rotating_resid, trp_resid, config):
 
             # Смена директории
             os.chdir(input_files_dir)
+            write_pdb(mol, 'out.pdb')
             time.sleep(5)
 
             # Вывод содержимого директории
